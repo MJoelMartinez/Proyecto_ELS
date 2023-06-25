@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 });
+
+Route::get('/Backoffice', function () {
+    return view('backoffice');
+});
+
+Route::get('/Backoffice/Usuarios', function () {
+    return view('usuarios');
+});
+
+Route::get('/Backoffice/Almacenes', function () {
+    return view('almacenes');
+});
+
+Route::get('/Backoffice/Vehiculos', function () {
+    return view('vehiculos');
+});
+
+Route::post('/Backoffice/Usuarios/Crear',
+    [UsuarioController::class, "Crear"]
+);
