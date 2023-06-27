@@ -14,7 +14,7 @@ class UsuarioController extends Controller
 {
 
     public function CrearUsuario($request){
-        Usuario:create([
+        Usuario::create([
             "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
             "UsuarioLogin" => $request -> $_POST("nombreDeUsuarioLogin"),
             "Contrasenia" => $request -> $_POST("contrasenia"),
@@ -42,36 +42,36 @@ class UsuarioController extends Controller
     }
 
     public function CrearAdministrador($request){
-        Administrador:create([
+        Administrador::create([
             "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
             "NumeroAdmin" => $request -> $_POST("numeroDeAdministrador")
         ]);
     }
 
     public function CrearGerente($request){
-        Gerente:create([
+        Gerente::create([
             "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
             "NumeroGerente" => $request -> $_POST("numeroDeGerente")
         ]);
     }
 
     public function CrearCargador($request){
-        Cargador:create([
+        Cargador::create([
             "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
             "NumeroCargador" => $request -> $_POST("numeroDeCargador")
         ]);
     }
 
     public function CrearChofer($request){
-        Chofer:create([
+        Chofer::create([
             "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
             "NumeroChofer" => $request -> $_POST("numeroDeChofer")
         ]);
     }
 
     public function Crear(Request $request){
-        CrearUsuario($request);
-        IdentificarRol($request);
+        $this->CrearUsuario($request);
+        $this->IdentificarRol($request);
     }
 
     public function Eliminar(Request $request){

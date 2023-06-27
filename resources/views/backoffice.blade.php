@@ -10,7 +10,5 @@
     <label><a href="/Backoffice/Usuarios">Lista de Usuarios del Sistema</a></label>
     <br><br>
     <label><a href="/Backoffice/Almacenes">Lista de Almacenes de 'Quick Carry'</a></label>
-    <br><br>
-    <label><a href="/Backoffice/Vehiculos">Lista de Vehículos</a></label>
 </body>
 </html>

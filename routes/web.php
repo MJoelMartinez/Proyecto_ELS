@@ -30,10 +30,6 @@ Route::get('/Backoffice/Almacenes', function () {
     return view('almacenes');
 });
 
-Route::get('/Backoffice/Vehiculos', function () {
-    return view('vehiculos');
-});
-
 Route::post('/Backoffice/Usuarios/Crear',
     [UsuarioController::class, "Crear"]
 );
