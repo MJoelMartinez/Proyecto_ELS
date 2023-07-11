@@ -14,25 +14,25 @@
         <form action='/Backoffice/Usuarios/Crear' method='post'>
             @csrf
             <label>Documento de Identidad:</label>
-            <input type="number" name="documentoDeIdentidad">
+            <input type="number" name="documentoDeIdentidad" required>
             <br><br>
             <label>Nombre de Usuario:</label>
-            <input type="text" name="nombreDeUsuarioLogin">
+            <input type="text" name="nombreDeUsuarioLogin" required>
             <br><br>
             <label>Contraseña:</label>
-            <input type="password" name="contrasenia">
+            <input type="password" name="contrasenia" required>
             <br><br>
             <label>Nombre:</label>
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" required>
             <br><br>
             <label>Apellido:</label>
-            <input type="text" name="apellido">
+            <input type="text" name="apellido" required>
             <br><br>
             <label>Teléfono:</label>
-            <input type="number" name="telefono">
+            <input type="number" name="telefono" required>
             <br><br>
             <label>Dirección:</label>
-            <input type="text" name="direccion">
+            <input type="text" name="direccion" required>
             <br><br>
             <label>Rol:</label>
             <select id="rolDeLaEmpresa" name="rolDeLaEmpresa">
@@ -45,6 +45,9 @@
             <br><br>
             <label class="rol" id="rolLabel">X</label>
             <input class="rol" id="rolInput" type="text" name="x">
+            <br><br>
+            <label class="rol" id="labelLicencia">ID Licencia de Conducir: </label>
+            <input class="rol" id="inputLicencia" type="text" name="IDLicencia"> 
             <br><br>
             <button type="submit">Añadir</button>
         </form>

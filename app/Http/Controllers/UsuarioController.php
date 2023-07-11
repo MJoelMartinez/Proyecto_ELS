@@ -15,18 +15,19 @@ class UsuarioController extends Controller
 
     public function CrearUsuario($request){
         Usuario::create([
-            "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
-            "UsuarioLogin" => $request -> $_POST("nombreDeUsuarioLogin"),
-            "Contrasenia" => $request -> $_POST("contrasenia"),
-            "Nombre" => $request -> $_POST("nombre"),
-            "Apellido" => $request -> $_POST("apellido"),
-            "Telefono" => $request -> $_POST("telefono"),
-            "Direccion" => $request -> $_POST("direccion")
+            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
+            "usuarioLogin" => $request -> input("nombreDeUsuarioLogin"),
+            "contrasenia" => $request -> input("contrasenia"),
+            "nombre" => $request -> input("nombre"),
+            "apellido" => $request -> input("apellido"),
+            "telefono" => $request -> input("telefono"),
+            "direccion" => $request -> input("direccion")
         ]);
+        return "Persona creada correctamente.";
     }
 
     public function IdentificarRol($request){
-        $rol = $request -> $_POST("rolDeLaEmpresa");
+        $rol = $request -> input("rolDeLaEmpresa");
         if ($rol === "administrador") {
             CrearAdministrador($request);
         }
@@ -43,29 +44,29 @@ class UsuarioController extends Controller
 
     public function CrearAdministrador($request){
         Administrador::create([
-            "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
-            "NumeroAdmin" => $request -> $_POST("numeroDeAdministrador")
+            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
+            "numeroAdmin" => $request -> input("numeroDeAdministrador")
         ]);
     }
 
     public function CrearGerente($request){
         Gerente::create([
-            "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
-            "NumeroGerente" => $request -> $_POST("numeroDeGerente")
+            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
+            "numeroGerente" => $request -> input("numeroDeGerente")
         ]);
     }
 
     public function CrearCargador($request){
         Cargador::create([
-            "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
-            "NumeroCargador" => $request -> $_POST("numeroDeCargador")
+            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
+            "numeroCargador" => $request -> input("numeroDeCargador")
         ]);
     }
 
     public function CrearChofer($request){
         Chofer::create([
-            "DocDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
-            "NumeroChofer" => $request -> $_POST("numeroDeChofer")
+            "docDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
+            "numeroChofer" => $request -> $_POST("numeroDeChofer") 
         ]);
     }
 
