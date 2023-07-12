@@ -33,3 +33,15 @@ Route::get('/Backoffice/Almacenes', function () {
 Route::post('/Backoffice/Usuarios/Crear',
     [UsuarioController::class, "Crear"]
 );
+
+Route::delete("/Backoffice/Usuarios/Eliminar/{documentoDeIdentidad}",
+    [UsuarioController::class, "Eliminar"]
+);
+
+Route::post('/Backoffice/Almacen/Eliminar/{idAlmacen}',
+    [AlmacenController::class, "Eliminar"]
+);
+
+Route::post('/Backoffice/Almacen/Crear',
+    [AlmacenController::class, "Crear"]
+);

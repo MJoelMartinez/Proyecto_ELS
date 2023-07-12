@@ -1,8 +1,12 @@
-var labelRol = document.getElementById("rolLabel");
+let labelRol = document.getElementById("rolLabel");
 
-var inputRol = document.getElementById("rolInput");
+let inputRol = document.getElementById("rolInput");
 
-var selectRol = document.getElementById("rolDeLaEmpresa");
+let selectRol = document.getElementById("rolDeLaEmpresa");
+
+let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsuarios");
+
+let botonFormularioEliminar = document.getElementById("botonFormularioEliminar");
 
 selectRol.onchange = function(){
     CambiarValores();
@@ -24,7 +28,7 @@ function visibilizarLicencia(){
 }
 
 function CambiarValores(){
-    var valor = selectRol.options[selectRol.selectedIndex].value;
+    let valor = selectRol.options[selectRol.selectedIndex].value;
 
     if (valor == "usuarioComun"){
         labelRol.style.display = "none";
@@ -60,3 +64,9 @@ function CambiarValores(){
         inputRol.setAttribute("name","numeroDeChofer");
     }
 }
+
+botonFormularioEliminar.addEventListener("click", function() {
+    let inputFormulario = document.getElementById("inputFormularioEliminar");
+    let valorInputFormulario = inputFormulario.value;
+    formularioEliminarUsuarios.setAttribute("action", "/Backoffice/Usuarios/Eliminar/" +  valorInputFormulario);
+});

@@ -75,9 +75,11 @@ class UsuarioController extends Controller
         $this->IdentificarRol($request);
     }
 
-    public function Eliminar(Request $request){
-        $usuario = Usuario::findOrFail($documentoDeIdentidad);
+    public function Eliminar(Request $request, $documentoDeIdentidad){
+        $usuario = Usuario::where('docDeIdentidad', $documentoDeIdentidad);
         $usuario -> delete();
+
+        return [ "mensaje" => "El Usuario con la cédula $documentoDeIdentidad ha sido eliminado."];
     }
 
     public function Modificar(Request $request){
