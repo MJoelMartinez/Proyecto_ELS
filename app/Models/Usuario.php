@@ -18,16 +18,16 @@ class Usuario extends Authenticatable
 
     protected $fillable = [
         'docDeIdentidad',
-        'usuarioLogin',
         'contrasenia',
         'nombre',
         'apellido',
         'telefono',
+        'email',
         'direccion'
     ];
 
     protected $hidden = [
-        'password',
+        'contrasenia',
         'remember_token',
     ];
 }

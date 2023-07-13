@@ -16,9 +16,6 @@
             <label>Documento de Identidad: </label>
             <input type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <label>Nombre de Usuario: </label>
-            <input type="text" name="nombreDeUsuarioLogin" required>
-            <br><br>
             <label>Contraseña: </label>
             <input type="password" name="contrasenia" required>
             <br><br>
@@ -30,6 +27,9 @@
             <br><br>
             <label>Teléfono: </label>
             <input type="number" name="telefono" required>
+            <br><br>
+            <label>Correo Electrónico: </label>
+            <input type="email" name="email" required>
             <br><br>
             <label>Dirección: </label>
             <input type="text" name="direccion" required>
@@ -52,6 +52,28 @@
             <button type="submit">Añadir</button>
         </form>
     </div>
+    <br><br>
+    <button class="ModificarUsuario">Modificar Usuario</button>
+    <div class="UsuarioAModificar">
+        <form id="formularioModificarUsuarios" action='/Backoffice/Usuarios/Modificar' method='post'>
+            @method('PUT')
+            @csrf
+            <label>Documento de Identidad: </label>
+            <input id="inputFormularioModificar" type="number" name="documentoDeIdentidad">
+            <br><br>
+            <label>Nombre: </label>
+            <input type="text" name="nombre" required>
+            <br><br>
+            <label>Teléfono: </label>
+            <input type="number" name="telefono" required>
+            <br><br>
+            <label>Dirección: </label>
+            <input type="text" name="direccion" required>
+            <br><br>
+            <button id="botonFormularioModificar" type="submit">Modificar</button>
+        </form>
+    </div>
+    <br><br>
     <button class="EliminarUsuario">Eliminar Usuario</button>
     <div class="UsuarioAEliminar">
         <form id="formularioEliminarUsuarios" action='/Backoffice/Usuarios/Eliminar' method='post'>

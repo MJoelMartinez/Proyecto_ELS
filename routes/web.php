@@ -34,6 +34,10 @@ Route::post('/Backoffice/Usuarios/Crear',
     [UsuarioController::class, "Crear"]
 );
 
+Route::put("/Backoffice/Usuarios/Modificar/{documentoDeIdentidad}",
+    [UsuarioController::class, "Modificar"]
+);
+
 Route::delete("/Backoffice/Usuarios/Eliminar/{documentoDeIdentidad}",
     [UsuarioController::class, "Eliminar"]
 );

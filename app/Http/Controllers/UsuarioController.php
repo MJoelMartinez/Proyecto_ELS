@@ -16,11 +16,11 @@ class UsuarioController extends Controller
     public function CrearUsuario($request){
         Usuario::create([
             "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "usuarioLogin" => $request -> input("nombreDeUsuarioLogin"),
             "contrasenia" => $request -> input("contrasenia"),
             "nombre" => $request -> input("nombre"),
             "apellido" => $request -> input("apellido"),
             "telefono" => $request -> input("telefono"),
+            "email" => $request -> input("email"),
             "direccion" => $request -> input("direccion")
         ]);
         return "Persona creada correctamente.";
@@ -65,8 +65,16 @@ class UsuarioController extends Controller
 
     public function CrearChofer($request){
         Chofer::create([
-            "docDeIdentidad" => $request -> $_POST("documentoDeIdentidad"),
-            "numeroChofer" => $request -> $_POST("numeroDeChofer") 
+            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
+            "numeroChofer" => $request -> input("numeroDeChofer") 
+        ]);
+        CrearLicencia();
+    }
+
+    public function CrearLicencia($request){
+        Licencia::create([
+            "validoDesde" => $request -> input("validoDesde"),
+            "validoHasta" => $request -> input("validoHasta")
         ]);
     }
 
@@ -77,19 +85,30 @@ class UsuarioController extends Controller
 
     public function Eliminar(Request $request, $documentoDeIdentidad){
         $usuario = Usuario::where('docDeIdentidad', $documentoDeIdentidad);
-        $usuario -> delete();
+        $valoresUsuario = $usuario -> get();
 
-        return [ "mensaje" => "El Usuario con la cédula $documentoDeIdentidad ha sido eliminado."];
+        if (count($valoresUsuario) === 0)
+            return [ "mensaje" => "El Usuario no existe en el sistema."];
+        
+        if (count($valoresUsuario) != 0){
+            $usuario -> delete();
+            return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];
+        }
     }
 
-    public function Modificar(Request $request){
-        $usuario = Usuario::findOrFail($documentoDeIdentidad);
-        $usuario -> DocDeIdentidad = $request -> $_POST("documentoDeIdentidad");
-        $usuario -> UsuarioLogin = $request -> $_POST("nombreDeUsuarioLogin");
-        $usuario -> Nombre = $request -> $_POST("nombre");
-        $usuario -> Apellido = $request -> $_POST("apellido");
-        $usuario -> Telefono = $request -> $_POST("telefono");
-        $usuario -> Direccion = $request -> $_POST("direccion");
-        $usuario -> save();
+    public function Modificar(Request $request, $documentoDeIdentidad){
+        $usuario = Usuario::where('docDeIdentidad', $documentoDeIdentidad);
+        $modeloUsuario = $usuario -> first();
+
+        if ($modeloUsuario == null)
+            return [ "mensaje" => "El Usuario no existe en el sistema."];
+        
+        if ($modeloUsuario != null){
+            $modeloUsuario -> nombre = $request -> input("nombre");
+            $modeloUsuario -> telefono = $request -> input("telefono");
+            $modeloUsuario -> direccion = $request -> input("direccion");
+            $modeloUsuario -> save();
+            return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
+        }
     }
 }

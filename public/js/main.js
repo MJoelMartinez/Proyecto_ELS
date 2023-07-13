@@ -4,6 +4,10 @@ let inputRol = document.getElementById("rolInput");
 
 let selectRol = document.getElementById("rolDeLaEmpresa");
 
+let formularioModificarUsuarios = document.getElementById("formularioModificarUsuarios");
+
+let botonFormularioModificar = document.getElementById("botonFormularioModificar");
+
 let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsuarios");
 
 let botonFormularioEliminar = document.getElementById("botonFormularioEliminar");
@@ -64,6 +68,12 @@ function CambiarValores(){
         inputRol.setAttribute("name","numeroDeChofer");
     }
 }
+
+botonFormularioModificar.addEventListener("click", function() {
+    let inputFormulario = document.getElementById("inputFormularioModificar");
+    let valorInputFormulario = inputFormulario.value;
+    formularioModificarUsuarios.setAttribute("action", "/Backoffice/Usuarios/Modificar/" +  valorInputFormulario);
+});
 
 botonFormularioEliminar.addEventListener("click", function() {
     let inputFormulario = document.getElementById("inputFormularioEliminar");
