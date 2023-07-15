@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Almacen;
 
 class AlmacenController extends Controller
 
@@ -10,22 +11,28 @@ class AlmacenController extends Controller
 
     public function CrearAlmacen($request){
         Almacen::create([
-            "idAlmacen" => $request -> input("idAlmacen"),
             "capacidad" => $request -> input("capacidad"),
             "direccion" => $request -> input("direccion")
         ]);
-        return "Almacen creado correctamente.";
     }
 
     public function Crear(Request $request){
-        $this->CrearAlmacen($request);
+        $this -> CrearAlmacen($request);
+
+        return [ "mensaje" => "Almacen creado correctamente."];
     }
 
     public function Eliminar(Request $request, $idAlmacen){
-        $almacen = Almacen::where('idAlmacen', $idAlmacen) -> findOrFail();
-        $almacen -> delete();
+        $almacen = Almacen::where('idAlmacen', $idAlmacen);
+        $valoresAlmacen = $almacen -> get();
 
-        return [ "mensaje" => "El almacen con el id $idAlmacen ha sido eliminado."];
+        if (count($valoresAlmacen) === 0)
+            return [ "mensaje" => "El Almacen no existe en el sistema."];
+        
+        if (count($valoresAlmacen) != 0){
+            $almacen -> delete();
+            return [ "mensaje" => "El Almacen on el id $idAlmacen ha sido eliminado."];
+        }
     }
 
     public function Modificar(Request $request){

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AlmacenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,10 @@ Route::delete("/Backoffice/Usuarios/Eliminar/{documentoDeIdentidad}",
     [UsuarioController::class, "Eliminar"]
 );
 
-Route::post('/Backoffice/Almacen/Eliminar/{idAlmacen}',
+Route::delete('/Backoffice/Almacenes/Eliminar/{idAlmacen}',
     [AlmacenController::class, "Eliminar"]
 );
 
-Route::post('/Backoffice/Almacen/Crear',
+Route::post('/Backoffice/Almacenes/Crear',
     [AlmacenController::class, "Crear"]
 );

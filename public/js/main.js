@@ -6,11 +6,11 @@ let selectRol = document.getElementById("rolDeLaEmpresa");
 
 let formularioModificarUsuarios = document.getElementById("formularioModificarUsuarios");
 
-let botonFormularioModificar = document.getElementById("botonFormularioModificar");
+let botonFormularioModificarUsuarios = document.getElementById("botonFormularioModificarUsuarios");
 
 let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsuarios");
 
-let botonFormularioEliminar = document.getElementById("botonFormularioEliminar");
+let botonFormularioEliminarUsuarios = document.getElementById("botonFormularioEliminarUsuarios");
 
 selectRol.onchange = function(){
     CambiarValores();
@@ -69,13 +69,13 @@ function CambiarValores(){
     }
 }
 
-botonFormularioModificar.addEventListener("click", function() {
+botonFormularioModificarUsuarios.addEventListener("click", function() {
     let inputFormulario = document.getElementById("inputFormularioModificar");
     let valorInputFormulario = inputFormulario.value;
     formularioModificarUsuarios.setAttribute("action", "/Backoffice/Usuarios/Modificar/" +  valorInputFormulario);
 });
 
-botonFormularioEliminar.addEventListener("click", function() {
+botonFormularioEliminarUsuarios.addEventListener("click", function() {
     let inputFormulario = document.getElementById("inputFormularioEliminar");
     let valorInputFormulario = inputFormulario.value;
     formularioEliminarUsuarios.setAttribute("action", "/Backoffice/Usuarios/Eliminar/" +  valorInputFormulario);

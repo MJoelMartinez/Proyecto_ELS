@@ -23,7 +23,6 @@ class UsuarioController extends Controller
             "email" => $request -> input("email"),
             "direccion" => $request -> input("direccion")
         ]);
-        return "Persona creada correctamente.";
     }
 
     public function IdentificarRol($request){
@@ -79,8 +78,10 @@ class UsuarioController extends Controller
     }
 
     public function Crear(Request $request){
-        $this->CrearUsuario($request);
-        $this->IdentificarRol($request);
+        $this -> CrearUsuario($request);
+        $this -> IdentificarRol($request);
+
+        return [ "mensaje" => "Usuario creado correctamente."];
     }
 
     public function Eliminar(Request $request, $documentoDeIdentidad){

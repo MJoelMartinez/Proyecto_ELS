@@ -70,7 +70,7 @@
             <label>Dirección: </label>
             <input type="text" name="direccion" required>
             <br><br>
-            <button id="botonFormularioModificar" type="submit">Modificar</button>
+            <button id="botonFormularioModificarUsuarios" type="submit">Modificar</button>
         </form>
     </div>
     <br><br>
@@ -82,7 +82,7 @@
             <label>Documento de Identidad: </label>
             <input id="inputFormularioEliminar" type="number" name="documentoDeIdentidad">
             <br><br>
-            <button id="botonFormularioEliminar" type="submit">Eliminar</button>
+            <button id="botonFormularioEliminarUsuarios" type="submit">Eliminar</button>
         </form>
     </div>
     <script src="../js/main.js"></script>

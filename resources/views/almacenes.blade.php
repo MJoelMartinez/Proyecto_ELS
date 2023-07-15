@@ -11,7 +11,7 @@
     <button id="AñadirAlmacen">Añadir Almacen</button>
     <br>
     <div class="NuevoAlmacen">
-        <form action='/Backoffice/Almacen/Crear' method='post'>
+        <form action='/Backoffice/Almacenes/Crear' method='post'>
             @csrf
             <label>Capacidad: </label>
             <input type="number" name="capacidad" required>
@@ -22,16 +22,16 @@
         </form>
     </div>
     <button class="EliminarAlmacen">Eliminar Almacen</button>
-    <div class="AlmacenEliminar">
-        <form action="formularioEliminarAlmacen" action='/Backoffice/Almacen/Eliminar' method='post'>
+    <div class="AlmacenAEliminar">
+        <form id="formularioEliminarAlmacenes" action='/Backoffice/Almacenes/Eliminar' method='post'>
             @method('DELETE')
             @csrf
             <label>Id Almacen: </label>
-            <input type="number" name="idAlmacen">
+            <input id="inputFormularioEliminar" type="number" name="idAlmacen">
             <br><br>
-            <button type="submit">Eliminar Almacen</button>
+            <button id="botonFormularioEliminarAlmacenes" type="submit">Eliminar Almacen</button>
         </form>
     </div>
-    <script src="../js/main.js"></script>
+    <script src="../js/almacenes.js"></script>
 </body>
 </html>
