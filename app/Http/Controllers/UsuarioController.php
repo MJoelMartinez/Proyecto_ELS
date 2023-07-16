@@ -27,61 +27,100 @@ class UsuarioController extends Controller
 
     public function IdentificarRol($request){
         $rol = $request -> input("rolDeLaEmpresa");
-        if ($rol === "administrador") {
-            CrearAdministrador($request);
-        }
-        if ($rol === "gerente") {
-            CrearGerente($request);
-        }
-        if ($rol === "cargador") {
-            CrearCargador($request);
-        }
-        if ($rol === "chofer") {
-            CrearChofer($request);
-        }
+        
+        return $rol;
+    }
+
+    public function CrearRol($rol, $request){
+        if ($rol === "administrador")
+            $this -> CrearAdministrador($request);
+        
+        if ($rol === "gerente")
+            $this -> CrearGerente($request);
+        
+        if ($rol === "cargador")
+            $this -> CrearCargador($request);
+        
+        if ($rol === "chofer")
+            $this -> CrearChofer($request);
     }
 
     public function CrearAdministrador($request){
         Administrador::create([
             "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroAdmin" => $request -> input("numeroDeAdministrador")
+            "numeroAdmin" => $request -> input("numeroDeRol")
         ]);
     }
 
     public function CrearGerente($request){
         Gerente::create([
             "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroGerente" => $request -> input("numeroDeGerente")
+            "numeroGerente" => $request -> input("numeroDeRol")
         ]);
     }
 
     public function CrearCargador($request){
         Cargador::create([
             "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroCargador" => $request -> input("numeroDeCargador")
+            "numeroCargador" => $request -> input("numeroDeRol")
         ]);
     }
 
     public function CrearChofer($request){
         Chofer::create([
             "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroChofer" => $request -> input("numeroDeChofer") 
-        ]);
-        CrearLicencia();
-    }
-
-    public function CrearLicencia($request){
-        Licencia::create([
-            "validoDesde" => $request -> input("validoDesde"),
-            "validoHasta" => $request -> input("validoHasta")
+            "numeroChofer" => $request -> input("numeroDeRol") 
         ]);
     }
 
     public function Crear(Request $request){
         $this -> CrearUsuario($request);
-        $this -> IdentificarRol($request);
+        if ($this -> IdentificarRol($request) != null)
+            $this -> CrearRol($this -> IdentificarRol($request), $request);
 
         return [ "mensaje" => "Usuario creado correctamente."];
+    }
+
+    public function IdentificarRolAEliminar($documentoDeIdentidad){
+        $rol = Administrador::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol -> get();
+
+        if (count($valoresRol) != 0)
+            return "administrador";
+        
+        $rol = Gerente::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol -> get();
+    
+        if (count($valoresRol) != 0)
+            return "gerente";
+
+        $rol = Chofer::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol -> get();
+        
+        if (count($valoresRol) != 0)
+            return "chofer";
+        
+        $rol = Cargador::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol -> get();
+        
+        if (count($valoresRol) != 0)
+             return "cargador";
+
+        return "UsuarioComun";
+    }
+
+    public function EliminarRol($rol, $documentoDeIdentidad){
+        if ($rol === "administrador")
+            Administrador::where('docDeIdentidad', $documentoDeIdentidad) -> delete();
+        
+        if ($rol === "gerente")
+            Gerente::where('docDeIdentidad', $documentoDeIdentidad) -> delete();
+        
+        if ($rol === "cargador")
+            Cargador::where('docDeIdentidad', $documentoDeIdentidad) -> delete();
+        
+        if ($rol === "chofer")
+            Chofer::where('docDeIdentidad', $documentoDeIdentidad) -> delete();
     }
 
     public function Eliminar(Request $request, $documentoDeIdentidad){
@@ -93,6 +132,11 @@ class UsuarioController extends Controller
         
         if (count($valoresUsuario) != 0){
             $usuario -> delete();
+            $rolDelUsuario = $this -> IdentificarRolAEliminar($documentoDeIdentidad);
+            
+            if ($rolDelUsuario != "UsuarioComun")
+                $this -> EliminarRol($rolDelUsuario, $documentoDeIdentidad);
+            
             return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];
         }
     }

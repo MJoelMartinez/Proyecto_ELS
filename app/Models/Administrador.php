@@ -11,4 +11,11 @@ class Administrador extends Usuario
 {
     use SoftDeletes;
     use HasFactory;
+
+    protected $table = 'Administradores';
+
+    protected $fillable = [
+        'docDeIdentidad',
+        'numeroAdmin'
+    ];
 }

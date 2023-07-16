@@ -11,4 +11,11 @@ class Chofer extends Usuario
 {
     use SoftDeletes;
     use HasFactory;
+
+    protected $table = 'Choferes';
+
+    protected $fillable = [
+        'docDeIdentidad',
+        'numeroChofer'
+    ];
 }

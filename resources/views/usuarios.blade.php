@@ -44,11 +44,7 @@
             </select>
             <br><br>
             <label class="rol" id="rolLabel">X</label>
-            <input class="rol" id="rolInput" type="text" name="x">
-            <br><br>
-            <label class="rol" id="labelLicencia">ID Licencia de Conducir: </label>
-            <input class="rol" id="inputLicencia" type="text" name="IDLicencia"> 
-            <br><br>
+            <input class="rol" id="rolInput" type="text" name="numeroDeRol">
             <button type="submit">Añadir</button>
         </form>
     </div>
@@ -85,6 +81,6 @@
             <button id="botonFormularioEliminarUsuarios" type="submit">Eliminar</button>
         </form>
     </div>
-    <script src="../js/main.js"></script>
+    <script src="../js/usuarios.js"></script>
 </body>
 </html>
