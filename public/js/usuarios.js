@@ -12,6 +12,10 @@ let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsua
 
 let botonFormularioEliminarUsuarios = document.getElementById("botonFormularioEliminarUsuarios");
 
+const labelCarnetCargador = document.getElementById("labelCarnetCargador");
+
+const inputCarnetCargador = document.getElementById("inputCarnetCargador");
+
 selectRol.onchange = function(){
     CambiarValores();
 }
@@ -26,29 +30,44 @@ function VisibilizarElementos(){
     inputRol.style.display = "inline";
 }
 
+function OcultarCarnet(){
+    labelCarnetCargador.style.display = "none";
+    inputCarnetCargador.style.display = "none";
+}
+
+function VisibilizarCarnet(){
+    labelCarnetCargador.style.display = "inline";
+    inputCarnetCargador.style.display = "inline";
+}
+
 function CambiarValores(){
     let valor = selectRol.options[selectRol.selectedIndex].value;
 
     if (valor == "usuarioComun"){
         OcultarElementos();
+        OcultarCarnet()
     }
     if (valor == "administrador"){
         VisibilizarElementos();
+        OcultarCarnet()
 
         labelRol.innerHTML = "Número de Administrador: ";
     }
     if (valor == "gerente"){
         VisibilizarElementos();
+        OcultarCarnet()
 
         labelRol.innerHTML = "Número de Gerente: ";
     }
     if (valor == "cargador"){
         VisibilizarElementos();
+        VisibilizarCarnet();
 
         labelRol.innerHTML = "Número de Cargador: ";
     }
     if (valor == "chofer"){
         VisibilizarElementos();
+        OcultarCarnet()
 
         labelRol.innerHTML = "Número de Chofer: ";
     }

@@ -21,9 +21,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function ()
 {
-    Route::post('/user',[UsuarioController::class,"Register"]);
-    Route::get('/validate',[UsuarioController::class,"ValidateToken"])->middleware('auth:api');
-    Route::get('/logout',[UsuarioController::class,"Logout"])->middleware('auth:api');
+    Route::post('/Usuarios/Crear',
+        [UsuarioController::class, "ValidarRegistro"]
+    );
 
+    Route::get('/Validar',
+        [UsuarioController::class,"ValidarToken"]) -> middleware('auth:api')
+    ;
+    
+    Route::get('/CerrarSesion',
+        [UsuarioController::class,"CerrarSesion"]) -> middleware('auth:api')
+    ;
 
 });

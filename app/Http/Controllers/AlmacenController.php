@@ -23,23 +23,19 @@ class AlmacenController extends Controller
     }
 
     public function Eliminar(Request $request, $idAlmacen){
-        $almacen = Almacen::where('idAlmacen', $idAlmacen);
-        $valoresAlmacen = $almacen -> get();
+        $almacen = Almacen::findOrFail($idAlmacen);
+        $almacen -> delete();
 
-        if (count($valoresAlmacen) === 0)
-            return [ "mensaje" => "El Almacen no existe en el sistema."];
-        
-        if (count($valoresAlmacen) != 0){
-            $almacen -> delete();
-            return [ "mensaje" => "El Almacen on el id $idAlmacen ha sido eliminado."];
-        }
+        return [ "mensaje" => "El almacen con el ID $idAlmacen fue eliminado correctamente."];
     }
 
-    public function Modificar(Request $request){
+    public function Modificar(Request $request, $idAlmacen){
         $almacen = Almacen::findOrFail($idAlmacen);
-        $almacen -> idAlmacen = $request -> $_POST("idAlmacen");
-        $almacen -> capacidad = $request -> $_POST("capacidad");
-        $almacen -> direccion = $request -> $_POST("direccion");
+
+        $almacen -> capacidad = $request -> input("capacidadAlmacen");
+        $almacen -> direccion = $request -> input("direccionAlmacen");
         $almacen -> save();
+
+        return [ "mensaje" => "El almacen con el ID $idAlmacen fue modificado correctamente."];
     }
 }

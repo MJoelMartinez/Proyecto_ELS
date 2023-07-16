@@ -11,7 +11,7 @@
     <button id="AñadirUsuario">Añadir Usuario</button>
     <br>
     <div class="NuevoUsuario">
-        <form action='/Backoffice/Usuarios/Crear' method='post'>
+        <form action='http://localhost:8001/api/v1/Usuarios/Crear' method='post'>
             @csrf
             <label>Documento de Identidad: </label>
             <input type="number" name="documentoDeIdentidad" required>
@@ -44,7 +44,11 @@
             </select>
             <br><br>
             <label class="rol" id="rolLabel">X</label>
-            <input class="rol" id="rolInput" type="text" name="numeroDeRol">
+            <input class="rol" id="rolInput" type="number" name="numeroDeRol">
+            <br><br>
+            <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
+            <input class="rol" id="inputCarnetCargador" type="number" name="carnetTransporte">
+            <br>
             <button type="submit">Añadir</button>
         </form>
     </div>

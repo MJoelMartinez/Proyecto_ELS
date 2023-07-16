@@ -1,6 +1,16 @@
-let botonFormularioEliminarAlmacen = document.getElementById("botonFormularioEliminarAlmacenes");
+const botonFormularioEliminarAlmacen = document.getElementById("botonFormularioEliminarAlmacenes");
 
-let formularioEliminarAlmacenes = document.getElementById("formularioEliminarAlmacenes");
+const formularioEliminarAlmacenes = document.getElementById("formularioEliminarAlmacenes");
+
+const botonFormularioModificarAlmacen = document.getElementById("botonFormularioModificarAlmacenes");
+
+const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
+
+botonFormularioModificarAlmacen.addEventListener("click", function() {
+    let inputFormulario = document.getElementById("inputFormularioModificar");
+    let valorInputFormulario = inputFormulario.value;
+    formularioModificarAlmacenes.setAttribute("action", "/Backoffice/Almacenes/Modificar/" +  valorInputFormulario);
+});
 
 botonFormularioEliminarAlmacen.addEventListener("click", function() {
     let inputFormulario = document.getElementById("inputFormularioEliminar");

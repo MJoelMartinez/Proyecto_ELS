@@ -11,6 +11,8 @@ class Almacen extends Model
     use SoftDeletes;
     use HasFactory;
 
+    protected $primaryKey = 'idAlmacen';
+
     protected $table = 'Almacenes';
 
     protected $fillable = [

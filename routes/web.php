@@ -31,10 +31,6 @@ Route::get('/Backoffice/Almacenes', function () {
     return view('almacenes');
 });
 
-Route::post('/Backoffice/Usuarios/Crear',
-    [UsuarioController::class, "Crear"]
-);
-
 Route::put("/Backoffice/Usuarios/Modificar/{documentoDeIdentidad}",
     [UsuarioController::class, "Modificar"]
 );
@@ -43,10 +39,14 @@ Route::delete("/Backoffice/Usuarios/Eliminar/{documentoDeIdentidad}",
     [UsuarioController::class, "Eliminar"]
 );
 
-Route::delete('/Backoffice/Almacenes/Eliminar/{idAlmacen}',
-    [AlmacenController::class, "Eliminar"]
-);
-
 Route::post('/Backoffice/Almacenes/Crear',
     [AlmacenController::class, "Crear"]
+);
+
+Route::put('/Backoffice/Almacenes/Modificar/{idAlmacen}',
+    [AlmacenController::class, "Modificar"]
+);
+
+Route::delete('/Backoffice/Almacenes/Eliminar/{idAlmacen}',
+    [AlmacenController::class, "Eliminar"]
 );

@@ -16,6 +16,10 @@ class Usuario extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
+    protected $primaryKey = 'docDeIdentidad';
+
+    protected $table = 'Usuarios';
+
     protected $fillable = [
         'docDeIdentidad',
         'contrasenia',
@@ -29,5 +33,9 @@ class Usuario extends Authenticatable
     protected $hidden = [
         'contrasenia',
         'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }

@@ -32,6 +32,23 @@
             <button id="botonFormularioEliminarAlmacenes" type="submit">Eliminar Almacen</button>
         </form>
     </div>
+    <br>
+    <div>
+        <form id="formularioModificarAlmacenes" action='/Backoffice/Almacenes/Modificar' method='post'>
+            @method('PUT')
+            @csrf
+            <label>Id de almacen: </label>
+            <input id="inputFormularioModificar" type="number" name="idAlmacen" placeholder="Ej: 12">
+            <br><br>
+            <label>Capacidad: </label>
+            <input type="number" name="capacidadAlmacen" placeholder="Ej: 250">
+            <br><br>
+            <label>Direccion: </label>
+            <input type="text" name="direccionAlmacen" placeholder="Ej: chiwawa 2330">
+            <br><br>
+            <button id="botonFormularioModificarAlmacenes" type="submit">Modificar</button>
+        </form>
+    </div>
     <script src="../js/almacenes.js"></script>
 </body>
 </html>
