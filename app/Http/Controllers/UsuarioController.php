@@ -154,12 +154,12 @@ class UsuarioController extends Controller
     public function ValidarRegistro(Request $request){
 
         $validation = Validator::make($request->all(),[
-            'docDeIdentidad' => 'required|min:8|max:8',
+            'documentoDeIdentidad' => 'required|min:8|max:8',
             'contrasenia' => 'required|min:8|max:16|confirmed',
             'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
             'telefono' => 'required|min:7|max:9',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:usuarios',
             'direccion' => 'required|max:40'
         ]);
 
@@ -171,11 +171,11 @@ class UsuarioController extends Controller
     }
 
     public function ValidarToken(Request $request){
-        return auth('api')->user();
+        return auth('api')->Usuario();
     }
 
     public function CerrarSesion(Request $request){
-        $request -> user() -> token() -> revoke();
+        $request -> Usuario() -> token() -> revoke();
 
         return ['mensaje' => 'Token Revocado']; 
     }

@@ -19,6 +19,9 @@
             <label>Contraseña: </label>
             <input type="password" name="contrasenia" required>
             <br><br>
+            <label>Repetir Contraseña: </label>
+            <input type="password" name="contrasenia_confirmation" required>
+            <br><br>
             <label>Nombre: </label>
             <input type="text" name="nombre" required>
             <br><br>
