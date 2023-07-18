@@ -177,6 +177,6 @@ class UsuarioController extends Controller
     public function CerrarSesion(Request $request){
         $request -> Usuario() -> token() -> revoke();
 
-        return ['mensaje' => 'Token Revocado']; 
+        return ['mensaje' => 'Token Revocado.']; 
     }
 }

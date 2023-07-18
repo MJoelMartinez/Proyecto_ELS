@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Articulo extends Model
 {
     use HasFactory;
+
+    public function paquetes(){
+        return $this -> belongsTo(Paquete::class, 'idPaquete');
+    }
 }

@@ -10,4 +10,13 @@ class Lote extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $primaryKey = 'idLote';
+
+    protected $table = 'Lotes';
+
+    protected $fillable = [
+        'idLote',
+        'cantidadPaquetes'
+    ];
 }

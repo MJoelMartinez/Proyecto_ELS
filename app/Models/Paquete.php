@@ -10,4 +10,18 @@ class Paquete extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $primaryKey = 'idPaquete';
+
+    protected $table = 'Paquetes';
+
+    protected $fillable = [
+        'idPaquete',
+        'cantidadArticulos',
+        'peso'
+    ];
+
+    public function articulos() {
+        return $this -> hasMany(Articulo::class, 'id');
+    }
 }

@@ -8,8 +8,6 @@
     <title>E.L.S - Usuarios</title>
 </head>
 <body>
-    <button id="AñadirUsuario">Añadir Usuario</button>
-    <br>
     <div class="NuevoUsuario">
         <form action='http://localhost:8001/api/v1/Usuarios/Crear' method='post'>
             @csrf
@@ -56,7 +54,6 @@
         </form>
     </div>
     <br><br>
-    <button class="ModificarUsuario">Modificar Usuario</button>
     <div class="UsuarioAModificar">
         <form id="formularioModificarUsuarios" action='/Backoffice/Usuarios/Modificar' method='post'>
             @method('PUT')
@@ -77,7 +74,6 @@
         </form>
     </div>
     <br><br>
-    <button class="EliminarUsuario">Eliminar Usuario</button>
     <div class="UsuarioAEliminar">
         <form id="formularioEliminarUsuarios" action='/Backoffice/Usuarios/Eliminar' method='post'>
             @method('DELETE')

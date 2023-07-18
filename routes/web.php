@@ -4,19 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AlmacenController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('homepage');
+});
+
+Route::get('/Login', function () {
+    return view('login');
 });
 
 Route::get('/Backoffice', function () {
@@ -49,4 +42,28 @@ Route::put('/Backoffice/Almacenes/Modificar/{idAlmacen}',
 
 Route::delete('/Backoffice/Almacenes/Eliminar/{idAlmacen}',
     [AlmacenController::class, "Eliminar"]
+);
+
+Route::get('/AppAlmacenes', function () {
+    return view('appalmacenes');
+});
+
+Route::get('/AppAlmacenes/paquetes', function () {
+    return view('paquetes');
+});
+
+Route::post('Almacenes/Paquetes/Crear',
+    [AlmacenController::class, "CrearPaquete"]
+);
+
+Route::get('/AppAlmacenes/lotes', function () {
+    return view('lotes');
+});
+
+Route::post('/Almacenes/Lotes/CrearLote', 
+    [AlmacenController::class, "CrearLote"]
+);
+
+Route::put('/Almacenes/Paquetes/Modificar', 
+    [AlmacenController::class, "AsignarPesoDePaquete"]
 );

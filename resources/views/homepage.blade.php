@@ -8,5 +8,7 @@
 </head>
 <body>
     <label><a href="/Backoffice">Backoffice de Administración</a></label>
+    <br>
+    <label><a href="/AppAlmacenes">Aplicacion de Almacén</a></label>
 </body>
 </html>
