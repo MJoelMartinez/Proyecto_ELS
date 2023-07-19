@@ -61,14 +61,14 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'driver' => 'database',
+            'model' => App\Models\Usuario::class,
+            'table' => 'Usuarios',
+            'column' => [
+                'email' => 'email',
+                'password' => 'contrasenia',
+            ],
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

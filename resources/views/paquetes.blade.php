@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="articulos">
+    <div class="paquetes">
         <form action='/Almacenes/Paquetes/Crear' method='post'>
             @csrf
+            <label>ID Artículo:</label>
+            <input type="number" name="idArticulo" required>
+            <br><br>
             <label>Cantidad de Artículos:</label>
             <input type="number" name="cantidadArticulos" required>
             <br><br>

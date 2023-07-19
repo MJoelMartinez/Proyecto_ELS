@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Almacen;
 use App\Models\Paquete;
 use App\Models\Lote;
+use App\Models\ArticuloPaquete;
+use App\Models\PaqueteLote;
 
 class AlmacenController extends Controller
 
@@ -45,15 +47,39 @@ class AlmacenController extends Controller
         Lote::create([
             "cantidadPaquetes" => $request -> input("cantidadPaquetes")
         ]);
+
+        $idAutomatico = $modeloTablaLote -> id;
+
+        CrearPaqueteLote($request, $idAutomatico);
+
         return [ "mensaje" => "Lote creado correctamente." ];
     }
 
+    public function CrearPaqueteLote($request, $idAutomatico){
+        ArticuloPaquete::create([
+            "idLote" => $idAutomatico,
+            "idPaquete" => $request -> input("idPaquete")
+        ]);
+    }
+
     public function CrearPaquete(Request $request){
-        Paquete::create([
+        $modeloTablaPaquete = Paquete::create([
             "cantidadArticulos" => $request -> input("cantidadArticulos"),
             "peso" => "0"
         ]);
+
+        $idAutomatico = $modeloTablaPaquete -> id;
+
+        CrearArticuloPaquete($request, $idAutomatico);
+
         return [ "mensaje" => "Paquete creado correctamente." ];
+    }
+
+    public function CrearArticuloPaquete($request, $idAutomatico){
+        ArticuloPaquete::create([
+            "idArticulo" => $request -> input("idArticulo"),
+            "idPaquete" => $idAutomatico
+        ]);
     }
 
     public function AsignarPesoDePaquete(Request $request, $idPaquete){
@@ -63,5 +89,12 @@ class AlmacenController extends Controller
         $paquete -> save();
 
         return [ "mensaje" => "Se ha asignado el peso al Paquete $idPaquete correctamente." ];
+    }
+
+    public function CrearArticulo(Request $request){
+        Articulo::create([
+            "nombreArticulo" => $request -> input("nombreArticulo"),
+            "anioCreacion" => $request -> input("anioCreacion")
+        ]);
     }
 }

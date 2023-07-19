@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -19,12 +20,10 @@ class LoginController extends Controller
  
         if (Auth::attempt($datosUsuario)) {
             $request -> session() -> regenerate();
- 
-            return redirect() -> intended('dashboard');
+            
+            return view('backoffice');
         }
- 
-        return back() -> withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        
+        return [ "mensaje" => "Los datos ingresados han sido incorrectos." ];
     }
 }

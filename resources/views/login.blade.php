@@ -12,7 +12,7 @@
         <input type="email" name="email" required>
         <br><br>
         <label>Contraseña: </label>
-        <input type="password" name="contrasenia" required>
+        <input type="password" name="password" required>
         <br><br>
         <button type="submit">Continuar</button>
     </form>

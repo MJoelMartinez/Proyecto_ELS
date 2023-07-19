@@ -14,6 +14,9 @@
             <label>Cantidad de Paquetes:</label>
             <input type="number" name="cantidadPaquetes" required>
             <br><br>
+            <label>ID Paquetes:</label>
+            <input type="number" name="idPaquete" required>
+            <br><br>
             <button type="submit">Añadir</button>
         </form>
     </div>

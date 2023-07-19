@@ -12,4 +12,8 @@ class Articulo extends Model
     public function paquetes(){
         return $this -> belongsTo(Paquete::class, 'idPaquete');
     }
+
+    protected $primaryKey = ['IdArticulo'];
+
+    protected $table = 'Articulo';
 }
