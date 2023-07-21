@@ -8,22 +8,23 @@
     <title>E.L.S - Almacenes</title>
 </head>
 <body>
-    <button id="AñadirAlmacen">Añadir Almacen</button>
-    <br>
+    <h3>Añadir Almacen</h3>
     <div class="NuevoAlmacen">
-        <form action='/Backoffice/Almacenes/Crear' method='post'>
+        <form action='http://localhost:8001/api/v1/Backoffice/Almacenes' method='post'>
             @csrf
             <label>Capacidad: </label>
             <input type="number" name="capacidad" required>
             <br><br>
             <label>Direccion: </label>
             <input type="text" name="direccion" required>
+            <br><br>
             <button type="submit">Añadir</button>
         </form>
     </div>
-    <button class="EliminarAlmacen">Eliminar Almacen</button>
+    <br><br>
+    <h3>Eliminar Almacen</h3>
     <div class="AlmacenAEliminar">
-        <form id="formularioEliminarAlmacenes" action='/Backoffice/Almacenes/Eliminar' method='post'>
+        <form id="formularioEliminarAlmacenes" action='http://localhost:8001/api/v1/Backoffice/Almacenes' method='post'>
             @method('DELETE')
             @csrf
             <label>Id Almacen: </label>
@@ -32,9 +33,10 @@
             <button id="botonFormularioEliminarAlmacenes" type="submit">Eliminar Almacen</button>
         </form>
     </div>
-    <br>
+    <br><br>
     <div>
-        <form id="formularioModificarAlmacenes" action='/Backoffice/Almacenes/Modificar' method='post'>
+        <h3>Modificar Almacen</h3>
+        <form id="formularioModificarAlmacenes" action='http://localhost:8001/api/v1/Backoffice/Almacenes' method='post'>
             @method('PUT')
             @csrf
             <label>Id de almacen: </label>
@@ -52,7 +54,7 @@
     <br><br>
     <div class="CrearArticulo">
         <h3>Crear Articulo</h3>
-        <form action='' method='post'>
+        <form action='http://localhost:8001/api/v1/Backoffice/Articulos' method='post'>
             @csrf
             <label>Nombre: </label>
             <input type="text" name="nombreArticulo" required>
@@ -61,6 +63,33 @@
             <input type="number" name="anioCreacion" required>
             <br><br>
             <button type="submit">Crear</button>
+        </form>
+    </div>
+    <br>
+    <div class="ArticuloAEliminar">
+    <h3>Eliminar Articulo</h3>
+        <form id="formularioEliminarArticulos" action='http://localhost:8001/api/v1/Almacenes/Articulos' method='post'>
+            @method('DELETE')
+            @csrf
+            <label>Id Articulo: </label>
+            <input id="inputFormularioEliminarArticulos" type="number" name="idArticulo" >
+            <br><br>
+            <button id="botonFormularioEliminarArticulos" type="submit">Eliminar Articulo</button>
+        </form>
+    </div>
+    <br><br>
+    <div>
+        <h3>Modificar Articulo</h3>
+        <form id="formularioModificarArticulos" action='http://localhost:8001/api/v1/Almacenes/Articulos' method='post'>
+            @method('PUT')
+            @csrf
+            <label>Id Articulo: </label>
+            <input id="inputFormularioModificarArticulos" type="number" name="idArticulo">
+            <br><br>
+            <label>Nombre: </label>
+            <input type="text" name="nombreArticulo">
+            <br><br>
+            <button id="botonFormularioModificarArticulos" type="submit">Modificar</button>
         </form>
     </div>
     <script src="../js/almacenes.js"></script>

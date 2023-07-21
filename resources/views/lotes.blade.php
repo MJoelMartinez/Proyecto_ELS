@@ -9,13 +9,14 @@
 </head>
 <body>
     <div class="lotes">
-        <form action='/Almacenes/Lotes/CrearLote' method='post'>
+        <h3>Crear Lote:</h3>
+        <form action='http://localhost:8001/api/v1/Almacenes/Lotes' method='post'>
             @csrf
-            <label>Cantidad de Paquetes:</label>
-            <input type="number" name="cantidadPaquetes" required>
-            <br><br>
             <label>ID Paquetes:</label>
             <input type="number" name="idPaquete" required>
+            <br><br>
+            <label>Cantidad de Paquetes:</label>
+            <input type="number" name="cantidadPaquetes" required>
             <br><br>
             <button type="submit">Añadir</button>
         </form>

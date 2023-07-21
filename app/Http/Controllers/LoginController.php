@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Usuario;
+
 class LoginController extends Controller
 {
 
@@ -18,12 +20,16 @@ class LoginController extends Controller
             'contrasenia' => ['required'],
         ]);
  
-        if (Auth::attempt($datosUsuario)) {
-            $request -> session() -> regenerate();
-            
-            return view('backoffice');
-        }
-        
         return [ "mensaje" => "Los datos ingresados han sido incorrectos." ];
+    }
+
+    public function ValidarToken(Request $request){
+        return auth('api')->Usuario();
+    }
+
+    public function CerrarSesion(Request $request){
+        $request -> Usuario() -> token() -> revoke();
+
+        return ['mensaje' => 'Token Revocado.']; 
     }
 }

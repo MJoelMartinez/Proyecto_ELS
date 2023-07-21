@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 use App\Models\Usuario;
 use App\Models\Administrador;
 use App\Models\Gerente;
 use App\Models\Cargador;
 use App\Models\Chofer;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use Lcobucci\JWT\Parser;
-use Illuminate\Support\Facades\Validator;
 
+use Lcobucci\JWT\Parser;
 
 class UsuarioController extends Controller
-
 {
 
     public function CrearUsuario($request){
@@ -168,15 +168,5 @@ class UsuarioController extends Controller
 
         return $this -> Crear($request);
         
-    }
-
-    public function ValidarToken(Request $request){
-        return auth('api')->Usuario();
-    }
-
-    public function CerrarSesion(Request $request){
-        $request -> Usuario() -> token() -> revoke();
-
-        return ['mensaje' => 'Token Revocado.']; 
     }
 }

@@ -9,7 +9,8 @@
 </head>
 <body>
     <div class="paquetes">
-        <form action='/Almacenes/Paquetes/Crear' method='post'>
+        <h3>Crear Paquete:</h3>
+        <form action='http://localhost:8001/api/v1/Almacenes/Paquetes' method='post'>
             @csrf
             <label>ID Artículo:</label>
             <input type="number" name="idArticulo" required>
@@ -22,7 +23,7 @@
     </div>
     <div class="ModificarArticulos">
         <h3>Modificar:</h3>
-        <form id="formularioAsignarPeso" action='http://localhost:8001/api/v1/Almacenes/Paquetes/Peso' method='post'>
+        <form id="formularioAsignarPeso" action='http://localhost:8001/api/v1/Almacenes/Paquetes' method='post'>
             @method('PUT')
             @csrf
             <label>ID Paquete:</label>

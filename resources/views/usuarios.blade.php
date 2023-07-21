@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="NuevoUsuario">
+        <h3>Crear Usuario:</h3>
         <form action='http://localhost:8001/api/v1/Usuarios/Crear' method='post'>
             @csrf
             <label>Documento de Identidad: </label>
@@ -55,7 +56,8 @@
     </div>
     <br><br>
     <div class="UsuarioAModificar">
-        <form id="formularioModificarUsuarios" action='/Backoffice/Usuarios/Modificar' method='post'>
+        <h3>Modificar Usuario:</h3>
+        <form id="formularioModificarUsuarios" action='http://localhost:8001/api/v1/Backoffice/Usuarios' method='post'>
             @method('PUT')
             @csrf
             <label>Documento de Identidad: </label>
@@ -75,7 +77,8 @@
     </div>
     <br><br>
     <div class="UsuarioAEliminar">
-        <form id="formularioEliminarUsuarios" action='/Backoffice/Usuarios/Eliminar' method='post'>
+        <h3>Eliminar Usuario:</h3>
+        <form id="formularioEliminarUsuarios" action='http://localhost:8001/api/v1/Backoffice/Usuarios' method='post'>
             @method('DELETE')
             @csrf
             <label>Documento de Identidad: </label>

@@ -76,11 +76,11 @@ function CambiarValores(){
 botonFormularioModificarUsuarios.addEventListener("click", function() {
     let inputFormulario = document.getElementById("inputFormularioModificar");
     let valorInputFormulario = inputFormulario.value;
-    formularioModificarUsuarios.setAttribute("action", "/Backoffice/Usuarios/Modificar/" +  valorInputFormulario);
+    formularioModificarUsuarios.setAttribute("action", "http://localhost:8001/api/v1/Backoffice/Usuarios/" +  valorInputFormulario);
 });
 
 botonFormularioEliminarUsuarios.addEventListener("click", function() {
     let inputFormulario = document.getElementById("inputFormularioEliminar");
     let valorInputFormulario = inputFormulario.value;
-    formularioEliminarUsuarios.setAttribute("action", "/Backoffice/Usuarios/Eliminar/" +  valorInputFormulario);
+    formularioEliminarUsuarios.setAttribute("action", "http://localhost:8001/api/v1/Backoffice/Usuarios/" +  valorInputFormulario);
 });

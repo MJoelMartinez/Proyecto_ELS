@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Almacen;
-use App\Models\Paquete;
-use App\Models\Lote;
-use App\Models\ArticuloPaquete;
-use App\Models\PaqueteLote;
 
 class AlmacenController extends Controller
 
@@ -41,60 +38,5 @@ class AlmacenController extends Controller
         $almacen -> save();
 
         return [ "mensaje" => "El almacen con el ID $idAlmacen fue modificado correctamente."];
-    }
-
-    public function CrearLote(Request $request){
-        Lote::create([
-            "cantidadPaquetes" => $request -> input("cantidadPaquetes")
-        ]);
-
-        $idAutomatico = $modeloTablaLote -> id;
-
-        CrearPaqueteLote($request, $idAutomatico);
-
-        return [ "mensaje" => "Lote creado correctamente." ];
-    }
-
-    public function CrearPaqueteLote($request, $idAutomatico){
-        ArticuloPaquete::create([
-            "idLote" => $idAutomatico,
-            "idPaquete" => $request -> input("idPaquete")
-        ]);
-    }
-
-    public function CrearPaquete(Request $request){
-        $modeloTablaPaquete = Paquete::create([
-            "cantidadArticulos" => $request -> input("cantidadArticulos"),
-            "peso" => "0"
-        ]);
-
-        $idAutomatico = $modeloTablaPaquete -> id;
-
-        CrearArticuloPaquete($request, $idAutomatico);
-
-        return [ "mensaje" => "Paquete creado correctamente." ];
-    }
-
-    public function CrearArticuloPaquete($request, $idAutomatico){
-        ArticuloPaquete::create([
-            "idArticulo" => $request -> input("idArticulo"),
-            "idPaquete" => $idAutomatico
-        ]);
-    }
-
-    public function AsignarPesoDePaquete(Request $request, $idPaquete){
-        $paquete = Paquete::findOrFail($idPaquete);
-
-        $paquete -> peso = $request -> input("peso");
-        $paquete -> save();
-
-        return [ "mensaje" => "Se ha asignado el peso al Paquete $idPaquete correctamente." ];
-    }
-
-    public function CrearArticulo(Request $request){
-        Articulo::create([
-            "nombreArticulo" => $request -> input("nombreArticulo"),
-            "anioCreacion" => $request -> input("anioCreacion")
-        ]);
     }
 }
