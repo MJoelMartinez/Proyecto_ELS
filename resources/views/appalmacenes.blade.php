@@ -7,8 +7,8 @@
     <link rel="icon" href="../img/Icon.png">
 </head>
 <body>
-    <label><a href="/AppAlmacenes/paquetes">Paquetes</a></label>
+    <label><a href="/AppAlmacenes/Paquetes">Paquetes</a></label>
     <br>
-    <label><a href="/AppAlmacenes/lotes">Lotes</a></label>
+    <label><a href="/AppAlmacenes/Lotes">Lotes</a></label>
 </body>
 </html>

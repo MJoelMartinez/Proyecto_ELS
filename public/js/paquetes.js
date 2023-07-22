@@ -1,5 +1,4 @@
 const botonFormularioAsignarPeso = document.getElementById("botonFormularioAsignarPeso");
-
 const formularioAsignarPeso = document.getElementById("formularioAsignarPeso");
 
 botonFormularioAsignarPeso.addEventListener("click", function() {

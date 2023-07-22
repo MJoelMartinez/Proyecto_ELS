@@ -11,136 +11,159 @@ use Illuminate\Support\Facades\Http;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function test_ObtenerTokenConClientIdValido()
-    {
-        Artisan::call('passport:client',[
-            '--password' => true,
-            '--no-interaction'=>true,
-            '--name'=>'Test Client',
-        ]);        
-            
-        $client = Client::findOrFail(2);
 
-        $response = $this->post('/oauth/token',[
-            "username" => "usuario@usuario",
-            "password" => "1234",
-            "grant_type" => "password",
-            "client_id" => "2",
-            "client_secret" => $client -> secret
+    public function test_EliminarUnoQueNoExiste()
+    {
+        $response = $this->delete('/api/v1/Backoffice/Usuarios/62562818');
+        $response -> assertStatus(404); 
+    }
+    
+    public function test_EliminarUnoQueExiste()
+    {
+        $response = $this->delete('/api/v1/Backoffice/Usuarios/47809330');
+        $response->assertStatus(200);
+        $response->assertJsonFragment([ "mensaje" => "Usuario con el documento de identidad 47809330 eliminada."]); // Valida que la estructura de JSON tenga los campos especificados en el array
+        $this->assertDatabaseMissing("usuarios",[
+            "docDeIdentidad" => 47809330,
+            "deleted_at" => null
         ]);
+
+        Usuarios::withTrashed()->where("docDeIdentidad", 47809330)->restore();
+    }
+
+    public function test_ModificarUnoQueExiste(){
+        $estructura = [
+            "docDeIdentidad",
+            "nombre",
+            "contrasenia",
+            "remember_token",
+            "created_at",
+            "updated_at",
+            "apellido",
+            "telefono",
+            "direccion",
+            "delete_at",
+            "email"
+        ];
+
+        $datosParaModificar = [
+            "nombre" => "Nombre",
+            "telefono" => "095080095",
+            "direccion" => "Direccion"
+        ];
+
+        $response = $this -> put('/api/v1/Backoffice/Usuarios/54738269', $datosParaModificar);
 
         $response->assertStatus(200);
-        $response->assertJsonStructure([
-            "token_type",
-            "expires_in",
-            "access_token",
-            "refresh_token"
-        ]);
-
+        $response->assertJsonStructure($estructura); 
         $response->assertJsonFragment([
-            "token_type" => "Bearer"
-        ]);
-
-    }
-
-    public function test_ObtenerTokenConClientIdInvalido()
-    {
-         
-        $response = $this->post('/oauth/token',[
-            "grant_type" => "password",
-            "client_id" => "234",
-            "client_secret" => "sdfsdfsdf"
-        ]);
-
-        $response->assertStatus(401);
-        $response->assertJsonFragment([
-            "error" => "invalid_client",
-            "error_description" => "Client authentication failed",
-            "message" => "Client authentication failed"
+            "nombre" => "Lionel",
+            "telefono" => "091101010",
+            "direccion" => "campeonDelMundo 2022"
         ]);
     }
 
-    public function test_ValidarTokenSinEnviarToken()
-    {
-        $response = $this->get('/api/v1/validate');
-        $response->assertStatus(500);
-        
+    public function test_InsertarSinNada(){
+        $response = $this->post('/api/v1/Usuarios/Crear');
+        $response->assertStatus(403); 
     }
 
-    public function test_ValidarTokenConTokenInvalido()
-    {
-        $response = $this->get('/api/v1/validate',[
-            [ "Authorization" => "Token Roto"]
-        ]);
-        $response->assertStatus(500);
-        
-    }
+    public function test_Insertar(){
+        $estructura = [
+            "docDeIdentidad",
+            "nombre",
+            "apellido",
+            "contrasenia",
+            "remember_token",
+            "created_at",
+            "updated_at",
+            "telefono",
+            "direccion",
+            "email"
+        ];
 
-    public function test_ValidarTokenConTokenValido()
-    {
-        $client = Client::findOrFail(2);
-        $tokenResponse = $this -> post("/oauth/token",[
-            "username" => "usuario@usuario",
-            "password" => "1234",
-            "grant_type" => "password",
-            "client_id" => "2",
-            "client_secret" => $client -> secret
-        ]);
+        $datosParaInsertar = [
+            "docDeIdentidad" => "38762316",
+            "nombre" => "Cristiano",
+            "apellido" => "Ronaldo",
+            "contrasenia" => "eurocopa2016",
+            "remember_token" => null,
+            "created_at" => "2023-06-10 17:12:41",
+            "updated_at" => "2023-06-10 17:12:41",
+            "telefono" => "777777777",
+            "direccion" => "cincoBalonDiOr 2017",
+            "email" => "fubito@pro.com"
+        ];
 
-        $token = json_decode($tokenResponse -> content(),true);
-        
-        $response = $this->get('/api/v1/validate',
-            [ "Authorization" => "Bearer " . $token ['access_token']]
-        );
-
+        $response = $this->post('http://localhost:8001/api/v1/Usuarios/Crear', $datosParaInsertar);
 
         $response->assertStatus(200);
-        
     }
 
-    public function test_LogoutSinToken()
-    {
-        $response = $this->get('/api/v1/logout');
-        $response->assertStatus(500);
-        
-    }
+    public function test_InsertarAdministrador(){
+        $estructura = [
+            "docDeIdentidad",
+            "numeroAdmin"
+        ];
 
-    public function test_LogoutConTokenInvalido()
-    {
-        $response = $this->get('/api/v1/logout',[
-            [ "Authorization" => "Token Roto"]
-        ]);
-        $response->assertStatus(500);
-        
-    }
+        $datosParaInsertar = [
+            "docDeIdentidad" => "65829230",
+            "numeroAdmin" => "2"
+        ];
 
-    public function test_LogoutConTokenValido()
-    {
-        $client = Client::findOrFail(2);
-        $tokenResponse = $this -> post("/oauth/token",[
-            "username" => "usuario@usuario",
-            "password" => "1234",
-            "grant_type" => "password",
-            "client_id" => "2",
-            "client_secret" => $client -> secret
-        ]);
-
-        $token = json_decode($tokenResponse -> content(),true);
-        
-        $response = $this->get('/api/v1/logout',
-            [ "Authorization" => "Bearer " . $token ['access_token']]
-        );
-
+        $response = $this->post('http://localhost:8001/api/v1//Usuarios/Crear', $datosParaInsertar);
 
         $response->assertStatus(200);
-        $response->assertJsonFragment(
-            ['message' => 'Token Revoked']
-        );
-        
+    }
+
+    public function test_InsertarGerente(){
+        $estructura = [
+            "docDeIdentidad",
+            "numeroGerente"
+        ];
+
+        $datosParaInsertar = [
+            "docDeIdentidad" => "89098644",
+            "numeroGerente" => "1"
+        ];
+
+        $response = $this->post('http://localhost:8001/api/v1/Usuarios/Crear', $datosParaInsertar);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_InsertarCargador(){
+        $estructura = [
+            "docDeIdentidad",
+            "numeroCargador",
+            "carnetTransporte"
+        ];
+
+        $datosParaInsertar = [
+            "docDeIdentidad" => "47809330",
+            "numeroCargador" => "5",
+            "carnetTransporte" => "20"
+        ];
+
+        $response = $this->post('http://localhost:8001/api/v1/Usuarios/Crear', $datosParaInsertar);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_InsertarChofer(){
+        $estructura = [
+            "docDeIdentidad",
+            "numeroChofer"
+        ];
+
+        $datosParaInsertar = [
+            "docDeIdentidad" => "30070775",
+            "numeroChofer" => "3"
+        ];
+
+        $response = $this->post('http://localhost:8001/api/v1/Usuarios/Crear', $datosParaInsertar);
+
+        $response->assertStatus(200);
     }
 }
+

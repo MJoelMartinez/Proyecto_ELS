@@ -8,11 +8,11 @@ use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\LoteController;
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('login');
 });
 
-Route::get('/Login', function () {
-    return view('login');
+Route::get('/Home', function () {
+    return view('homepage');
 });
 
 Route::get('/Backoffice', function () {
@@ -31,10 +31,10 @@ Route::get('/AppAlmacenes', function () {
     return view('appalmacenes');
 });
 
-Route::get('/AppAlmacenes/paquetes', function () {
+Route::get('/AppAlmacenes/Paquetes', function () {
     return view('paquetes');
 });
 
-Route::get('/AppAlmacenes/lotes', function () {
+Route::get('/AppAlmacenes/Lotes', function () {
     return view('lotes');
 });

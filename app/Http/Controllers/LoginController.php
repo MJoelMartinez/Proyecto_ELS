@@ -12,14 +12,16 @@ use App\Models\Usuario;
 
 class LoginController extends Controller
 {
+    public function IniciarSesion(Request $request){
+        $datosUsuario = [
+            'email' => $request -> input('email'),
+            'contrasenia' => $request -> input('contrasenia'),
+        ];
 
-    public function IniciarSesion(Request $request)
-    {
-        $datosUsuario = $request -> validate([
-            'email' => ['required', 'email'],
-            'contrasenia' => ['required'],
-        ]);
- 
+        if(Auth::attempt($datosUsuario)){
+            return view('Home');
+        }
+    
         return [ "mensaje" => "Los datos ingresados han sido incorrectos." ];
     }
 

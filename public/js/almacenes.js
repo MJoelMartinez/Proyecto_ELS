@@ -1,20 +1,13 @@
 const botonFormularioEliminarAlmacen = document.getElementById("botonFormularioEliminarAlmacenes");
-
 const formularioEliminarAlmacenes = document.getElementById("formularioEliminarAlmacenes");
 
 const botonFormularioModificarAlmacen = document.getElementById("botonFormularioModificarAlmacenes");
-
 const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
 
-
-
-
 const botonFormularioModificarArticulos = document.getElementById("botonFormularioModificarArticulos");
-
 const formularioModificarArticulos = document.getElementById("formularioModificarArticulos");
 
 const botonFormularioEliminarArticulos = document.getElementById("botonFormularioEliminarArticulos");
-
 const formularioEliminarArticulos = document.getElementById("formularioEliminarArticulos");
 
 botonFormularioModificarArticulos.addEventListener("click", function() {

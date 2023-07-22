@@ -1,19 +1,14 @@
 let labelRol = document.getElementById("rolLabel");
-
 let inputRol = document.getElementById("rolInput");
-
 let selectRol = document.getElementById("rolDeLaEmpresa");
 
 let formularioModificarUsuarios = document.getElementById("formularioModificarUsuarios");
-
 let botonFormularioModificarUsuarios = document.getElementById("botonFormularioModificarUsuarios");
 
 let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsuarios");
-
 let botonFormularioEliminarUsuarios = document.getElementById("botonFormularioEliminarUsuarios");
 
 const labelCarnetCargador = document.getElementById("labelCarnetCargador");
-
 const inputCarnetCargador = document.getElementById("inputCarnetCargador");
 
 selectRol.onchange = function(){
