@@ -19,7 +19,8 @@ class Paquete extends Model
         'peso'
     ];
 
-    public function articulos() {
-        return $this -> hasMany(Articulo::class, 'id');
+    public function articulos()
+    {
+        return $this->hasMany(Articulo::class, 'id');
     }
 }

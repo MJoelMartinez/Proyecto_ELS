@@ -10,25 +10,29 @@ const formularioModificarArticulos = document.getElementById("formularioModifica
 const botonFormularioEliminarArticulos = document.getElementById("botonFormularioEliminarArticulos");
 const formularioEliminarArticulos = document.getElementById("formularioEliminarArticulos");
 
-botonFormularioModificarArticulos.addEventListener("click", function() {
+botonFormularioModificarArticulos.addEventListener("click", function()
+{
     let inputFormulario = document.getElementById("inputFormularioModificarArticulos");
     let valorInputFormulario = inputFormulario.value;
     formularioModificarArticulos.setAttribute("action", "http://localhost:8001/api/v1/Almacenes/Articulos/" +  valorInputFormulario);
 });
 
-botonFormularioEliminarArticulos.addEventListener("click", function() {
+botonFormularioEliminarArticulos.addEventListener("click", function()
+{
     let inputFormulario = document.getElementById("inputFormularioEliminarArticulos");
     let valorInputFormulario = inputFormulario.value;
     formularioEliminarArticulos.setAttribute("action", "http://localhost:8001/api/v1/Almacenes/Articulos/" +  valorInputFormulario);
 });
 
-botonFormularioModificarAlmacen.addEventListener("click", function() {
+botonFormularioModificarAlmacen.addEventListener("click", function()
+{
     let inputFormulario = document.getElementById("inputFormularioModificar");
     let valorInputFormulario = inputFormulario.value;
     formularioModificarAlmacenes.setAttribute("action", "http://localhost:8001/api/v1/Backoffice/Almacenes/" +  valorInputFormulario);
 });
 
-botonFormularioEliminarAlmacen.addEventListener("click", function() {
+botonFormularioEliminarAlmacen.addEventListener("click", function()
+{
     let inputFormulario = document.getElementById("inputFormularioEliminar");
     let valorInputFormulario = inputFormulario.value;
     formularioEliminarAlmacenes.setAttribute("action", "http://localhost:8001/api/v1/Backoffice/Almacenes/" +  valorInputFormulario);

@@ -21,7 +21,9 @@
             <button type="submit">Añadir</button>
         </form>
     </div>
+
     <br><br>
+
     <h3>Eliminar Almacen</h3>
     <div class="AlmacenAEliminar">
         <form id="formularioEliminarAlmacenes" action='http://localhost:8001/api/v1/Backoffice/Almacenes' method='post'>
@@ -33,9 +35,11 @@
             <button id="botonFormularioEliminarAlmacenes" type="submit">Eliminar Almacen</button>
         </form>
     </div>
+
     <br><br>
+
+    <h3>Modificar Almacen</h3>
     <div>
-        <h3>Modificar Almacen</h3>
         <form id="formularioModificarAlmacenes" action='http://localhost:8001/api/v1/Backoffice/Almacenes' method='post'>
             @method('PUT')
             @csrf
@@ -51,23 +55,27 @@
             <button id="botonFormularioModificarAlmacenes" type="submit">Modificar</button>
         </form>
     </div>
+
     <br><br>
+
+    <h3>Crear Articulo</h3>
     <div class="CrearArticulo">
-        <h3>Crear Articulo</h3>
         <form action='http://localhost:8001/api/v1/Backoffice/Articulos' method='post'>
             @csrf
             <label>Nombre: </label>
             <input type="text" name="nombreArticulo" required>
             <br><br>
-            <label>Anio Creacion: </label>
+            <label>Año Creacion: </label>
             <input type="number" name="anioCreacion" required>
             <br><br>
             <button type="submit">Crear</button>
         </form>
     </div>
-    <br>
-    <div class="ArticuloAEliminar">
+
+    <br><br>
+
     <h3>Eliminar Articulo</h3>
+    <div class="ArticuloAEliminar">    
         <form id="formularioEliminarArticulos" action='http://localhost:8001/api/v1/Almacenes/Articulos' method='post'>
             @method('DELETE')
             @csrf
@@ -77,9 +85,10 @@
             <button id="botonFormularioEliminarArticulos" type="submit">Eliminar Articulo</button>
         </form>
     </div>
+
     <br><br>
+    <h3>Modificar Articulo</h3>
     <div>
-        <h3>Modificar Articulo</h3>
         <form id="formularioModificarArticulos" action='http://localhost:8001/api/v1/Almacenes/Articulos' method='post'>
             @method('PUT')
             @csrf

@@ -18,96 +18,113 @@ use Lcobucci\JWT\Parser;
 class UsuarioController extends Controller
 {
 
-    public function CrearUsuario($request){
+    public function CrearUsuario($request)
+    {
         Usuario::create([
-            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "contrasenia" => Hash::make($request -> input("contrasenia")),
-            "nombre" => $request -> input("nombre"),
-            "apellido" => $request -> input("apellido"),
-            "telefono" => $request -> input("telefono"),
-            "email" => $request -> input("email"),
-            "direccion" => $request -> input("direccion")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "contrasenia" => Hash::make($request->input("contrasenia")),
+            "nombre" => $request->input("nombre"),
+            "apellido" => $request->input("apellido"),
+            "telefono" => $request->input("telefono"),
+            "email" => $request->input("email"),
+            "direccion" => $request->input("direccion")
         ]);
     }
 
-    public function IdentificarRol($request){
-        $rol = $request -> input("rolDeLaEmpresa");
+    public function IdentificarRol($request)
+    {
+        $rol = $request->input("rolDeLaEmpresa");
         
         return $rol;
     }
 
-    public function CrearRol($rol, $request){
+    public function CrearRol($rol, $request)
+    {
         if ($rol === "administrador")
-            $this -> CrearAdministrador($request);
+            $this->CrearAdministrador($request);
         
         if ($rol === "gerente")
-            $this -> CrearGerente($request);
+            $this->CrearGerente($request);
         
         if ($rol === "cargador")
-            $this -> CrearCargador($request);
+            $this->CrearCargador($request);
         
         if ($rol === "chofer")
-            $this -> CrearChofer($request);
+            $this->CrearChofer($request);
     }
 
-    public function CrearAdministrador($request){
+    public function CrearAdministrador($request)
+    {
         Administrador::create([
-            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroAdmin" => $request -> input("numeroDeRol")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "numeroAdmin" => $request->input("numeroDeRol")
         ]);
     }
 
-    public function CrearGerente($request){
+    public function CrearGerente($request)
+    {
         Gerente::create([
-            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroGerente" => $request -> input("numeroDeRol")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "numeroGerente" => $request->input("numeroDeRol")
         ]);
     }
 
-    public function CrearCargador($request){
+    public function CrearCargador($request)
+    {
         Cargador::create([
-            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroCargador" => $request -> input("numeroDeRol"),
-            "carnetTransporte" => $request -> input("carnetTransporte")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "numeroCargador" => $request->input("numeroDeRol"),
+            "carnetTransporte" => $request->input("carnetTransporte")
         ]);
     }
 
-    public function CrearChofer($request){
+    public function CrearChofer($request)
+    {
         Chofer::create([
-            "docDeIdentidad" => $request -> input("documentoDeIdentidad"),
-            "numeroChofer" => $request -> input("numeroDeRol") 
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "numeroChofer" => $request->input("numeroDeRol") 
         ]);
     }
 
-    public function Crear($request){
-        $this -> CrearUsuario($request);
-        if ($this -> IdentificarRol($request) != null)
-            $this -> CrearRol($this -> IdentificarRol($request), $request);
+    public function Crear($request)
+    {
+        $this->CrearUsuario($request);
+        if ($this->IdentificarRol($request) != null)
+            $this->CrearRol($this->IdentificarRol($request), $request);
 
         return [ "mensaje" => "Usuario creado correctamente."];
     }
 
-    public function IdentificarRolAEliminar($documentoDeIdentidad){
+    public function Listar()
+    {
+        if (count(Usuario::all()) == 0)
+            return [ "mensaje" => "No hay Usuarios en el sistema." ];
+
+        return Usuario::all();
+    }
+
+    public function IdentificarRolAEliminar($documentoDeIdentidad)
+    {
         $rol = Administrador::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol -> get();
+        $valoresRol = $rol->get();
 
         if (count($valoresRol) != 0)
             return "administrador";
         
         $rol = Gerente::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol -> get();
+        $valoresRol = $rol->get();
     
         if (count($valoresRol) != 0)
             return "gerente";
 
         $rol = Chofer::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol -> get();
+        $valoresRol = $rol->get();
         
         if (count($valoresRol) != 0)
             return "chofer";
         
         $rol = Cargador::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol -> get();
+        $valoresRol = $rol->get();
         
         if (count($valoresRol) != 0)
              return "cargador";
@@ -115,43 +132,53 @@ class UsuarioController extends Controller
         return "UsuarioComun";
     }
 
-    public function EliminarRol($rol, $documentoDeIdentidad){
+    public function EliminarRol($rol, $documentoDeIdentidad)
+    {
         if ($rol === "administrador")
-            Administrador::findOrFail($documentoDeIdentidad) -> delete();
+            Administrador::findOrFail($documentoDeIdentidad)->delete();
         
         if ($rol === "gerente")
-            Gerente::findOrFail($documentoDeIdentidad) -> delete();
+            Gerente::findOrFail($documentoDeIdentidad)->delete();
         
         if ($rol === "cargador")
-            Cargador::findOrFail($documentoDeIdentidad) -> delete(); 
+            Cargador::findOrFail($documentoDeIdentidad)->delete(); 
         
         if ($rol === "chofer")
-            Chofer::findOrFail($documentoDeIdentidad) -> delete();
+            Chofer::findOrFail($documentoDeIdentidad)->delete();
     }
 
-    public function Eliminar(Request $request, $documentoDeIdentidad){
+    public function Eliminar(Request $request, $documentoDeIdentidad)
+    {
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
-        $usuario -> delete();
+        $usuario->delete();
 
-        $rolDelUsuario = $this -> IdentificarRolAEliminar($documentoDeIdentidad);
+        $rolDelUsuario = $this->IdentificarRolAEliminar($documentoDeIdentidad);
         if ($rolDelUsuario != "UsuarioComun")
-            $this -> EliminarRol($rolDelUsuario, $documentoDeIdentidad);
+            $this->EliminarRol($rolDelUsuario, $documentoDeIdentidad);
 
         return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];     
     }
 
-    public function Modificar(Request $request, $documentoDeIdentidad){
+    public function Modificar(Request $request, $documentoDeIdentidad)
+    {
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
     
-        $usuario -> nombre = $request -> input("nombre");
-        $usuario -> telefono = $request -> input("telefono");
-        $usuario -> direccion = $request -> input("direccion");
-        $usuario -> save();
+        $usuario->nombre = $request->input("nombre");
+        $usuario->telefono = $request->input("telefono");
+        $usuario->direccion = $request->input("direccion");
+        $usuario->save();
         
         return ["mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
     }
 
-    public function ValidarRegistro(Request $request){
+    public function ValidarRegistro(Request $request)
+    {
+        if(
+            $request->input("documentoDeIdentidad") == null
+            || $request->input("email") == null
+            || $request->input("contrasenia") == null
+        )
+            return abort(403);
 
         $validation = Validator::make($request->all(),[
             'documentoDeIdentidad' => 'required|min:8|max:8',
@@ -166,7 +193,7 @@ class UsuarioController extends Controller
         if($validation->fails())
             return $validation->errors();
 
-        return $this -> Crear($request);
+        return $this->Crear($request);
         
     }
 }

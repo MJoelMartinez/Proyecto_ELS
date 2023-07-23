@@ -7,8 +7,8 @@
     <title>E.L.S - Backoffice</title>
 </head>
 <body>
-    <label><a href="/Backoffice/Usuarios">Lista de Usuarios del Sistema</a></label>
+    <label><a href="/Backoffice/Usuarios">Usuarios del Sistema</a></label>
     <br><br>
-    <label><a href="/Backoffice/Almacenes">Lista de Almacenes de 'Quick Carry'</a></label>
+    <label><a href="/Backoffice/Almacenes">Almacenes de 'Quick Carry'</a></label>
 </body>
 </html>

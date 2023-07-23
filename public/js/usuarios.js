@@ -11,56 +11,67 @@ let botonFormularioEliminarUsuarios = document.getElementById("botonFormularioEl
 const labelCarnetCargador = document.getElementById("labelCarnetCargador");
 const inputCarnetCargador = document.getElementById("inputCarnetCargador");
 
-selectRol.onchange = function(){
+selectRol.onchange = function()
+{
     CambiarValores();
 }
 
-function OcultarElementos(){
+function OcultarElementos()
+{
     labelRol.style.display = "none";
     inputRol.style.display = "none";
 }
 
-function VisibilizarElementos(){
+function VisibilizarElementos()
+{
     labelRol.style.display = "inline";
     inputRol.style.display = "inline";
 }
 
-function OcultarCarnet(){
+function OcultarCarnet()
+{
     labelCarnetCargador.style.display = "none";
     inputCarnetCargador.style.display = "none";
 }
 
-function VisibilizarCarnet(){
+function VisibilizarCarnet()
+{
     labelCarnetCargador.style.display = "inline";
     inputCarnetCargador.style.display = "inline";
 }
 
-function CambiarValores(){
+function CambiarValores()
+{
     let valor = selectRol.options[selectRol.selectedIndex].value;
 
-    if (valor == "usuarioComun"){
+    if (valor == "usuarioComun")
+    {
         OcultarElementos();
         OcultarCarnet()
     }
-    if (valor == "administrador"){
+    if (valor == "administrador")
+    {
         VisibilizarElementos();
         OcultarCarnet()
 
         labelRol.innerHTML = "Número de Administrador: ";
     }
-    if (valor == "gerente"){
+    if (valor == "gerente")
+    {
         VisibilizarElementos();
         OcultarCarnet()
 
         labelRol.innerHTML = "Número de Gerente: ";
     }
-    if (valor == "cargador"){
+    if (valor == "cargador")
+    {
         VisibilizarElementos();
         VisibilizarCarnet();
 
         labelRol.innerHTML = "Número de Cargador: ";
     }
-    if (valor == "chofer"){
+    if (valor == "chofer")
+    {
         VisibilizarElementos();
         OcultarCarnet()
 
@@ -68,13 +79,15 @@ function CambiarValores(){
     }
 }
 
-botonFormularioModificarUsuarios.addEventListener("click", function() {
+botonFormularioModificarUsuarios.addEventListener("click", function()
+{
     let inputFormulario = document.getElementById("inputFormularioModificar");
     let valorInputFormulario = inputFormulario.value;
     formularioModificarUsuarios.setAttribute("action", "http://localhost:8001/api/v1/Backoffice/Usuarios/" +  valorInputFormulario);
 });
 
-botonFormularioEliminarUsuarios.addEventListener("click", function() {
+botonFormularioEliminarUsuarios.addEventListener("click", function()
+{
     let inputFormulario = document.getElementById("inputFormularioEliminar");
     let valorInputFormulario = inputFormulario.value;
     formularioEliminarUsuarios.setAttribute("action", "http://localhost:8001/api/v1/Backoffice/Usuarios/" +  valorInputFormulario);

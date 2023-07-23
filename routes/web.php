@@ -7,34 +7,37 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\LoteController;
 
-Route::get('/', function () {
-    return view('login');
-});
-
-Route::get('/Home', function () {
+Route::get('/', function () 
+{
     return view('homepage');
 });
 
-Route::get('/Backoffice', function () {
+Route::get('/Backoffice', function () 
+{
     return view('backoffice');
 });
 
-Route::get('/Backoffice/Usuarios', function () {
+Route::get('/Backoffice/Usuarios', function () 
+{
     return view('usuarios');
 });
 
-Route::get('/Backoffice/Almacenes', function () {
+Route::get('/Backoffice/Almacenes', function () 
+{
     return view('almacenes');
 });
 
-Route::get('/AppAlmacenes', function () {
+Route::get('/AppAlmacenes', function () 
+{
     return view('appalmacenes');
 });
 
-Route::get('/AppAlmacenes/Paquetes', function () {
+Route::get('/AppAlmacenes/Paquetes', function () 
+{
     return view('paquetes');
 });
 
-Route::get('/AppAlmacenes/Lotes', function () {
+Route::get('/AppAlmacenes/Lotes', function () 
+{
     return view('lotes');
 });

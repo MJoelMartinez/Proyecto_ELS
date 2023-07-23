@@ -10,36 +10,39 @@ use App\Models\ArticuloPaquete;
 
 class PaqueteController extends Controller
 {
-    public function CrearArticuloPaquete($request, $idAutomatico){
+    public function CrearArticuloPaquete($request, $idAutomatico)
+    {
         ArticuloPaquete::create([
-            "idArticulo" => $request -> input("idArticulo"),
+            "idArticulo" => $request->input("idArticulo"),
             "idPaquete" => $idAutomatico
         ]);
     }
     
-    public function CrearPaquete(Request $request){
-        $idArticulo = $request -> input("idArticulo");
+    public function CrearPaquete(Request $request)
+    {
+        $idArticulo = $request->input("idArticulo");
 
         Articulo::findOrFail($idArticulo);
 
         $modeloTablaPaquete = Paquete::create([
-            "cantidadArticulos" => $request -> input("cantidadArticulos"),
+            "cantidadArticulos" => $request->input("cantidadArticulos"),
             "peso" => "0"
         ]);
 
-        $idAutomatico = $modeloTablaPaquete -> idPaquete;
+        $idAutomatico = $modeloTablaPaquete->idPaquete;
 
-        $this -> CrearArticuloPaquete($request, $idAutomatico);
+        $this->CrearArticuloPaquete($request, $idAutomatico);
 
         return [ "mensaje" => "Paquete creado correctamente." ];
     }
 
 
-    public function AsignarPeso(Request $request, $idPaquete){
+    public function AsignarPeso(Request $request, $idPaquete)
+    {
         $paquete = Paquete::findOrFail($idPaquete);
 
-        $paquete -> peso = $request -> input("peso");
-        $paquete -> save();
+        $paquete->peso = $request->input("peso");
+        $paquete->save();
 
         return [ "mensaje" => "Se ha asignado el peso al Paquete $idPaquete correctamente." ];
     }

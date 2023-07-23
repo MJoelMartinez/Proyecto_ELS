@@ -8,6 +8,7 @@
     <title>E.L.S - Usuarios</title>
 </head>
 <body>
+    <a href="http://localhost:8001/api/v1/Backoffice/Usuarios/Listar"><button>Listar Usuarios</button></a>
     <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
         <form action='http://localhost:8001/api/v1/Usuarios/Crear' method='post'>

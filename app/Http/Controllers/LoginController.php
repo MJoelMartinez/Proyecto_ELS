@@ -12,10 +12,11 @@ use App\Models\Usuario;
 
 class LoginController extends Controller
 {
-    public function IniciarSesion(Request $request){
+    public function IniciarSesion(Request $request)
+    {
         $datosUsuario = [
-            'email' => $request -> input('email'),
-            'contrasenia' => $request -> input('contrasenia'),
+            'email' => $request->input('email'),
+            'contrasenia' => $request->input('contrasenia'),
         ];
 
         if(Auth::attempt($datosUsuario)){
@@ -23,15 +24,5 @@ class LoginController extends Controller
         }
     
         return [ "mensaje" => "Los datos ingresados han sido incorrectos." ];
-    }
-
-    public function ValidarToken(Request $request){
-        return auth('api')->Usuario();
-    }
-
-    public function CerrarSesion(Request $request){
-        $request -> Usuario() -> token() -> revoke();
-
-        return ['mensaje' => 'Token Revocado.']; 
     }
 }

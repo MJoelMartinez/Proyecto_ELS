@@ -12,7 +12,7 @@ class Articulo extends Model
     use SoftDeletes;
 
     public function paquetes(){
-        return $this -> belongsTo(Paquete::class, 'idPaquete');
+        return $this->belongsTo(Paquete::class, 'idPaquete');
     }
 
     protected $primaryKey = 'idArticulo';

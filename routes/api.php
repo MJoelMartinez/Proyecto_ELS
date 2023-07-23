@@ -12,7 +12,8 @@ use App\Http\Controllers\LoteController;
 
 use App\Http\Middleware\Autenticacion;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) 
+{
     return $request->Usuario();
 });
 
@@ -21,14 +22,6 @@ Route::prefix('v1')->group(function ()
     Route::post('/IniciarSesion',
         [LoginController::class, "IniciarSesion"]
     );
-
-    Route::post('/Validar',
-        [LoginController::class,"ValidarToken"]) -> middleware('auth:api')
-    ;
-
-    Route::post('/CerrarSesion',
-        [LoginController::class,"CerrarSesion"]) -> middleware('auth:api')
-    ;
 
     Route::post('/Usuarios/Crear',
         [UsuarioController::class, "ValidarRegistro"]
@@ -40,6 +33,10 @@ Route::prefix('v1')->group(function ()
 
     Route::delete("/Backoffice/Usuarios/{documentoDeIdentidad}",
         [UsuarioController::class, "Eliminar"]
+    );
+
+    Route::get('/Backoffice/Usuarios/Listar',
+        [UsuarioController::class, "Listar"]
     );
 
     Route::post('/Backoffice/Almacenes',
