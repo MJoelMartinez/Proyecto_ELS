@@ -54,5 +54,26 @@
             <button type="submit">Añadir</button>
         </form>
     </div>
+    <br><br>
+    <div class="UsuarioAModificar">
+        <h3>Modificar Usuario:</h3>
+        <form id="formularioModificarUsuarios" action='api/v1/Usuarios' method='post'>
+            @method('PUT')
+            @csrf
+            <label>Documento de Identidad: </label>
+            <input id="inputFormularioModificar" type="number" name="documentoDeIdentidad">
+            <br><br>
+            <label>Nombre: </label>
+            <input type="text" name="nombre" required>
+            <br><br>
+            <label>Teléfono: </label>
+            <input type="number" name="telefono" required>
+            <br><br>
+            <label>Dirección: </label>
+            <input type="text" name="direccion" required>
+            <br><br>
+            <button id="botonFormularioModificarUsuarios" type="submit">Modificar</button>
+        </form>
+    </div>
 </body>
 </html>

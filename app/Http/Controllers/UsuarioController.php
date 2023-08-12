@@ -109,4 +109,16 @@ class UsuarioController extends Controller
 
         return $this->Crear($request);      
     }
+
+    public function Modificar(Request $request, $documentoDeIdentidad)
+    {
+        $usuario = Usuario::findOrFail($documentoDeIdentidad);
+    
+        $usuario->nombre = $request->input("nombre");
+        $usuario->telefono = $request->input("telefono");
+        $usuario->direccion = $request->input("direccion");
+        $usuario->save();
+        
+        return ["mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
+    }
 }

@@ -14,4 +14,8 @@ Route::prefix('v1')->group(function ()
     Route::post('/Usuarios/Crear',
         [UsuarioController::class, "ValidarRegistro"]
     );
+
+    Route::put("/Usuarios/{documentoDeIdentidad}",
+        [UsuarioController::class, "Modificar"]
+    );
 });

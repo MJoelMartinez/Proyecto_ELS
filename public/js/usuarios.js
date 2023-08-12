@@ -5,6 +5,9 @@ let selectRol = document.getElementById("rolDeLaEmpresa");
 const labelCarnetCargador = document.getElementById("labelCarnetCargador");
 const inputCarnetCargador = document.getElementById("inputCarnetCargador");
 
+let formularioModificarUsuarios = document.getElementById("formularioModificarUsuarios");
+let botonFormularioModificarUsuarios = document.getElementById("botonFormularioModificarUsuarios");
+
 selectRol.onchange = function()
 {
     CambiarValores();
@@ -71,4 +74,11 @@ function CambiarValores()
 
         labelRol.innerHTML = "Número de Chofer: ";
     }
+
+    botonFormularioModificarUsuarios.addEventListener("click", function()
+    {
+        let inputFormulario = document.getElementById("inputFormularioModificar");
+        let valorInputFormulario = inputFormulario.value;
+        formularioModificarUsuarios.setAttribute("action", "api/v1/Usuarios/" +  valorInputFormulario);
+    });
 }
