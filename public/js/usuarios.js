@@ -8,6 +8,9 @@ const inputCarnetCargador = document.getElementById("inputCarnetCargador");
 let formularioModificarUsuarios = document.getElementById("formularioModificarUsuarios");
 let botonFormularioModificarUsuarios = document.getElementById("botonFormularioModificarUsuarios");
 
+let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsuarios");
+let botonFormularioEliminarUsuarios = document.getElementById("botonFormularioEliminarUsuarios");
+
 selectRol.onchange = function()
 {
     CambiarValores();
@@ -74,11 +77,18 @@ function CambiarValores()
 
         labelRol.innerHTML = "Número de Chofer: ";
     }
-
-    botonFormularioModificarUsuarios.addEventListener("click", function()
-    {
-        let inputFormulario = document.getElementById("inputFormularioModificar");
-        let valorInputFormulario = inputFormulario.value;
-        formularioModificarUsuarios.setAttribute("action", "api/v1/Usuarios/" +  valorInputFormulario);
-    });
 }
+
+botonFormularioModificarUsuarios.addEventListener("click", function()
+{
+    let inputFormulario = document.getElementById("inputFormularioModificar");
+    let valorInputFormulario = inputFormulario.value;
+    formularioModificarUsuarios.setAttribute("action", "api/v1/Usuarios/" +  valorInputFormulario);
+});
+
+botonFormularioEliminarUsuarios.addEventListener("click", function()
+{
+    let inputFormulario = document.getElementById("inputFormularioEliminar");
+    let valorInputFormulario = inputFormulario.value;
+    formularioEliminarUsuarios.setAttribute("action", "api/v1/Usuarios/" +  valorInputFormulario);
+});

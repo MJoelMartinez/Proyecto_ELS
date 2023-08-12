@@ -18,4 +18,8 @@ Route::prefix('v1')->group(function ()
     Route::put("/Usuarios/{documentoDeIdentidad}",
         [UsuarioController::class, "Modificar"]
     );
+
+    Route::delete("/Usuarios/{documentoDeIdentidad}",
+        [UsuarioController::class, "Eliminar"]
+    );
 });

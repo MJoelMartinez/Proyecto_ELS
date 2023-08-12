@@ -75,5 +75,18 @@
             <button id="botonFormularioModificarUsuarios" type="submit">Modificar</button>
         </form>
     </div>
+    <br><br>
+    <div class="UsuarioAEliminar">
+        <h3>Eliminar Usuario:</h3>
+        <form id="formularioEliminarUsuarios" action='http://localhost:8001/api/v1/Backoffice/Usuarios' method='post'>
+            @method('DELETE')
+            @csrf
+            <label>Documento de Identidad: </label>
+            <input id="inputFormularioEliminar" type="number" name="documentoDeIdentidad">
+            <br><br>
+            <button id="botonFormularioEliminarUsuarios" type="submit">Eliminar</button>
+        </form>
+    </div>
+    <script src="../js/usuarios.js"></script>
 </body>
 </html>

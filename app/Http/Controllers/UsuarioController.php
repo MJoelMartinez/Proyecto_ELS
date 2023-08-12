@@ -121,4 +121,60 @@ class UsuarioController extends Controller
         
         return ["mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
     }
+
+    public function IdentificarRolAEliminar($documentoDeIdentidad)
+    {
+        $rol = Administrador::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol->get();
+
+        if (count($valoresRol) != 0)
+            return "administrador";
+        
+        $rol = Gerente::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol->get();
+    
+        if (count($valoresRol) != 0)
+            return "gerente";
+
+        $rol = Chofer::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol->get();
+        
+        if (count($valoresRol) != 0)
+            return "chofer";
+        
+        $rol = Cargador::where('docDeIdentidad', $documentoDeIdentidad);
+        $valoresRol = $rol->get();
+        
+        if (count($valoresRol) != 0)
+             return "cargador";
+
+        return "UsuarioComun";
+    }
+
+    public function EliminarRol($rol, $documentoDeIdentidad)
+    {
+        if ($rol === "administrador")
+            Administrador::findOrFail($documentoDeIdentidad)->delete();
+        
+        if ($rol === "gerente")
+            Gerente::findOrFail($documentoDeIdentidad)->delete();
+        
+        if ($rol === "cargador")
+            Cargador::findOrFail($documentoDeIdentidad)->delete(); 
+        
+        if ($rol === "chofer")
+            Chofer::findOrFail($documentoDeIdentidad)->delete();
+    }
+
+    public function Eliminar(Request $request, $documentoDeIdentidad)
+    {
+        $usuario = Usuario::findOrFail($documentoDeIdentidad);
+        $usuario->delete();
+
+        $rolDelUsuario = $this->IdentificarRolAEliminar($documentoDeIdentidad);
+        if ($rolDelUsuario != "UsuarioComun")
+            $this->EliminarRol($rolDelUsuario, $documentoDeIdentidad);
+
+        return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];     
+    }
 }
