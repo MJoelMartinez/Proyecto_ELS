@@ -22,4 +22,8 @@ Route::prefix('v1')->group(function ()
     Route::delete("/Usuarios/{documentoDeIdentidad}",
         [UsuarioController::class, "Eliminar"]
     );
+
+    Route::get('/Usuarios/Listar',
+        [UsuarioController::class, "Listar"]
+    );
 });

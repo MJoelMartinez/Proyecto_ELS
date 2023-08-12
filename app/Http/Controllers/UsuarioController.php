@@ -177,4 +177,12 @@ class UsuarioController extends Controller
 
         return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];     
     }
+
+    public function Listar()
+    {
+        if (count(Usuario::all()) == 0)
+            return [ "mensaje" => "No hay Usuarios en el sistema." ];
+
+        return Usuario::all();
+    }
 }

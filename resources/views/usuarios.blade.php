@@ -8,6 +8,7 @@
     <title>E.L.S - Usuarios</title>
 </head>
 <body>
+    <a href="api/v1/Usuarios/Listar"><button>Listar Usuarios</button></a>
     <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
         <form action='api/v1/Usuarios/Crear' method='post'>
@@ -78,7 +79,7 @@
     <br><br>
     <div class="UsuarioAEliminar">
         <h3>Eliminar Usuario:</h3>
-        <form id="formularioEliminarUsuarios" action='http://localhost:8001/api/v1/Backoffice/Usuarios' method='post'>
+        <form id="formularioEliminarUsuarios" action='api/v1/Usuarios' method='post'>
             @method('DELETE')
             @csrf
             <label>Documento de Identidad: </label>
