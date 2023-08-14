@@ -12,10 +12,9 @@ class Gerente extends Usuario
     use SoftDeletes;
     use HasFactory;
 
-    protected $table = 'Gerentes';
+    protected $table = 'gerentes';
 
     protected $fillable = [
         'docDeIdentidad',
-        'numeroGerente'
     ];
 }

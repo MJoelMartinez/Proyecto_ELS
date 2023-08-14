@@ -73,16 +73,14 @@ class UsuarioController extends Controller
     public function CrearAdministrador($request)
     {
         Administrador::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroAdmin" => $request->input("numeroDeRol")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad")
         ]);
     }
 
     public function CrearGerente($request)
     {
         Gerente::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroGerente" => $request->input("numeroDeRol")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad")
         ]);
     }
 
@@ -90,7 +88,6 @@ class UsuarioController extends Controller
     {
         Cargador::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroCargador" => $request->input("numeroDeRol"),
             "carnetTransporte" => $request->input("carnetTransporte")
         ]);
     }
@@ -98,8 +95,7 @@ class UsuarioController extends Controller
     public function CrearChofer($request)
     {
         Chofer::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroChofer" => $request->input("numeroDeRol") 
+            "docDeIdentidad" => $request->input("documentoDeIdentidad")
         ]);
     }
 

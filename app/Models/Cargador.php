@@ -13,11 +13,10 @@ class Cargador extends Usuario
     use SoftDeletes;
     use HasFactory;
 
-    protected $table = 'Cargadores';
+    protected $table = 'cargadores';
 
     protected $fillable = [
         'docDeIdentidad',
-        'numeroCargador',
         'carnetTransporte'
     ];
 }

@@ -46,12 +46,9 @@
                 <option value="chofer">Chofer</option>
             </select>
             <br><br>
-            <label class="rol" id="rolLabel">X</label>
-            <input class="rol" id="rolInput" type="number" name="numeroDeRol">
-            <br><br>
             <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
             <input class="rol" id="inputCarnetCargador" type="number" name="carnetTransporte">
-            <br>
+            <br><br>
             <button type="submit">Añadir</button>
         </form>
     </div>
