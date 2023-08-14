@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Usuario extends Model
+class UserUsuario extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $primaryKey = 'idRelacion';
 
-    protected $table = 'usuarios';
+    protected $table = 'user_usuario';
 
     protected $fillable = [
-        'docDeIdentidad',
-        'nombre',
-        'apellido',
-        'telefono',
-        'direccion'
+        'id',
+        'docDeIdentidad'
     ];
 }

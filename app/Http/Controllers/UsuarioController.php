@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\User;
 use App\Models\Usuario;
+use App\Models\UserUsuario;
 use App\Models\Administrador;
 use App\Models\Gerente;
 use App\Models\Cargador;
@@ -15,15 +17,33 @@ use App\Models\Chofer;
 
 class UsuarioController extends Controller
 {
+    public function CrearRelacionUserUsuario($request, $idAutomatico)
+    {
+        UserUsuario::create([
+            "id" => $idAutomatico,
+            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+        ]);
+    }
+    
+    public function CrearUser($request)
+    {
+        $modeloTablaUser = User::create([
+            "email" => $request->input("email"),
+            "password" => Hash::make($request->input("contrasenia"))
+        ]);
+
+        $idAutomatico = $modeloTablaUser->id;
+
+        $this->CrearRelacionUserUsuario($request, $idAutomatico);
+    }
+    
     public function CrearUsuario($request)
     {
         Usuario::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "contrasenia" => Hash::make($request->input("contrasenia")),
             "nombre" => $request->input("nombre"),
             "apellido" => $request->input("apellido"),
             "telefono" => $request->input("telefono"),
-            "email" => $request->input("email"),
             "direccion" => $request->input("direccion")
         ]);
     }
@@ -86,6 +106,8 @@ class UsuarioController extends Controller
     public function Crear($request)
     {
         $this->CrearUsuario($request);
+        $this->CrearUser($request);
+
         if ($this->IdentificarRol($request) != null)
             $this->CrearRol($this->IdentificarRol($request), $request);
 
@@ -100,7 +122,7 @@ class UsuarioController extends Controller
             'nombre' => 'required|min:1|max:255',
             'apellido' => 'required|min:2|max:255',
             'telefono' => 'required|min:7|max:9',
-            'email' => 'required|email|unique:usuarios',
+            'email' => 'required|email',
             'direccion' => 'required|min:4|max:40'
         ]);
 
