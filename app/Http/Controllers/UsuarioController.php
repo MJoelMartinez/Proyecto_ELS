@@ -142,29 +142,25 @@ class UsuarioController extends Controller
 
     public function IdentificarRolAEliminar($documentoDeIdentidad)
     {
-        $rol = Administrador::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
+        $rol = Administrador::find($documentoDeIdentidad);
 
-        if (count($valoresRol) != 0)
+        if ($rol != null)
             return "administrador";
-        
-        $rol = Gerente::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
-    
-        if (count($valoresRol) != 0)
+
+        $rol = Gerente::find($documentoDeIdentidad);
+
+        if ($rol != null)
             return "gerente";
 
-        $rol = Chofer::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
-        
-        if (count($valoresRol) != 0)
+        $rol = Chofer::find($documentoDeIdentidad);
+
+        if ($rol != null)
             return "chofer";
-        
-        $rol = Cargador::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
-        
-        if (count($valoresRol) != 0)
-             return "cargador";
+
+        $rol = Cargador::find($documentoDeIdentidad);
+
+        if ($rol != null)
+            return "cargador";
 
         return "UsuarioComun";
     }
