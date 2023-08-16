@@ -180,10 +180,20 @@ class UsuarioController extends Controller
             Chofer::findOrFail($documentoDeIdentidad)->delete();
     }
 
+    public function EliminarTablas($usuario, $relacionUserUsuario, $user)
+    {
+        $relacionUserUsuario->delete();
+        $usuario->delete();
+        $user->delete();
+    }
+
     public function Eliminar(Request $request, $documentoDeIdentidad)
     {
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
-        $usuario->delete();
+        $relacionUserUsuario = UserUsuario::where('docDeIdentidad', $documentoDeIdentidad)->first();
+        $user = User::where('id', $relacionUserUsuario->id)->first();
+
+        $this->EliminarTablas($usuario, $relacionUserUsuario, $user);
 
         $rolDelUsuario = $this->IdentificarRolAEliminar($documentoDeIdentidad);
         if ($rolDelUsuario != "UsuarioComun")
