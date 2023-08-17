@@ -23,7 +23,7 @@ Route::prefix('v1')->group(function ()
         [UsuarioController::class, "Eliminar"]
     );
 
-    Route::get('/Usuarios/Listar',
-        [UsuarioController::class, "Listar"]
+    Route::post('/Usuarios/Buscar',
+        [UsuarioController::class, "Buscar"]
     );
 });

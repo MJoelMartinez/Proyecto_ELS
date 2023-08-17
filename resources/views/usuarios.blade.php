@@ -8,7 +8,17 @@
     <title>E.L.S - Usuarios</title>
 </head>
 <body>
-    <a href="api/v1/Usuarios/Listar"><button>Listar Usuarios</button></a>
+    <div class="ContenedorBusqueda">
+        <form action='api/v1/Usuarios/Buscar' method='post'>
+            <input id="barraDeBusqueda" name="barraDeBusqueda">
+            <select id="filtroDeLista" name="filtroDeLista">
+                <option value="usuariosExistentes">Usuarios Existentes</option>
+                <option value="usuariosEliminados">Usuarios Eliminados</option>
+                <option value="todosLosUsuarios">Usuarios Existentes y Eliminados</option>
+            <select>
+            <button>Buscar</button>
+        </form>
+    </div>
     <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
         <form action='api/v1/Usuarios/Crear' method='post'>

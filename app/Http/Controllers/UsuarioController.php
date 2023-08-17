@@ -202,11 +202,41 @@ class UsuarioController extends Controller
         return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];     
     }
 
-    public function Listar()
+    public function ListarSoloUsuariosExistentes()
     {
         if (count(Usuario::all()) == 0)
-            return [ "mensaje" => "No hay Usuarios en el sistema." ];
+            return [ "mensaje" => "No hay Usuarios actualmente en el sistema." ];
 
         return Usuario::all();
+    }
+
+    public function ListarSoloUsuariosEliminados()
+    {
+        if (count(Usuario::onlyTrashed()->get()) == 0)
+            return [ "mensaje" => "No se han eliminado Usuarios en este sistema." ];
+
+        return Usuario::onlyTrashed()->get();
+    }
+
+    public function ListarTodosLosUsuarios()
+    {
+        if (count(Usuario::withTrashed()->get()) == 0)
+            return [ "mensaje" => "No hay registro de Usuarios en el sistema." ];
+
+        return Usuario::withTrashed()->get();
+    }
+
+    public function Buscar(Request $request)
+    {
+        $filtroDeBusqueda = $request->input('filtroDeLista');
+
+        if ($filtroDeBusqueda === "usuariosExistentes")
+            return $this->ListarSoloUsuariosExistentes();
+
+        if ($filtroDeBusqueda === "usuariosEliminados")
+            return $this->ListarSoloUsuariosEliminados();
+
+        if ($filtroDeBusqueda === "todosLosUsuarios")
+            return $this->ListarTodosLosUsuarios();
     }
 }
