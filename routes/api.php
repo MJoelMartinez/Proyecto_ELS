@@ -11,19 +11,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function ()
 {
-    Route::post('/Usuarios/Crear',
+    Route::post('/usuarios/crear',
         [UsuarioController::class, "ValidarRegistro"]
     );
 
-    Route::put("/Usuarios/{documentoDeIdentidad}",
+    Route::put("/usuarios/{documentoDeIdentidad}",
         [UsuarioController::class, "Modificar"]
     );
 
-    Route::delete("/Usuarios/{documentoDeIdentidad}",
+    Route::delete("/usuarios/{documentoDeIdentidad}",
         [UsuarioController::class, "Eliminar"]
     );
 
-    Route::post('/Usuarios/Buscar',
+    Route::post('/usuarios/buscar',
         [UsuarioController::class, "Buscar"]
     );
 });

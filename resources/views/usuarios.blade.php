@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="ContenedorBusqueda">
-        <form action='api/v1/Usuarios/Buscar' method='post'>
+        <form action='api/v1/usuarios/buscar' method='post'>
             <input id="barraDeBusqueda" name="barraDeBusqueda">
             <select id="filtroDeLista" name="filtroDeLista">
                 <option value="usuariosExistentes">Usuarios Existentes</option>
@@ -21,7 +21,7 @@
     </div>
     <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
-        <form action='api/v1/Usuarios/Crear' method='post'>
+        <form action='api/v1/usuarios/crear' method='post'>
             @csrf
             <label>Documento de Identidad: </label>
             <input type="number" name="documentoDeIdentidad" required>
@@ -65,7 +65,7 @@
     <br><br>
     <div class="UsuarioAModificar">
         <h3>Modificar Usuario:</h3>
-        <form id="formularioModificarUsuarios" action='api/v1/Usuarios' method='post'>
+        <form id="formularioModificarUsuarios" action='api/v1/usuarios' method='post'>
             @method('PUT')
             @csrf
             <label>Documento de Identidad: </label>
@@ -86,7 +86,7 @@
     <br><br>
     <div class="UsuarioAEliminar">
         <h3>Eliminar Usuario:</h3>
-        <form id="formularioEliminarUsuarios" action='api/v1/Usuarios' method='post'>
+        <form id="formularioEliminarUsuarios" action='api/v1/usuarios' method='post'>
             @method('DELETE')
             @csrf
             <label>Documento de Identidad: </label>
