@@ -44,12 +44,12 @@ botonFormularioModificarUsuarios.addEventListener("click", function()
 {
     let inputFormulario = document.getElementById("inputFormularioModificar");
     let valorInputFormulario = inputFormulario.value;
-    formularioModificarUsuarios.setAttribute("action", "api/v1/Usuarios/" +  valorInputFormulario);
+    formularioModificarUsuarios.setAttribute("action", "api/v1/usuarios/" +  valorInputFormulario);
 });
 
 botonFormularioEliminarUsuarios.addEventListener("click", function()
 {
     let inputFormulario = document.getElementById("inputFormularioEliminar");
     let valorInputFormulario = inputFormulario.value;
-    formularioEliminarUsuarios.setAttribute("action", "api/v1/Usuarios/" +  valorInputFormulario);
+    formularioEliminarUsuarios.setAttribute("action", "api/v1/usuarios/" +  valorInputFormulario);
 });

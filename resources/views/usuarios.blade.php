@@ -55,10 +55,49 @@
                 <option value="cargador">Cargador</option>
                 <option value="chofer">Chofer</option>
             </select>
-            <br><br>
-            <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
-            <input class="rol" id="inputCarnetCargador" type="number" name="carnetTransporte">
-            <br><br>
+            <br>
+            <div class="contenedorInformacionCargador">
+                <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
+                <input class="rol" id="inputCarnetCargador" type="number" name="carnetTransporte">
+            </div>
+            <br>
+            <div class="contenedorInformacionChofer">
+                <label>ID de Licencia: </label>
+                <input type="text" name="idLicencia" min="8" max="8">
+                <label>Valido Desde: </label>
+                <br>
+                <label>Dia: </label>
+                <input type="number" name="diaDesde" min="1" max="31">
+                <br>
+                <label>Mes: </label>
+                <input type="number" name="mesDesde" min="1" max="12">
+                <br>
+                <label>Año: </label>
+                <input type="number" name="anioDesde" min="1960" max="2007">
+                <br><br>
+                <label>Valido Hasta: </label>
+                <br>
+                <label>Dia: </label>
+                <input type="number" name="diaHasta" min="1" max="31">
+                <br>
+                <label>Mes: </label>
+                <input type="number" name="mesHasta" min="1" max="12">
+                <br>
+                <label>Año: </label>
+                <input type="number" name="anioHasta" min="2024" max="9999">
+                <br><br>
+                <label>Categoria de Licencia: </label>
+                <select id="categoriaDeLicencia" name="categoriaDeLicencia">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="E">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                </select>
+            </div>
             <button type="submit">Añadir</button>
         </form>
     </div>

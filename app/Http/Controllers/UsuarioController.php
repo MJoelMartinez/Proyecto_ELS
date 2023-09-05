@@ -14,6 +14,7 @@ use App\Models\Administrador;
 use App\Models\Gerente;
 use App\Models\Cargador;
 use App\Models\Chofer;
+use App\Models\Licencia;
 
 class UsuarioController extends Controller
 {
@@ -97,6 +98,21 @@ class UsuarioController extends Controller
         Chofer::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad")
         ]);
+        $this->CrearLicencia($request);
+    }
+
+    public function CrearLicencia($request)
+    {
+        $fechaDesde = $request->input("anioDesde") . "-" . $request->input("mesDesde") . "-" . $request->input("diaDesde");
+        $fechaHasta = $request->input("anioHasta") . "-" . $request->input("mesHasta") . "-" . $request->input("diaHasta");
+
+        Licencia::create([
+            "idLicencia" => $request->input("idLicencia"),
+            "validoDesde" => $fechaDesde,
+            "validoHasta" => $fechaHasta,
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "categoria" => $request->input("categoriaDeLicencia")
+        ]);
     }
 
     public function Crear($request)
@@ -122,8 +138,40 @@ class UsuarioController extends Controller
             'direccion' => 'required|min:4|max:40'
         ]);
 
-        if($validation->fails())
-            return response($validation->errors(), 401);
+        if ($this->IdentificarRol($request) === "chofer")
+        {
+            $validationLicencia = Validator::make($request->all(),[
+                'idLicencia' => 'required|min:8|max:8',
+                'diaDesde' => 'required|numeric|min:1|max:31',
+                'mesDesde' => 'required|numeric|min:1|max:12',
+                'anioDesde' => 'required|numeric|min:1960|max:2007',
+                'diaHasta' => 'required|numeric|min:1|max:31',
+                'mesHasta' => 'required|numeric|min:1|max:12',
+                'anioHasta' => 'required|numeric|min:2024|max:9999',
+            ]);
+
+            $validationLicencia->after(function ($validationLicencia) use ($request) {
+                $diaDesde = $request->input('diaDesde');
+                $mesDesde = $request->input('mesDesde');
+                $anioDesde = $request->input('anioDesde');
+                $diaHasta = $request->input('diaHasta');
+                $mesHasta = $request->input('mesHasta');
+                $anioHasta = $request->input('anioHasta');
+            
+                if (!checkdate($mesDesde, $diaDesde, $anioDesde) || !checkdate($mesHasta, $diaHasta, $anioHasta)) {
+                    $validationLicencia->errors()->add();
+                }
+            });
+        }
+
+        if($validation->fails() || $validationLicencia->fails()){
+            $mensajesDeError = [
+                'erroresDeUsuario' => $validation->errors(),
+                'erroresDeLicencia' => $validationLicencia->errors(),
+            ];
+
+            return response($mensajesDeError, 401);
+        }   
 
         return $this->Crear($request);      
     }
@@ -178,6 +226,7 @@ class UsuarioController extends Controller
         
         if ($rol === "chofer")
             Chofer::findOrFail($documentoDeIdentidad)->delete();
+            Licencia::where("docDeIdentidad", $documentoDeIdentidad)->delete();
     }
 
     public function EliminarTablas($usuario, $relacionUserUsuario, $user)

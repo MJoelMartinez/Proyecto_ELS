@@ -11,3 +11,8 @@ Route::get('/Usuarios', function ()
 {
     return view('usuarios');
 });
+
+Route::get('/Vehiculos', function () 
+{
+    return view('vehiculos');
+});
