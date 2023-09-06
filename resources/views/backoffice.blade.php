@@ -10,5 +10,7 @@
     <label><a href="/Usuarios">Usuarios del Sistema</a></label>
     <br><br>
     <label><a href="/Almacenes">Almacenes de 'Quick Carry'</a></label>
+    <br><br>
+    <label><a href="/Vehiculos">Vehiculos</a></label>
 </body>
 </html>
