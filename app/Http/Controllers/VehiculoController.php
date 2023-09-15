@@ -27,7 +27,7 @@ class VehiculoController extends Controller
             'matricula' => 'required|min:8|max:8|unique:vehiculos',
             'capacidad' => 'required|numeric',
             'pesoMaximo' => 'required|numeric',
-            'modelo' => 'required|min:2|max:255'
+            'modelo' => 'required|numeric'
         ]);
 
         if($validation->fails())
