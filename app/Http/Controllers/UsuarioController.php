@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Usuario;
@@ -19,6 +20,17 @@ use App\Models\Maneja;
 
 class UsuarioController extends Controller
 {
+    public function bloquearTablasASoloEscritura(){
+        DB::raw('LOCK TABLE usuarios WRITE');
+        DB::raw('LOCK TABLE users WRITE');
+        DB::raw('LOCK TABLE user_usuario WRITE');
+        DB::raw('LOCK TABLE administradores WRITE');
+        DB::raw('LOCK TABLE choferes WRITE');
+        DB::raw('LOCK TABLE gerentes WRITE');
+        DB::raw('LOCK TABLE cargadores WRITE');
+        DB::raw('LOCK TABLE licencias WRITE');
+    }
+
     public function CrearRelacionUserUsuario($request, $idAutomatico)
     {
         UserUsuario::create([
@@ -112,23 +124,31 @@ class UsuarioController extends Controller
             "validoDesde" => $fechaDesde,
             "validoHasta" => $fechaHasta,
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "categoria" => $request->input("categoriaDeLicencia")
+            "categoria" => '$request->input("categoriaDeLicencia")'
         ]);
     }
 
     public function Crear($request)
     {
+        $this -> bloquearTablasASoloEscritura();
+        DB::beginTransaction();
+
         $this->CrearUsuario($request);
         $this->CrearUser($request);
 
         if ($this->IdentificarRol($request) != null)
             $this->CrearRol($this->IdentificarRol($request), $request);
 
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
+
         return [ "mensaje" => "Usuario creado correctamente."];
     }
     
     public function ValidarRegistro(Request $request)
     {
+        $mensajesDeError = [];
+
         $validation = Validator::make($request->all(),[
             'documentoDeIdentidad' => 'required|min:8|max:8',
             'contrasenia' => 'required|min:8|max:16|confirmed',
@@ -160,16 +180,17 @@ class UsuarioController extends Controller
                 $anioHasta = $request->input('anioHasta');
             
                 if (!checkdate($mesDesde, $diaDesde, $anioDesde) || !checkdate($mesHasta, $diaHasta, $anioHasta)) {
-                    $validationLicencia->errors()->add();
+                    $validationLicencia->errors()->add('erroresDeFecha', 'La fecha proporcionada es innexistente.');
                 }
             });
+
+            if($validationLicencia->fails()){
+                $mensajesDeError['erroresDeLicencia'] = $validationLicencia->errors();
+            }
         }
 
-        if($validation->fails() || $validationLicencia->fails()){
-            $mensajesDeError = [
-                'erroresDeUsuario' => $validation->errors(),
-                'erroresDeLicencia' => $validationLicencia->errors(),
-            ];
+        if($validation->fails() || count($mensajesDeError) != 0){
+            $mensajesDeError['erroresDeUsuario'] = $validation->errors();
 
             return response($mensajesDeError, 401);
         }   
@@ -179,12 +200,17 @@ class UsuarioController extends Controller
 
     public function Modificar(Request $request, $documentoDeIdentidad)
     {
+        $this->bloquearTablasASoloEscritura();
+
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
     
         $usuario->nombre = $request->input("nombre");
         $usuario->telefono = $request->input("telefono");
         $usuario->direccion = $request->input("direccion");
         $usuario->save();
+
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
         
         return ["mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
     }
@@ -243,11 +269,16 @@ class UsuarioController extends Controller
         $relacionUserUsuario = UserUsuario::where('docDeIdentidad', $documentoDeIdentidad)->first();
         $user = User::where('id', $relacionUserUsuario->id)->first();
 
+        $this->bloquearTablasASoloEscritura();
+
         $this->EliminarTablas($usuario, $relacionUserUsuario, $user);
 
         $rolDelUsuario = $this->IdentificarRolAEliminar($documentoDeIdentidad);
         if ($rolDelUsuario != "UsuarioComun")
             $this->EliminarRol($rolDelUsuario, $documentoDeIdentidad);
+
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
 
         return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];     
     }
