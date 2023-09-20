@@ -16,5 +16,6 @@ class Administrador extends Usuario
 
     protected $fillable = [
         'docDeIdentidad',
+        'backoffice'
     ];
 }

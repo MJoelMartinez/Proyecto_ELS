@@ -87,7 +87,8 @@ class UsuarioController extends Controller
     public function CrearAdministrador($request)
     {
         Administrador::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "backoffice" => 1
         ]);
     }
 
