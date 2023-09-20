@@ -30,11 +30,11 @@ function CambiarValores()
 {
     let valor = selectRol.options[selectRol.selectedIndex].value;
 
-    if (valor != "chofer")
+    if (valor != "cargador")
     {
         OcultarCarnet();
     }
-    if (valor == "chofer")
+    if (valor == "cargador")
     {
         VisibilizarCarnet();
     }
