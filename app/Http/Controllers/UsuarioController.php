@@ -124,7 +124,7 @@ class UsuarioController extends Controller
             "validoDesde" => $fechaDesde,
             "validoHasta" => $fechaHasta,
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "categoria" => '$request->input("categoriaDeLicencia")'
+            "categoria" => 'H'
         ]);
     }
 

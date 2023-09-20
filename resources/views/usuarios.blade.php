@@ -85,18 +85,6 @@
                 <br>
                 <label>Año: </label>
                 <input type="number" name="anioHasta" min="2024" max="9999">
-                <br><br>
-                <label>Categoria de Licencia: </label>
-                <select id="categoriaDeLicencia" name="categoriaDeLicencia">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="E">F</option>
-                    <option value="G">G</option>
-                    <option value="H">H</option>
-                </select>
             </div>
             <button type="submit">Añadir</button>
         </form>
