@@ -5,12 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Chofer;
 use App\Models\Vehiculo;
+use App\Models\Maneja;
 
 class VehiculoController extends Controller
 {
+    public function bloquearTablasASoloEscritura(){
+        DB::raw('LOCK TABLE vehiculos WRITE');
+        DB::raw('LOCK TABLE maneja WRITE');
+    }
+
     public function CrearVehiculo($request)
     {
+        $this->bloquearTablasASoloEscritura();
+
         Vehiculo::create([
             "matricula" => $request->input("matricula"),
             "capacidad" => $request->input("capacidad"),
@@ -18,6 +27,9 @@ class VehiculoController extends Controller
             "modelo" => $request->input("modelo")
         ]);
 
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
+        
         return ["mensaje" => "El vehiculo fue creado con exito."];
     }
 
@@ -40,9 +52,14 @@ class VehiculoController extends Controller
     {
         $vehiculo = Vehiculo::findOrFail($idVehiculo);
     
+        $this->bloquearTablasASoloEscritura();
+
         $vehiculo->capacidad = $request->input("capacidad");
         $vehiculo->pesoMaximo = $request->input("pesoMaximo");
         $vehiculo->save();
+
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
         
         return ["mensaje" => "El vehiculo con el id $idVehiculo ha sido modificado."];
     }
@@ -50,8 +67,48 @@ class VehiculoController extends Controller
     public function Eliminar(Request $request, $idVehiculo)
     {
         $vehiculo = Vehiculo::findOrFail($idVehiculo);
+
+        $relacionConChofer = Maneja::where('idVehiculo', $idVehiculo)->first();
+
+        if($relacionConChofer != null)
+            return ["mensaje" => "El vehiculo a eliminar cuenta con un chofer asignado. Primero debe despojar al chofer."];
+
+        $this->bloquearTablasASoloEscritura();
+
         $vehiculo->delete();
 
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
+
         return ["mensaje" => "El vehiculo con el id $idVehiculo fue eliminado con exito."];
+    }
+
+    public function AsignarVehiculos(Request $request)
+    {
+        $validation = Validator::make($request->all(),[
+            'documentoDeIdentidad' => 'required|min:8|max:8|numeric',
+            'matricula' => 'required|min:8|max:8'
+        ]);
+
+        if($validation->fails())
+            return response($validation->errors(), 401);
+
+        Chofer::findOrFail($documentoDeIdentidad);
+
+        $matricula = $request -> input("matricula");
+        $modeloVehiculo = Vehiculo::where('matricula', $matricula)->get();
+
+        if(count($modeloVehiculo.all()) == 0)
+            return response(404);
+
+        $this->bloquearTablasASoloEscritura();
+
+        Maneja::create([
+            "docDeIdentidad" => $documentoDeIdentidad,
+            "idVehiculo" => $modeloVehiculo->idVehiculo
+        ]);
+
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
     }
 }

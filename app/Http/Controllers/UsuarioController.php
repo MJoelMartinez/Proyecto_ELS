@@ -16,7 +16,6 @@ use App\Models\Gerente;
 use App\Models\Cargador;
 use App\Models\Chofer;
 use App\Models\Licencia;
-use App\Models\Maneja;
 
 class UsuarioController extends Controller
 {
@@ -320,31 +319,5 @@ class UsuarioController extends Controller
 
         if ($filtroDeBusqueda === "todosLosUsuarios")
             return $this->ListarTodosLosUsuarios();
-    }
-
-    public function AsignarVehiculos(Request $request, $documentoDeIdentidad)
-    {
-        $validation = Validator::make($request->all(),[
-            'documentoDeIdentidad' => 'required|min:8|max:8|numeric',
-            'matricula' => 'required|min:8|max:8|numeric'
-        ]);
-
-        if($validation->fails())
-            return response($validation->errors(), 401);
-
-        Chofer::findOrFail($documentoDeIdentidad);
-
-        $matricula = $request -> input("matricula");
-        $modeloVehiculo = Vehiculo::where('matricula', $matricula)->get();
-
-        if(count($modeloVehiculo.all()) == 0)
-        {
-            return response(404);
-        }
-
-        Maneja::create([
-            "docDeIdentidad" => $documentoDeIdentidad,
-            "" 
-        ]);
     }
 }
