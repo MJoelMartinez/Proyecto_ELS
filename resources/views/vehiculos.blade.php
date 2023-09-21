@@ -6,83 +6,81 @@
     <title>E.L.S - Vehiculos</title>
 </head>
 <body>
-<div class="NuevoVehiculo">
+    <div class="NuevoVehiculo">
         <h3>Crear Vehiculo:</h3>
-        <form action='api/v1/vehiculos/crear' method='post'>
+        <form action='api/v2/vehiculos' method='post'>
             @csrf
-            <label>matricula: </label>
-            <input type="text" name="matricula" required>
-            <br><br>
-            <label>capacidad: </label>
-            <input type="number" name="capacidad" required>
-            <br><br>
-            <label>peso maximo: </label>
-            <input type="number" name="pesoMaximo" required>
-            <br><br>
-            <label>modelo: </label>
+            <label>ID Modelo: </label>
             <input type="number" name="modelo" required>
             <br><br>
-            <button type="submit">Crear</button>
-            </form>
-            </div>
-
+            <label>Matricula: </label>
+            <input type="text" name="matricula" required>
             <br><br>
-            <div class="VehiculoAModificar">
+            <label>Capacidad: </label>
+            <input type="number" name="capacidad" required>
+            <br><br>
+            <label>Peso maximo (KG): </label>
+            <input type="number" name="pesoMaximo" required>
+            <br><br>
+            <button type="submit">Crear</button>
+        </form>
+    </div>
+    <br><br>
+    <div class="VehiculoAModificar">
         <h3>Modificar Vehiculo:</h3>
-        <form id="formularioModificarVehiculos" action='api/v1/vehiculos' method='post'>
+        <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
             @csrf
-            <label>ID de Vehiculo: </label>
-            <input id="inputFormularioModificarVehiculo" type="number" name="idVehiculo">
+            <label>Matrícula: </label>
+            <input id="inputMatriculaModificar" type="text" name="matricula" required>
             <br><br>
             <label>Capacidad: </label>
             <input type="number" name="capacidad" required>
             <br><br>
             <label>Peso Maximo</label>
-            <input type="number" name="pesoMaximo">
+            <input type="number" name="pesoMaximo" required>
             <br><br>
-            <button id="botonFormularioModificarVehiculos" type="submit"> Modificar</button>
+            <button id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
         </form>
     </div>
-
     <br><br>
     <div class="VehiculoEliminar">
         <h3>Eliminar Vehiculo:</h3>
-        <form id="formularioEliminarVehiculos" action='api/v1/vehiculos' method='post'>
+        <form id="formularioEliminarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('DELETE')
             @csrf
-            <label>ID de Vehiculo: </label>
-            <input id="inputFormularioEliminarVehiculo" type="number" name="idVehiculo">
+            <label>Matrícula: </label>
+            <input id="inputMatriculaEliminar" type="text" name="matricula" required>
             <br><br>
-            <button id="botonFormularioEliminarVehiculo" type="submit">Eliminar</button>
+            <button id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
         </form>
     </div>
     <br><br>
-    <div class="NuevoModelo">
-        <h3>Crear Modelo:</h3>
-        <form action='api/v1/modelo/crear' method='post'>
+    <div id="contenedorAsignarChofer">
+        <h3>Asignar Chofer:</h3>
+        <form id="formularioAsignarChofer" action="api/v2/asignarVehiculo" method="POST">
+            @method('PUT')
             @csrf
-            <label>nombre: </label>
-            <input type="text" name="nombre" required>
+            <label>CI del Chofer: </label>
+            <input id="inputCIAsignar" type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <label>anio: </label>
-            <input type="number" name="anio" required>
+            <label>Matricula del Vehiculo: </label>
+            <input type="text" name="matricula" required>
             <br><br>
-            <button type="submit">Crear</button>
-            </form>
-            </div>
-        <br><br>
-
-        <div class="ModeloEliminar">
-        <h3>Eliminar Modelo:</h3>
-        <form id="formularioEliminarModelo" action='api/v1/modelos' method='post'>
-            @method('DELETE')
-            @csrf
-            <label>ID de Modelo: </label>
-            <input id="inputFormularioEliminarModelo" type="number" name="idModelo">
-            <br><br>
-            <button id="botonFormularioEliminarModelo" type="submit">Eliminar</button>
+            <button id="botonAsignarChofer" type="submit">Asignar Chofer</button>
         </form>
     </div>
+    <div id="contenedorRelegarChofer">
+        <h3>Relegar Chofer:</h3>
+        <form id="formularioRelegarChofer" action="api/v2/relegarVehiculo" method="POST">
+            @method('DELETE')
+            @csrf
+            <label>CI del Chofer: </label>
+            <input id="inputCIRelegar" type="number" name="documentoDeIdentidad" required>
+            <br><br>
+            <button id="botonRelegarChofer" type="submit">Relegar Chofer</button>
+        </form>
+    </div>
+    <script src="../js/vehiculos.js"></script>
 </body>
 </html>

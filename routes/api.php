@@ -29,23 +29,39 @@ Route::prefix('v1')->group(function ()
         [UsuarioController::class, "Buscar"]
     );
 
-    Route::post('/vehiculos/crear',
+});
+
+Route::prefix('v2')->group(function ()
+{
+    Route::post('/vehiculos',
         [VehiculoController::class, "ValidarRegistro"]
     );
 
-    Route::put("/vehiculos/{idVehiculo}",
+    Route::put("/vehiculos/{matricula}",
         [VehiculoController::class, "Modificar"]
     );
 
-    Route::delete("/vehiculos/{idVehiculo}",
+    Route::delete("/vehiculos/{matricula}",
         [VehiculoController::class, "Eliminar"]
     );
 
-    Route::post('/modelo/crear',
+    Route::put("/asignarVehiculo/{documentoDeIdentidad}",
+        [VehiculoController::class, "AsignarChofer"]
+    );
+
+    Route::delete("/relegarVehiculo/{documentoDeIdentidad}",
+        [VehiculoController::class, "RelegarChofer"]
+    );
+
+    Route::post('/modelos',
         [ModeloController::class, "ValidarRegistro"]
     );
 
-    Route::delete("/modelo/{idVehiculo}",
+    Route::put('/modelos/{idModelo}',
+        [ModeloController::class, "Modificar"]
+    );
+
+    Route::delete('/modelos/{idModelo}',
         [ModeloController::class, "Eliminar"]
     );
 
