@@ -7,12 +7,18 @@ Route::get('/', function ()
     return view('backoffice');
 });
 
-Route::get('/Usuarios', function () 
+Route::get('/usuarios', function () 
 {
     return view('usuarios');
 });
 
-Route::get('/Vehiculos', function () 
+Route::get('/vehiculos', function () 
 {
     return view('vehiculos');
+});
+
+Route::get('/modelos', function () 
+{
+    return view('modelos');
+    
 });

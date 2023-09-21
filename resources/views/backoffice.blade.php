@@ -7,10 +7,12 @@
     <title>E.L.S - Backoffice</title>
 </head>
 <body>
-    <label><a href="/Usuarios">Usuarios del Sistema</a></label>
+    <label><a href="/usuarios">Usuarios del Sistema</a></label>
     <br><br>
-    <label><a href="/Almacenes">Almacenes de 'Quick Carry'</a></label>
+    <label><a href="/almacenes">Almacenes de 'Quick Carry'</a></label>
     <br><br>
-    <label><a href="/Vehiculos">Vehiculos</a></label>
+    <label><a href="/vehiculos">Lista de Vehiculos</a></label>
+    <br><br>
+    <label><a href="/modelos">Lista de Modelos</a></label>
 </body>
 </html>
