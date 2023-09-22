@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Modelo extends Model
+class Almacen extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, softDeletes;
 
-    protected $primaryKey = 'idModelo';
+    protected $primaryKey = 'idAlmacen';
 
-    protected $table = 'modelos';
-
+    protected $table = 'almacenes';
+    
     protected $fillable = [
-        'idModelo',
-        'nombre',
-        'anio'
+        'capacidad',
+        'direccion',
+        'idDepartamento'
     ];
 }

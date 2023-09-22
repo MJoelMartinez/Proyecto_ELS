@@ -10,12 +10,13 @@ use App\Models\Usuario;
 
 class Chofer extends Usuario
 {
-    use SoftDeletes;
-    use HasFactory;
+    use HasFactory, softDeletes;
+
+    protected $primaryKey = 'docDeIdentidad';
 
     protected $table = 'choferes';
 
     protected $fillable = [
-        'docDeIdentidad',
+        'docDeIdentidad'
     ];
 }

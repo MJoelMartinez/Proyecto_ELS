@@ -9,12 +9,15 @@ use App\Models\Usuario;
 
 class Gerente extends Usuario
 {
-    use SoftDeletes;
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $primaryKey = 'docDeIdentidad';
 
     protected $table = 'gerentes';
 
     protected $fillable = [
         'docDeIdentidad',
+        'idAlmacen',
+        'idTurno'
     ];
 }

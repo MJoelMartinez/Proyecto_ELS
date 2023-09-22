@@ -10,13 +10,16 @@ use App\Models\Usuario;
 
 class Cargador extends Usuario
 {
-    use SoftDeletes;
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $primaryKey = 'docDeIdentidad';
 
     protected $table = 'cargadores';
 
     protected $fillable = [
         'docDeIdentidad',
-        'carnetTransporte'
+        'carnetTransporte',
+        'idAlmacen',
+        'idTurno'
     ];
 }
