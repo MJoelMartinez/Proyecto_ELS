@@ -20,5 +20,24 @@ Route::get('/vehiculos', function ()
 Route::get('/modelos', function () 
 {
     return view('modelos');
-    
+});
+
+Route::get('/almacenes', function () 
+{
+    return view('almacenes');
+});
+
+Route::get('/articulos', function () 
+{
+    return view('articulos');
+});
+
+Route::get('/turnos', function () 
+{
+    return view('turnos');
+});
+
+Route::get('/tipoArticulo', function () 
+{
+    return view('tipoArticulo');
 });
