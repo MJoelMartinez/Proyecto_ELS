@@ -21,7 +21,7 @@
     </div>
     <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
-        <form action='api/v1/usuarios/crear' method='post'>
+        <form action='api/v2/usuarios' method='post'>
             @csrf
             <label>Documento de Identidad: </label>
             <input type="number" name="documentoDeIdentidad" required>
@@ -56,14 +56,23 @@
                 <option value="chofer">Chofer</option>
             </select>
             <br>
+            <h3>Datos para ingresar un Cargador/Gerente</h3>
+            <label>ID Almacén: </label>
+            <input type="number" name="idAlmacen">
+            <br><br>
+            <label>ID Turno: </label>
+            <input type="number" name="idTurno">
+            <br>
             <div class="contenedorInformacionCargador">
                 <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
                 <input class="rol" id="inputCarnetCargador" type="number" name="carnetTransporte">
             </div>
             <br>
+            <h3>Datos para ingresar un Chofer</h3>
             <div class="contenedorInformacionChofer">
                 <label>ID de Licencia: </label>
                 <input type="text" name="idLicencia" min="8" max="8">
+                <br>
                 <label>Valido Desde: </label>
                 <br>
                 <label>Dia: </label>
@@ -92,7 +101,7 @@
     <br><br>
     <div class="UsuarioAModificar">
         <h3>Modificar Usuario:</h3>
-        <form id="formularioModificarUsuarios" action='api/v1/usuarios' method='post'>
+        <form id="formularioModificarUsuarios" action='api/v2/usuarios' method='post'>
             @method('PUT')
             @csrf
             <label>Documento de Identidad: </label>
@@ -113,7 +122,7 @@
     <br><br>
     <div class="UsuarioAEliminar">
         <h3>Eliminar Usuario:</h3>
-        <form id="formularioEliminarUsuarios" action='api/v1/usuarios' method='post'>
+        <form id="formularioEliminarUsuarios" action='api/v2/usuarios' method='post'>
             @method('DELETE')
             @csrf
             <label>Documento de Identidad: </label>

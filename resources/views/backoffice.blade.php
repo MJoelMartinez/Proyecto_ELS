@@ -14,5 +14,11 @@
     <label><a href="/vehiculos">Lista de Vehiculos</a></label>
     <br><br>
     <label><a href="/modelos">Lista de Modelos</a></label>
+    <br><br>
+    <label><a href="/articulos">Lista de Articulos</a></label>
+    <br><br>
+    <label><a href="/turnos">Lista de Turnos</a></label>
+    <br><br>
+    <label><a href="/tipoArticulo">Tipos de Articulo</a></label>
 </body>
 </html>
