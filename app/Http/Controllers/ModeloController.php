@@ -19,6 +19,7 @@ class ModeloController extends Controller
     public function CrearModelo($request)
     {
         $this->bloquearTablaModelos();
+        DB::beginTransaction();
 
         Modelo::create([
             "nombre" => $request->input("nombre"),
@@ -58,6 +59,7 @@ class ModeloController extends Controller
         $modelo = Modelo::findOrFail($idModelo);
 
         $this->bloquearTablaModelos();
+        DB::beginTransaction();
 
         $modelo->nombre = $request->input("nombre");
         $modelo->anio = $request->input("anio");
@@ -71,7 +73,7 @@ class ModeloController extends Controller
 
     public function Eliminar(Request $request, $idModelo)
     {
-        $validation = Validator::make($request->all(),[
+        $validation = Validator::make(['idModelo' => $idModelo],[
             'idModelo' => 'required|numeric'
         ]);
 
@@ -86,6 +88,7 @@ class ModeloController extends Controller
             return ["mensaje" => "Existe uno o mas vehiculos que cuentan con este modelo. Primero eliminelos."];
 
         $this->bloquearTablaModelos();
+        DB::beginTransaction();
 
         $modelo->delete();
 

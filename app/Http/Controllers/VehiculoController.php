@@ -20,6 +20,7 @@ class VehiculoController extends Controller
     public function CrearVehiculo($request)
     {
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         Vehiculo::create([
             "matricula" => $request->input("matricula"),
@@ -66,6 +67,7 @@ class VehiculoController extends Controller
             return response(["mensaje" => "La matricula no pertenece a ningun vehiculo del sistema."], 404);
     
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         $vehiculo->capacidad = $request->input("capacidad");
         $vehiculo->pesoMaximo = $request->input("pesoMaximo");
@@ -97,6 +99,7 @@ class VehiculoController extends Controller
             return ["mensaje" => "El vehiculo a eliminar cuenta con un chofer asignado. Primero debe despojar al chofer."];
 
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         $vehiculo->delete();
 
@@ -125,6 +128,7 @@ class VehiculoController extends Controller
             return response(["mensaje" => "La matricula no pertenece a ningun vehiculo del sistema."], 404);
 
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         Maneja::create([
             "docDeIdentidad" => $documentoDeIdentidad,
@@ -149,6 +153,7 @@ class VehiculoController extends Controller
         $maneja = Maneja::findOrFail($documentoDeIdentidad);
 
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         $maneja->delete();
 

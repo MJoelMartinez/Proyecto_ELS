@@ -94,7 +94,9 @@ class UsuarioController extends Controller
     public function CrearGerente($request)
     {
         Gerente::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "idAlmacen" => $request->input("idAlmacen"),
+            "idTurno" => $request->input("idTurno")
         ]);
     }
 
@@ -102,7 +104,9 @@ class UsuarioController extends Controller
     {
         Cargador::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "carnetTransporte" => $request->input("carnetTransporte")
+            "carnetTransporte" => $request->input("carnetTransporte"),
+            "idAlmacen" => 0,
+            "idTurno" => $request->input("idTurno")
         ]);
     }
 
@@ -201,6 +205,7 @@ class UsuarioController extends Controller
     public function Modificar(Request $request, $documentoDeIdentidad)
     {
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
     
@@ -270,6 +275,7 @@ class UsuarioController extends Controller
         $user = User::where('id', $relacionUserUsuario->id)->first();
 
         $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
 
         $this->EliminarTablas($usuario, $relacionUserUsuario, $user);
 
