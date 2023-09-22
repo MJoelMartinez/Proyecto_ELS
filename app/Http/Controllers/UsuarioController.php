@@ -154,11 +154,11 @@ class UsuarioController extends Controller
         $mensajesDeError = [];
 
         $validation = Validator::make($request->all(),[
-            'documentoDeIdentidad' => 'required|min:8|max:8',
+            'documentoDeIdentidad' => 'required|numeric|digits:8',
             'contrasenia' => 'required|min:8|max:16|confirmed',
             'nombre' => 'required|min:1|max:255',
             'apellido' => 'required|min:2|max:255',
-            'telefono' => 'required|min:7|max:9',
+            'telefono' => 'required|numeric|digits_between:7,9',
             'email' => 'required|email',
             'direccion' => 'required|min:4|max:40'
         ]);
@@ -204,6 +204,15 @@ class UsuarioController extends Controller
 
     public function Modificar(Request $request, $documentoDeIdentidad)
     {
+        $validation = Validator::make($request->all(),[
+            'nombre' => 'required|min:1|max:255',
+            'telefono' => 'required|numeric|digits_between:7,9',
+            'direccion' => 'required|min:4|max:40'
+        ]);
+
+        if($validation->fails())
+            return response($validation->errors(), 401);
+
         $this->bloquearTablasASoloEscritura();
         DB::beginTransaction();
 
@@ -270,6 +279,13 @@ class UsuarioController extends Controller
 
     public function Eliminar(Request $request, $documentoDeIdentidad)
     {
+        $validation = Validator::make(['documentoDeIdentidad' => $documentoDeIdentidad],[
+            'documentoDeIdentidad' => 'required|digits:8|numeric'
+        ]);
+
+        if($validation->fails())
+            return response($validation->errors(), 401);
+
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
         $relacionUserUsuario = UserUsuario::where('docDeIdentidad', $documentoDeIdentidad)->first();
         $user = User::where('id', $relacionUserUsuario->id)->first();
