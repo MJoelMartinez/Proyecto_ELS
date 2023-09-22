@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Usuario;
 
-class Administrador extends Usuario
+class Articulo_tipoArticulo extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'administradores';
+    protected $primaryKey = 'idRelacion';
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $table = 'articulo_tipoArticulo';
 
     protected $fillable = [
-        'docDeIdentidad',
-        'backoffice'
+        'idArticulo',
+        'idTipo'
     ];
 }
