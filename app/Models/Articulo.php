@@ -10,6 +10,11 @@ class Articulo extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function tipoArticulos()
+    {
+        return $this->belongsToMany(TipoArticulo::class);
+    }
+
     protected $primaryKey = 'idArticulo';
 
     protected $table = 'articulos';

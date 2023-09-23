@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vehiculo extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
+
+    public function chofer()
+    {
+        return $this->belongsTo(Chofer::class);
+    }
 
     protected $primaryKey = 'idVehiculo';
 

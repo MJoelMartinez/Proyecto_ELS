@@ -10,6 +10,11 @@ class Usuario extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
     protected $primaryKey = 'docDeIdentidad';
 
     protected $table = 'usuarios';

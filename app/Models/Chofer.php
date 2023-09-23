@@ -12,6 +12,11 @@ class Chofer extends Usuario
 {
     use HasFactory, softDeletes;
 
+    public function vehiculo()
+    {
+        return $this->hasOne(Vehiculo::class);
+    }
+
     protected $primaryKey = 'docDeIdentidad';
 
     protected $table = 'choferes';

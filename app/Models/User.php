@@ -14,6 +14,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
+
     protected $fillable = [
         'email',
         'password',
