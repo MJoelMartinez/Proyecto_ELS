@@ -67,7 +67,7 @@ class UsuarioTest extends TestCase
     public function test_InsertarUsuarioSinInformacion()
     {
         $response = $this->post('/api/v2/usuarios/');
-        $response->assertStatus(405); 
+        $response->assertStatus(401); 
     }
 
     public function test_InsertarUsuarioConDatosErroneos()
