@@ -56,11 +56,11 @@ class UsuarioTest extends TestCase
             "direccion" => "Av. Pepito"
         ];
 
-        $response = $this->put('/api/v2/usuarios/77777777', $datosAInsertar);
+        $response = $this->put('/api/v2/usuarios/12345678', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
-            "mensaje" => "El Usuario con la cedula 77777777 ha sido modificado."
+            "mensaje" => "El Usuario con la cedula 12345678 ha sido modificado."
         ]);
     }
 
