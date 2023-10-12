@@ -22,17 +22,17 @@ class UsuarioTest extends TestCase
     
     public function test_EliminarUnoQueExiste()
     {
-        $response = $this->delete('/api/v2/usuarios/77777777');
+        $response = $this->delete('/api/v2/usuarios/12345670');
         $response->assertStatus(200);
         $response->assertJsonFragment([
-            "mensaje" => "El Usuario con la cedula 77777777 ha sido eliminado."
+            "mensaje" => "El Usuario con la cedula 12345670 ha sido eliminado."
         ]);
         $this->assertDatabaseMissing("usuarios",[
-            "docDeIdentidad" => 77777777,
+            "docDeIdentidad" => 12345670,
             "deleted_at" => null
         ]);
 
-        Usuario::withTrashed()->where("docDeIdentidad", 77777777)->restore();
+        Usuario::withTrashed()->where("docDeIdentidad", 12345670)->restore();
     }
 
     public function test_ModificarUnoQueNoExiste()
