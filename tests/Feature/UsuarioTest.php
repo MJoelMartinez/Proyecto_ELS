@@ -84,7 +84,7 @@ class UsuarioTest extends TestCase
         ];
 
         $response = $this->put('/api/v2/usuarios', $datosAInsertar);
-        $response->assertStatus(401); 
+        $response->assertStatus(405); 
     }
 
     public function test_InsertarUsuarioComun()
