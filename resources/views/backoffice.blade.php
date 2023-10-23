@@ -6,6 +6,7 @@
     <meta name="author" content="Script TriByte">
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/clasesGlobales.css">
+    <link rel="stylesheet" href="/css/appBackOffice.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
     <title>E.L.S - Backoffice</title>
@@ -33,6 +34,34 @@
       </ul>
     </nav>
   </header>
+  <div class="contenedorAccesoAListas">
+        <a href="/usuarios" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonListaUsuarios">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Usuarios</b></label>
+            <img class="iconoBotonListado" id="iconoListadoUsuarios" src="/img/iconoUsuarios.png">
+          </div>
+        </a>
+        <a href="/almacenes" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonListaAlmacenes">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Almacenes</b></label>
+            <img class="iconoBotonListado" id="iconoListadoPaquetes" src="/img/iconoAlmacenes.png">
+          </div>
+        </a>
+        <a href="/vehiculos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonListaVehiculos">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Vehículos</b></label>
+            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoVehiculo.png">
+          </div>
+        </a>
+    </div>
+    <footer class="footerBackOffice textoClaro absoluto">
+      <div id="contenedorUbicacionBackOffice">
+        <img id="imagenUbicacionBackOffice" src="/img/iconoSeguimiento.png">
+        BackOffice
+      </div>
+    </footer>
+    <script src="/js/aplicacionBackOffice.js"></script>
+
   {{-- <label><a href="/usuarios">Usuarios del Sistema</a></label>
     <br><br>
     <label><a href="/almacenes">Almacenes de 'Quick Carry'</a></label>
