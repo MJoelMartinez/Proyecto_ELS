@@ -3,23 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/Icon.png">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>E.L.S - Usuarios</title>
+    <meta name="author" content="Script TriByte">
+    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/clasesGlobales.css">
+    <link rel="stylesheet" href="/css/appBackOffice.css">
+    <link rel="stylesheet" href="/css/usuarios.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/iconoPestana.png">
+    <title>E.L.S - Backoffice</title>
 </head>
 <body>
-    <div class="ContenedorBusqueda">
-        <form action='api/v1/usuarios/buscar' method='post'>
-            <input id="barraDeBusqueda" name="barraDeBusqueda">
-            <select id="filtroDeLista" name="filtroDeLista">
-                <option value="usuariosExistentes">Usuarios Existentes</option>
-                <option value="usuariosEliminados">Usuarios Eliminados</option>
-                <option value="todosLosUsuarios">Usuarios Existentes y Eliminados</option>
-            <select>
-            <button>Buscar</button>
-        </form>
+    <header class="textoClaro">
+    <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
+    <nav>
+      <ul class="menu">
+        <li class="cambioCursor"><a href="/">HOME</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
+        <li>
+          <div id="contenedorUsuario">
+            <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
+            <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
+            <ul class="submenu">
+              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="contenedorUsuarios">
+        <div class="opcionesUsuarios">
+            <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearUsuario">
+            <label class="textoClaro"><b>|</b></label>
+            <form action="api/v1/usuarios/buscar" id="formularioBuscarUsuarios" method="post">
+                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Usuario">
+                <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
+                    <label><b>Filtro de Búsqueda:</b></label>
+                    <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
+                        <option value="usuariosExistentes"><b>Usuarios Existentes</b></option>
+                        <option value="usuariosEliminados"><b>Usuarios Eliminados</b></option>
+                        <option value="todosLosUsuarios"><b>Usuarios Existentes y Eliminados</b></option>
+                    <select>
+                </div>
+                <button type="submit" id="botonBuscar">
+                    <img class="cambioCursor" id="imagenBotonBuscar" src="/img/iconoLupa.png">
+                </button>
+            </form>
+        </div>
+        <hr>
     </div>
-    <div class="NuevoUsuario">
+   {{-- <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
         <form action='api/v2/usuarios' method='post'>
             @csrf
@@ -130,7 +167,7 @@
             <br><br>
             <button id="botonFormularioEliminarUsuarios" type="submit">Eliminar</button>
         </form>
-    </div>
+    </div> --}}
     <script src="../js/usuarios.js"></script>
 </body>
 </html>
