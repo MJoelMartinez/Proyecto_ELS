@@ -56,6 +56,82 @@
         </div>
         <hr>
     </div>
+
+    <div class="contenedorCrearUsuarios roboto textoClaro">
+        <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
+        <form action="api/v2/usuarios" method="post" id="formularioCrearUsuarios">
+            @csrf
+            <br>
+            <label><b>Documento de Identidad: </b></label>
+            <input type="number" name="documentoDeIdentidad" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Contraseña: </b></label>
+            <input type="password" name="contrasenia" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Repetir Contraseña: </b></label>
+            <input type="password" name="contrasenia_confirmation" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Nombre: </b></label>
+            <input type="text" name="nombre" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Apellido: </b></label>
+            <input type="text" name="apellido" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Teléfono: </b></label>
+            <input type="number" name="telefono" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Correo Electrónico: </b></label>
+            <input type="email" name="email" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label><b>Dirección: </b></label>
+            <input type="text" name="direccion" class="inputCrearUsuario textoClaro roboto" required>
+            <br><br>
+            <label>Rol:</label>
+            <select class="roboto textoClaro" id="rolDeLaEmpresa" name="rolDeLaEmpresa">
+                <option value="usuarioComun">Usuario Común</option>
+                <option value="administrador">Administrador</option>
+                <option value="gerente">Gerente</option>
+                <option value="cargador">Cargador</option>
+                <option value="chofer">Chofer</option>
+            </select>
+            <br><br>
+            <div class="contenedorInformacionCargador" id="divCarnetCargador">
+            <label id="labelCarnetCargador">ID Almacén: </label>
+            <input class="inputCrearUsuario textoClaro roboto" id="inputCarnetCargador" type="number" name="idAlmacen">
+            <br><br>
+            <label id="labelCarnetCargador">ID Turno: </label>
+            <input class="inputCrearUsuario textoClaro roboto" id="inputCarnetCargador" type="number" name="idTurno">
+            <br><br>
+                <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
+                <input class="inputCrearUsuario textoClaro roboto" id="inputCarnetCargador" type="number" name="carnetTransporte">
+            </div>
+            <div class="contenedorInformacionChofer" id="divChofer">
+                <label>ID de Licencia: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="text" name="idLicencia" min="8" max="8">
+                <br><br>
+                <label>Valido Desde: </label>
+                <br><br>
+                <label>Dia: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="number" name="diaDesde" min="1" max="31">
+                <label>Mes: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="number" name="mesDesde" min="1" max="12">
+                <label>Año: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="number" name="anioDesde" min="1960" max="2007">
+                <br><br>
+                <label>Valido Hasta: </label>
+                <br><br>
+                <label>Dia: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="number" name="diaHasta" min="1" max="31">
+                <label>Mes: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="number" name="mesHasta" min="1" max="12">
+                <label>Año: </label>
+                <input class="inputCrearUsuario textoClaro roboto" type="number" name="anioHasta" min="2024" max="9999">
+            </div>
+
+            <button type="submit" class="botonCrearUsuario roboto textoClaro cambioCursor" id="botonCrearUsuario"><b>Añadir</b></button>
+        </form>
+    </div>
+
    {{-- <div class="NuevoUsuario">
         <h3>Crear Usuario:</h3>
         <form action='api/v2/usuarios' method='post'>
