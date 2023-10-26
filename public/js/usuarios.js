@@ -1,9 +1,11 @@
 $(document).ready(function () {
     const selectRol = $("#rolDeLaEmpresa");
     const divCarnetCargador = $("#divCarnetCargador");
+    const divGerente = $("#divGerente");
     const divChofer = $("#divChofer");
 
     OcultarDivCarnetCargador();
+    OcultarDivGerente();
     OcultarDivChofer();
 
     selectRol.on("change", function () {
@@ -16,6 +18,14 @@ $(document).ready(function () {
 
     function MostrarDivCarnetCargador() {
         divCarnetCargador.css("display", "block");
+    }
+
+    function OcultarDivGerente() {
+        divGerente.css("display", "none");
+    }
+
+    function MostrarDivGerente() {
+        divGerente.css("display", "block");
     }
 
     function OcultarDivChofer() {
@@ -31,12 +41,19 @@ $(document).ready(function () {
 
         if (valor === "cargador") {
             MostrarDivCarnetCargador();
+            OcultarDivGerente();
             OcultarDivChofer();
         } else if (valor === "chofer") {
             OcultarDivCarnetCargador();
+            OcultarDivGerente();
             MostrarDivChofer();
+        } else if (valor === "gerente") {
+            OcultarDivCarnetCargador();
+            MostrarDivGerente();
+            OcultarDivChofer();
         } else {
             OcultarDivCarnetCargador();
+            OcultarDivGerente();
             OcultarDivChofer();
         }
     }

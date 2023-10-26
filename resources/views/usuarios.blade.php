@@ -95,7 +95,14 @@
                 <option value="chofer">Chofer</option>
             </select>
             <br><br>
-            <div class="contenedorInformacionCargador" id="divCarnetCargador">
+            <div id="divGerente">
+            <label id="labelCarnetCargador">ID Almacén: </label>
+            <input class="inputCrearUsuario textoClaro roboto" id="inputCarnetCargador" type="number" name="idAlmacen">
+            <br><br>
+            <label id="labelCarnetCargador">ID Turno: </label>
+            <input class="inputCrearUsuario textoClaro roboto" id="inputCarnetCargador" type="number" name="idTurno">
+            </div>
+            <div id="divCarnetCargador">
             <label id="labelCarnetCargador">ID Almacén: </label>
             <input class="inputCrearUsuario textoClaro roboto" id="inputCarnetCargador" type="number" name="idAlmacen">
             <br><br>
@@ -132,86 +139,7 @@
         </form>
     </div>
 
-   {{-- <div class="NuevoUsuario">
-        <h3>Crear Usuario:</h3>
-        <form action='api/v2/usuarios' method='post'>
-            @csrf
-            <label>Documento de Identidad: </label>
-            <input type="number" name="documentoDeIdentidad" required>
-            <br><br>
-            <label>Contraseña: </label>
-            <input type="password" name="contrasenia" required>
-            <br><br>
-            <label>Repetir Contraseña: </label>
-            <input type="password" name="contrasenia_confirmation" required>
-            <br><br>
-            <label>Nombre: </label>
-            <input type="text" name="nombre" required>
-            <br><br>
-            <label>Apellido: </label>
-            <input type="text" name="apellido" required>
-            <br><br>
-            <label>Teléfono: </label>
-            <input type="number" name="telefono" required>
-            <br><br>
-            <label>Correo Electrónico: </label>
-            <input type="email" name="email" required>
-            <br><br>
-            <label>Dirección: </label>
-            <input type="text" name="direccion" required>
-            <br><br>
-            <label>Rol:</label>
-            <select id="rolDeLaEmpresa" name="rolDeLaEmpresa">
-                <option value="usuarioComun">Usuario Común</option>
-                <option value="administrador">Administrador</option>
-                <option value="gerente">Gerente</option>
-                <option value="cargador">Cargador</option>
-                <option value="chofer">Chofer</option>
-            </select>
-            <br>
-            <h3>Datos para ingresar un Cargador/Gerente</h3>
-            <label>ID Almacén: </label>
-            <input type="number" name="idAlmacen">
-            <br><br>
-            <label>ID Turno: </label>
-            <input type="number" name="idTurno">
-            <br>
-            <div class="contenedorInformacionCargador">
-                <label class="rol" id="labelCarnetCargador">ID Carnet de Transporte: </label>
-                <input class="rol" id="inputCarnetCargador" type="number" name="carnetTransporte">
-            </div>
-            <br>
-            <h3>Datos para ingresar un Chofer</h3>
-            <div class="contenedorInformacionChofer">
-                <label>ID de Licencia: </label>
-                <input type="text" name="idLicencia" min="8" max="8">
-                <br>
-                <label>Valido Desde: </label>
-                <br>
-                <label>Dia: </label>
-                <input type="number" name="diaDesde" min="1" max="31">
-                <br>
-                <label>Mes: </label>
-                <input type="number" name="mesDesde" min="1" max="12">
-                <br>
-                <label>Año: </label>
-                <input type="number" name="anioDesde" min="1960" max="2007">
-                <br><br>
-                <label>Valido Hasta: </label>
-                <br>
-                <label>Dia: </label>
-                <input type="number" name="diaHasta" min="1" max="31">
-                <br>
-                <label>Mes: </label>
-                <input type="number" name="mesHasta" min="1" max="12">
-                <br>
-                <label>Año: </label>
-                <input type="number" name="anioHasta" min="2024" max="9999">
-            </div>
-            <button type="submit">Añadir</button>
-        </form>
-    </div>
-    <br><br>
+   {{--
     <div class="UsuarioAModificar">
         <h3>Modificar Usuario:</h3>
         <form id="formularioModificarUsuarios" action='api/v2/usuarios' method='post'>
