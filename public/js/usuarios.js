@@ -70,11 +70,11 @@ $("#cerrarContenedorCrear").click(function(){
 })
 
 $("#botonBuscar").click(function(){
-    $("#formularioBuscarUsuarios").attr("action", urlAPIAlmacenes + "/api/v1/buscarUsuarios");
+    $("#formularioBuscarUsuarios").attr("action", "/usuarios/buscar");
 })
 
 $("#botonCrearUsuario").click(function(){
-    $("#formularioCrearUsuarios").attr("action", urlAPIAlmacenes + "/api/v1/usuarios");
+    $("#formularioCrearUsuarios").attr("action", "/usuarios/crear");
 })
 
 /*let selectRol = document.getElementById("rolDeLaEmpresa");
