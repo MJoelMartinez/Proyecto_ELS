@@ -13,6 +13,7 @@
     <title>E.L.S - Backoffice</title>
 </head>
 <body>
+    <img id="ajusteBrillo" src="/img/BGNegro.png">
     <header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>

@@ -1,3 +1,14 @@
+#ajusteBrillo{
+    display: none;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    opacity: 70%;
+    z-index: 1;
+    width: 100%;
+    
+}
+
 body{
     background-image: url(/img/BGUsuarios.png);
 }
@@ -91,6 +102,7 @@ option{
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
     font-size: 30px;
+    
 }
 
 #cerrarContenedorCrear{
