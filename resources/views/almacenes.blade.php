@@ -24,7 +24,7 @@
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+          <div id="contenedorAlmacen">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
@@ -37,7 +37,7 @@
     </nav>
   </header>
 
-<div class="contenedorAlmacenes">
+<div class="contenedorAlmacenes roboto textoClaro">
         <div class="opcionesAlmacen">
             <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearAlmacen">
             <label class="textoClaro"><b>|</b></label>
@@ -58,22 +58,25 @@
         </div>
         <hr>
     </div>
-    {{--<div id="contenedorCrear">
-        <h3>Crear Almacén:</h3>
-        <form action='api/v2/almacenes' method='POST'>
+
+    <div class="contenedorCrearAlmacenes roboto textoClaro" id="contenedorCrear">
+    <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
+        <form action='api/v2/almacenes' method='POST' id="formularioCrearAlmacenes">
             @csrf
             <label>Direccion: </label>
-            <input type="text" name="direccion" min="2" max="40" required>
+            <input class="inputCrearAlmacen textoClaro roboto" type="text" name="direccion" min="2" max="40" required>
             <br><br>
             <label>Capacidad (m3): </label>
-            <input type="number" name="capacidad" required>
+            <input class="inputCrearAlmacen textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
             <label>Departamento: </label>
-            <input type="number" name="idDepartamento" required>
+            <input class="inputCrearAlmacen textoClaro roboto" type="number" name="idDepartamento" required>
             <br><br>
-            <button type="submit">Crear</button>
+            <button class="botonCrearAlmacen roboto textoClaro cambioCursor" id="botonCrearAlmacen" type="submit">Crear</button>
         </form>
     </div>
+
+    {{--
     <br><br>
     <div id="contenedorModificar">
         <h3>Modificar Almacén:</h3>

@@ -1,3 +1,21 @@
+$("#crearAlmacen").click(function() {
+    $("#ajusteBrillo").show();
+    $("#contenedorCrear").show();
+});
+
+$("#cerrarContenedorCrear").click(function() {
+    $("#ajusteBrillo").hide();
+    $("#contenedorCrear").hide();
+});
+
+$("#botonBuscar").click(function(){
+    $("#formularioBuscarAlmacenes").attr("action", "/almacenes/buscar");
+})
+
+$("#botonCrearAlmacenes").click(function(){
+    $("#formularioCrearAlmacenes").attr("action", "/almacenes/crear");
+})
+
 /*const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
 const botonFormularioModificarAlmacenes= document.getElementById("botonFormularioModificarAlmacenes");
 
