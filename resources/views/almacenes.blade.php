@@ -36,6 +36,28 @@
       </ul>
     </nav>
   </header>
+
+<div class="contenedorAlmacenes">
+        <div class="opcionesAlmacen">
+            <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearAlmacen">
+            <label class="textoClaro"><b>|</b></label>
+            <form action="api/v1/almacenes/buscar" id="formularioBuscarAlmacenes" method="post">
+                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Almacén">
+                <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
+                    <label><b>Filtro de Búsqueda:</b></label>
+                    <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
+                        <option value="idAlmacen"><b>ID Almacen</b></option>
+                        <option value="departamento"><b>Departamento</b></option>
+                        <option value="direccion"><b>Dirección</b></option>
+                    <select>
+                </div>
+                <button type="submit" id="botonBuscar">
+                    <img class="cambioCursor" id="imagenBotonBuscar" src="/img/iconoLupa.png">
+                </button>
+            </form>
+        </div>
+        <hr>
+    </div>
     {{--<div id="contenedorCrear">
         <h3>Crear Almacén:</h3>
         <form action='api/v2/almacenes' method='POST'>
