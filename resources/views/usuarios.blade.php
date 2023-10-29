@@ -141,33 +141,33 @@
     </div>
 
     <div class="contenedor">
-    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar">
-    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Usuario">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Usuario">
     </div>
 
-    
-
-   {{--
-    <div class="UsuarioAModificar">
-        <h3>Modificar Usuario:</h3>
+    <div class="UsuarioAModificar roboto textoClaro">
+    <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarUsuarios" action='api/v2/usuarios' method='post'>
             @method('PUT')
             @csrf
+            <br>
             <label>Documento de Identidad: </label>
-            <input id="inputFormularioModificar" type="number" name="documentoDeIdentidad">
+            <input id="inputFormularioModificar" class="inputModificarUsuario textoClaro roboto" type="number" name="documentoDeIdentidad">
             <br><br>
             <label>Nombre: </label>
-            <input type="text" name="nombre" required>
+            <input type="text" class="inputModificarUsuario textoClaro roboto" name="nombre" required>
             <br><br>
             <label>Teléfono: </label>
-            <input type="number" name="telefono" required>
+            <input type="number" class="inputModificarUsuario textoClaro roboto" name="telefono" required>
             <br><br>
             <label>Dirección: </label>
-            <input type="text" name="direccion" required>
+            <input type="text" class="inputModificarUsuario textoClaro roboto" name="direccion" required>
             <br><br>
-            <button id="botonFormularioModificarUsuarios" type="submit">Modificar</button>
+            <button id="botonFormularioModificarUsuarios" class="botonModificarUsuario roboto textoClaro cambioCursor" type="submit">Modificar</button>
         </form>
     </div>
+
+   {{--
     <br><br>
     <div class="UsuarioAEliminar">
         <h3>Eliminar Usuario:</h3>
