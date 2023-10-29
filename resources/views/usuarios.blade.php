@@ -140,6 +140,13 @@
         </form>
     </div>
 
+    <div class="contenedor">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar">
+    </div>
+
+    
+
    {{--
     <div class="UsuarioAModificar">
         <h3>Modificar Usuario:</h3>
