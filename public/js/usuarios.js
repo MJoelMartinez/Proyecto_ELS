@@ -77,19 +77,23 @@ $("#botonCrearUsuario").click(function(){
     $("#formularioCrearUsuarios").attr("action", "/usuarios/crear");
 })
     
-$(".UsuarioAModificar").hide();
 
 $("#imagenBotonEditar").click(function() {
+    $("#ajusteBrillo").show();
     $(".UsuarioAModificar").show();
 });
 
 $("#cerrarContenedorModificar").click(function() {
+    $("#ajusteBrillo").hide();
     $(".UsuarioAModificar").hide();
 });
 
-/*botonFormularioEliminarUsuarios.addEventListener("click", function()
-{
-    let inputFormulario = document.getElementById("inputFormularioEliminar");
-    let valorInputFormulario = inputFormulario.value;
-    formularioEliminarUsuarios.setAttribute("action", "api/v2/usuarios/" +  valorInputFormulario);
-});*/
+$("#imagenBotonEliminar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".UsuarioAEliminar").show();
+  });
+
+  $("#cerrarContenedorEliminar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".UsuarioAEliminar").hide();
+  });

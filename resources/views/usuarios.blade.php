@@ -166,20 +166,18 @@
             <button id="botonFormularioModificarUsuarios" class="botonModificarUsuario roboto textoClaro cambioCursor" type="submit">Modificar</button>
         </form>
     </div>
-
-   {{--
-    <br><br>
-    <div class="UsuarioAEliminar">
-        <h3>Eliminar Usuario:</h3>
+    <div class="UsuarioAEliminar roboto textoClaro">
+    <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarUsuarios" action='api/v2/usuarios' method='post'>
             @method('DELETE')
             @csrf
+            <br>
             <label>Documento de Identidad: </label>
-            <input id="inputFormularioEliminar" type="number" name="documentoDeIdentidad">
+            <input id="inputFormularioEliminar" class="inputEliminarUsuario textoClaro roboto" type="number" name="documentoDeIdentidad">
             <br><br>
-            <button id="botonFormularioEliminarUsuarios" type="submit">Eliminar</button>
+            <button id="botonFormularioEliminarUsuarios" class="botonEliminarUsuario roboto textoClaro cambioCursor" type="submit">Eliminar</button>
         </form>
-    </div> --}}
+    </div>
     <script src="../js/usuarios.js"></script>
 </body>
 </html>
