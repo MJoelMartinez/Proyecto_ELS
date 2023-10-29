@@ -1,4 +1,4 @@
-const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
+/*const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
 const botonFormularioModificarAlmacenes= document.getElementById("botonFormularioModificarAlmacenes");
 
 const formularioEliminarAlmacenes = document.getElementById("formularioEliminarAlmacenes");
@@ -16,4 +16,4 @@ botonFormularioEliminarAlmacenes.addEventListener("click", function()
     let inputIDAlmacen = document.getElementById("inputIDAlmacenEliminar");
     let valorInput = inputIDAlmacen.value;
     formularioEliminarAlmacenes.setAttribute("action", "api/v2/almacenes/" +  valorInput);
-});
+});*/
