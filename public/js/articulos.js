@@ -10,11 +10,11 @@ $("#cerrarContenedorCrear").click(function() {
 
 $("#botonBuscar").click(function(){
     $("#formularioBuscarArticulos").attr("action", "/articulos/buscar");
-})
+});
 
 $("#botonCrearAlmacenes").click(function(){
     $("#formularioCrearArticulos").attr("action", "/articulos/crear");
-})
+});
 
 $("#imagenBotonEditar").click(function() {
     $("#ajusteBrillo").show();

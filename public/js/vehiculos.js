@@ -1,4 +1,20 @@
+$("#crearVehiculo").click(function() {
+    $("#ajusteBrillo").show();
+    $("#contenedorCrear").show();
+});
 
+$("#cerrarContenedorCrear").click(function() {
+    $("#ajusteBrillo").hide();
+    $("#contenedorCrear").hide();
+});
+
+$("#botonBuscar").click(function(){
+    $("#formularioBuscarVehiculos").attr("action", "/vehiculos/buscar");
+});
+
+$("#botonCrearAlmacenes").click(function(){
+    $("#formularioCrearVehiculos").attr("action", "/vehiculos/crear");
+});
 
 
 /*const formularioModificarVehiculos = document.getElementById("formularioModificarVehiculos");

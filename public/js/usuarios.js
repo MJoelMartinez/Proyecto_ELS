@@ -62,20 +62,20 @@ $(document).ready(function () {
 $("#crearUsuario").click(function(){
     $("#ajusteBrillo").show();
     $(".contenedorCrearUsuarios").show();
-})
+});
 
 $("#cerrarContenedorCrear").click(function(){
     $("#ajusteBrillo").hide();
     $(".contenedorCrearUsuarios").hide();
-})
+});
 
 $("#botonBuscar").click(function(){
     $("#formularioBuscarUsuarios").attr("action", "/usuarios/buscar");
-})
+});
 
 $("#botonCrearUsuario").click(function(){
     $("#formularioCrearUsuarios").attr("action", "/usuarios/crear");
-})
+});
     
 
 $("#imagenBotonEditar").click(function() {
@@ -91,9 +91,9 @@ $("#cerrarContenedorModificar").click(function() {
 $("#imagenBotonEliminar").click(function() {
     $("#ajusteBrillo").show();
     $(".UsuarioAEliminar").show();
-  });
+});
 
-  $("#cerrarContenedorEliminar").click(function() {
+$("#cerrarContenedorEliminar").click(function() {
     $("#ajusteBrillo").hide();
     $(".UsuarioAEliminar").hide();
-  });
+});

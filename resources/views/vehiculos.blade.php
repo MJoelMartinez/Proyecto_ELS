@@ -58,27 +58,28 @@
         <hr>
     </div>
     
-    {{--<div class="NuevoVehiculo">
-        <h3>Crear Vehiculo:</h3>
-        <form action='api/v2/vehiculos' method='post'>
+    <div class="contenedorCrearVehiculos roboto textoClaro" id="contenedorCrear">
+    <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
+        <form action='api/v2/vehiculos' method='post' id="formularioCrearVehiculos">
             @csrf
+            <br>
             <label>ID Modelo: </label>
-            <input type="number" name="modelo" required>
+            <input class="inputCrearVehiculo textoClaro roboto" type="number" name="modelo" required>
             <br><br>
             <label>Matricula: </label>
-            <input type="text" name="matricula" required>
+            <input class="inputCrearVehiculo textoClaro roboto" type="text" name="matricula" required>
             <br><br>
             <label>Capacidad: </label>
-            <input type="number" name="capacidad" required>
+            <input class="inputCrearVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
             <label>Peso maximo (KG): </label>
-            <input type="number" name="pesoMaximo" required>
+            <input class="inputCrearVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
-            <button type="submit">Crear</button>
+            <button class="botonCrearVehiculo roboto textoClaro cambioCursor" type="submit">Crear</button>
         </form>
     </div>
 
-<div class="VehiculoAModificar">
+    {{--<div class="VehiculoAModificar">
         <h3>Modificar Vehiculo:</h3>
         <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
