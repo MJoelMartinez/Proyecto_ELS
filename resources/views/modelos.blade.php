@@ -73,23 +73,30 @@
         </form>
     </div>
 
-    {{--<div id="contenedorModificar">
+    <div class="contenedor">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Artículo">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Artículo">
+    </div>
+
+    <div class="ModeloAModificar roboto textoClaro" id="contenedorModificar">
+    <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarModelos" action="api/v2/modelos" method="POST">
             @method('PUT')
             @csrf
+            <br>
             <label>ID Modelo:<label>
-            <input type="number" id="inputIDModeloModificar" name="idModelo" required>
+            <input class="inputModificarModelo textoClaro roboto" type="number" id="inputIDModeloModificar" name="idModelo" required>
             <br><br>
             <label>Nombre:</label>
-            <input type="text" name="nombre" required>
+            <input class="inputModificarModelo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
             <label>Año de creación: </label>
-            <input type="number" name="anio" min="2000" max="9999" required>
+            <input class="inputModificarModelo textoClaro roboto" type="number" name="anio" min="2000" max="9999" required>
             <br><br>
-            <button id="botonFormularioModificarModelos" type="submit">Modificar modelo</button>
+            <button class="botonModificarModelo roboto textoClaro cambioCursor" id="botonFormularioModificarModelos" type="submit">Modificar modelo</button>
         </form>
     </div>
-    <div id="contenedorEliminar">
+    {{--<div id="contenedorEliminar">
         <form id="formularioEliminarModelos" action="api/v2/modelos" method="POST">
             @method('DELETE')
             @csrf

@@ -16,6 +16,17 @@ $("#botonCrearAlmacenes").click(function(){
     $("#formularioCrearModelos").attr("action", "/modelos/crear");
 })
 
+$("#imagenBotonEditar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".ModeloAModificar").show();
+    $("#formularioModificarModelos").attr("action", "api/v2/modelos/" +  valorInput);
+});
+
+$("#cerrarContenedorModificar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".ModeloAModificar").hide();
+});
+
 
 /*const formularioModificarModelos = document.getElementById("formularioModificarModelos");
 const botonFormularioModificarModelos = document.getElementById("botonFormularioModificarModelos");
