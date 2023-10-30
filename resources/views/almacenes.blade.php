@@ -6,14 +6,12 @@
     <meta name="author" content="Script TriByte">
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/clasesGlobales.css">
-    <link rel="stylesheet" href="/css/appBackOffice.css">
     <link rel="stylesheet" href="/css/almacenes.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
     <title>E.L.S - Almacenes</title>
 </head>
 <body>
-    <img id="ajusteBrillo" src="/img/BGNegro.png">
     <header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
@@ -24,7 +22,7 @@
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorAlmacen">
+          <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">

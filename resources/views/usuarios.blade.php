@@ -6,7 +6,6 @@
     <meta name="author" content="Script TriByte">
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/clasesGlobales.css">
-    <link rel="stylesheet" href="/css/appBackOffice.css">
     <link rel="stylesheet" href="/css/usuarios.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
