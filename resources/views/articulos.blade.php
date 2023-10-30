@@ -95,17 +95,19 @@
             <button class="botonModificarArticulo roboto textoClaro cambioCursor" type="submit">Modificar</button>
         </form>
     </div>
-    {{--<div id="contenedorEliminar">
-        <h3>Eliminar Articulo:</h3>
+    
+    <div class="ArticuloAEliminar roboto textoClaro" id="contenedorEliminar">
+    <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarArticulos" action='api/v2/articulos' method='POST'>
             @method('DELETE')
             @csrf
+            <br>
             <label>ID del artículo: </label>
-            <input id="inputIDArticuloEliminar" type="number" name="idArticulo" required>
+            <input class="inputEliminarArticulo textoClaro roboto" id="inputIDArticuloEliminar" type="number" name="idArticulo" required>
             <br><br>
-            <button id="botonFormularioEliminarArticulos" type="submit">Eliminar</button>
+            <button class="botonEliminarArticulo roboto textoClaro cambioCursor" id="botonFormularioEliminarArticulos" type="submit">Eliminar</button>
         </form>
-    </div>--}}
+    </div>
     <script src="../js/articulos.js"></script>
 </body>
 </html>

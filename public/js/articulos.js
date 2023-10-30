@@ -27,6 +27,17 @@ $("#cerrarContenedorModificar").click(function() {
     $(".ArticuloAModificar").hide();
 });
 
+$("#imagenBotonEliminar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".ArticuloAEliminar").show();
+    $("#formularioEliminarArticulos").attr("action", "api/v2/articulos/" +  valorInput);
+});
+
+$("#cerrarContenedorEliminar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".ArticuloAEliminar").hide();
+});
+
 
 /*const formularioModificarArticulos = document.getElementById("formularioModificarArticulos");
 const botonFormularioModificarArticulos = document.getElementById("botonFormularioModificarArticulos");
