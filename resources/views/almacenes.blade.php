@@ -46,7 +46,7 @@
                 <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
                     <label><b>Filtro de Búsqueda:</b></label>
                     <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
-                        <option value="idAlmacen"><b>ID Almacen</b></option>
+                        <option value="idAlmacen"><b>ID Almacén</b></option>
                         <option value="departamento"><b>Departamento</b></option>
                         <option value="direccion"><b>Dirección</b></option>
                     <select>
@@ -66,7 +66,7 @@
             <label>Direccion: </label>
             <input class="inputCrearAlmacen textoClaro roboto" type="text" name="direccion" min="2" max="40" required>
             <br><br>
-            <label>Capacidad (m3): </label>
+            <label>Capacidad (m³): </label>
             <input class="inputCrearAlmacen textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
             <label>Departamento: </label>
@@ -76,25 +76,31 @@
         </form>
     </div>
 
-    {{--
-    <br><br>
-    <div id="contenedorModificar">
-        <h3>Modificar Almacén:</h3>
+    <div class="contenedor">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Almacén">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Almacén">
+    </div>
+
+    <div class="AlmacenAModificar roboto textoClaro" id="contenedorModificar">
+    <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarAlmacenes" action='api/v2/almacenes' method='POST'>
             @method('PUT')
             @csrf
+            <br>
             <label>ID del Almacén: </label>
-            <input id="inputIDAlmacenModificar" type="number" name="idAlmacen" required>
+            <input class="inputModificarAlmacen textoClaro roboto" id="inputIDAlmacenModificar" type="number" name="idAlmacen" required>
             <br><br>
             <label>Direccion: </label>
-            <input type="text" name="direccion" min="2" max="40" required>
+            <input class="inputModificarAlmacen textoClaro roboto" type="text" name="direccion" min="2" max="40" required>
             <br><br>
-            <label>Capacidad (m3): </label>
-            <input type="number" name="capacidad" required>
+            <label>Capacidad (m³): </label>
+            <input class="inputModificarAlmacen textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <button id="botonFormularioModificarAlmacenes" type="submit">Modificar</button>
+            <button class="botonModificarAlmacen roboto textoClaro cambioCursor" id="botonFormularioModificarAlmacenes" type="submit">Modificar</button>
         </form>
     </div>
+
+    {{--
     <br><br>
     <div id="contenedorEliminar">
         <h3>Eliminar Almacén:</h3>

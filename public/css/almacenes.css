@@ -52,9 +52,17 @@ body{
     height: fit-content;
 }
 
-#imagenBotonBuscar{
+#imagenBotonBuscar, 
+#imagenBotonEditar, 
+#imagenBotonEliminar{
     width: 20px;
     height: 20px;
+}
+
+#imagenBotonEditar, 
+#imagenBotonEliminar{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 hr{
@@ -89,7 +97,8 @@ option{
     font-size: 15px;
 }
 
-.contenedorCrearAlmacenes{
+.contenedorCrearAlmacenes,
+.AlmacenAModificar{
     display: none;
     position: absolute;
     top: calc(50% - 100px);
@@ -104,7 +113,8 @@ option{
     font-size: 30px;
 }
 
-#cerrarContenedorCrear{
+#cerrarContenedorCrear,
+#cerrarContenedorModificar{
     width: 30px;
     height: 30px;
     position: absolute;
@@ -112,12 +122,14 @@ option{
     top: 20px;
 }
 
-.inputCrearAlmacen{
+.inputCrearAlmacen,
+.inputModificarAlmacen{
     font-size: 30px;
     width: 140px;
 }
 
-.botonCrearAlmacen{
+.botonCrearAlmacen,
+.botonModificarAlmacen{
     background: none;
     border: solid 2px #fddfb5;
     border-radius: 5px;
@@ -126,8 +138,29 @@ option{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
 }
 
+.contenedor{
+    height: fit-content;
+    width: 420px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    scale: 200%;
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 @media screen and (max-width: 1400px) and (max-height: 768px) {
     .contenedorAlmacenes{
+        position:absolute;
+        left: 400px;
+    }
+
+    .contenedor{
         position:absolute;
         left: 400px;
     }

@@ -16,6 +16,16 @@ $("#botonCrearAlmacenes").click(function(){
     $("#formularioCrearAlmacenes").attr("action", "/almacenes/crear");
 })
 
+$("#imagenBotonEditar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".AlmacenAModificar").show();
+});
+
+$("#cerrarContenedorModificar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".AlmacenAModificar").hide();
+});
+
 /*const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
 const botonFormularioModificarAlmacenes= document.getElementById("botonFormularioModificarAlmacenes");
 
