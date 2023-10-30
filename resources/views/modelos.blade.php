@@ -96,16 +96,19 @@
             <button class="botonModificarModelo roboto textoClaro cambioCursor" id="botonFormularioModificarModelos" type="submit">Modificar modelo</button>
         </form>
     </div>
-    {{--<div id="contenedorEliminar">
+
+<div class="ModeloAEliminar roboto textoClaro" id="contenedorEliminar">
+<img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarModelos" action="api/v2/modelos" method="POST">
             @method('DELETE')
             @csrf
+            <br>
             <label>ID Modelo:<label>
-            <input type="number" id="inputIDModeloEliminar" name="idModelo" required>
+            <input class="inputEliminarModelo textoClaro roboto" type="number" id="inputIDModeloEliminar" name="idModelo" required>
             <br><br>
-            <button id="botonFormularioEliminarModelos" type="submit">Eliminar modelo</button>
+            <button class="botonEliminarModelo roboto textoClaro cambioCursor" id="botonFormularioEliminarModelos" type="submit">Eliminar modelo</button>
         </form>
-    </div>--}}
+    </div>
     <script src="../js/modelos.js"></script>
 </body>
 </html>
