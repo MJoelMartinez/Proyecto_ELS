@@ -26,6 +26,16 @@ $("#cerrarContenedorModificar").click(function() {
     $(".AlmacenAModificar").hide();
 });
 
+$("#imagenBotonEliminar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".AlmacenAEliminar").show();
+});
+
+$("#cerrarContenedorEliminar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".AlmacenAEliminar").hide();
+});
+
 /*const formularioModificarAlmacenes = document.getElementById("formularioModificarAlmacenes");
 const botonFormularioModificarAlmacenes= document.getElementById("botonFormularioModificarAlmacenes");
 

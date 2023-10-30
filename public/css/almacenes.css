@@ -98,7 +98,8 @@ option{
 }
 
 .contenedorCrearAlmacenes,
-.AlmacenAModificar{
+.AlmacenAModificar,
+.AlmacenAEliminar{
     display: none;
     position: absolute;
     top: calc(50% - 100px);
@@ -114,7 +115,8 @@ option{
 }
 
 #cerrarContenedorCrear,
-#cerrarContenedorModificar{
+#cerrarContenedorModificar,
+#cerrarContenedorEliminar{
     width: 30px;
     height: 30px;
     position: absolute;
@@ -123,13 +125,15 @@ option{
 }
 
 .inputCrearAlmacen,
-.inputModificarAlmacen{
+.inputModificarAlmacen,
+.inputEliminarAlmacen{
     font-size: 30px;
     width: 140px;
 }
 
 .botonCrearAlmacen,
-.botonModificarAlmacen{
+.botonModificarAlmacen,
+.botonEliminarAlmacen{
     background: none;
     border: solid 2px #fddfb5;
     border-radius: 5px;

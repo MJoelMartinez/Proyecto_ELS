@@ -63,6 +63,7 @@
     <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
         <form action='api/v2/almacenes' method='POST' id="formularioCrearAlmacenes">
             @csrf
+            <br>
             <label>Direccion: </label>
             <input class="inputCrearAlmacen textoClaro roboto" type="text" name="direccion" min="2" max="40" required>
             <br><br>
@@ -100,19 +101,18 @@
         </form>
     </div>
 
-    {{--
-    <br><br>
-    <div id="contenedorEliminar">
-        <h3>Eliminar Almacén:</h3>
+    <div class="AlmacenAEliminar roboto textoClaro" id="contenedorEliminar">
+    <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarAlmacenes" action='api/v2/almacenes' method='POST'>
             @method('DELETE')
             @csrf
+            <br>
             <label>ID del Almacén: </label>
-            <input id="inputIDAlmacenEliminar" type="number" name="idAlmacen" required>
+            <input class="inputEliminarAlmacen textoClaro roboto" id="inputIDAlmacenEliminar" type="number" name="idAlmacen" required>
             <br><br>
-            <button id="botonFormularioEliminarAlmacenes" type="submit">Eliminar</button>
+            <button class="botonEliminarAlmacen roboto textoClaro cambioCursor" id="botonFormularioEliminarAlmacenes" type="submit">Eliminar</button>
         </form>
-    </div>--}}
+    </div>
     <script src="../js/almacenes.js"></script>
 </body>
 </html>
