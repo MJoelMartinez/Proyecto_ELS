@@ -16,6 +16,17 @@ $("#botonCrearAlmacenes").click(function(){
     $("#formularioCrearVehiculos").attr("action", "/vehiculos/crear");
 });
 
+$("#imagenBotonEditar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".VehiculoAModificar").show();
+    $("#formularioModificarVehiculos").attr("action", "api/v2/vehiculos/" +  valorInput);
+});
+
+$("#cerrarContenedorModificar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".VehiculoAModificar").hide();
+});
+
 
 /*const formularioModificarVehiculos = document.getElementById("formularioModificarVehiculos");
 const botonFormularioModificarVehiculos = document.getElementById("botonFormularioModificarVehiculos");

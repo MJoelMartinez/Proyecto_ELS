@@ -66,38 +66,44 @@
             <label>ID Modelo: </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="number" name="modelo" required>
             <br><br>
-            <label>Matricula: </label>
+            <label>Matrícula: </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="text" name="matricula" required>
             <br><br>
             <label>Capacidad: </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Peso maximo (KG): </label>
+            <label>Peso Máximo (KG): </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
             <button class="botonCrearVehiculo roboto textoClaro cambioCursor" type="submit">Crear</button>
         </form>
     </div>
 
-    {{--<div class="VehiculoAModificar">
-        <h3>Modificar Vehiculo:</h3>
+    <div class="contenedor">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Almacén">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Almacén">
+    </div>
+
+  <div class="VehiculoAModificar roboto textoClaro" id="contenedorModificar">
+  <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
             @csrf
+            <br>
             <label>Matrícula: </label>
-            <input id="inputMatriculaModificar" type="text" name="matricula" required>
+            <input class="inputModificarVehiculo textoClaro roboto" id="inputMatriculaModificar" type="text" name="matricula" required>
             <br><br>
             <label>Capacidad: </label>
-            <input type="number" name="capacidad" required>
+            <input class="inputModificarVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Peso Maximo</label>
-            <input type="number" name="pesoMaximo" required>
+            <label>Peso Máximo</label>
+            <input class="inputModificarVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
-            <button id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
+            <button class="botonModificarVehiculo roboto textoClaro cambioCursor" id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
         </form>
     </div>
     <br><br>
-    <div class="VehiculoEliminar">
+    {{--<div class="VehiculoEliminar">
         <h3>Eliminar Vehiculo:</h3>
         <form id="formularioEliminarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('DELETE')
