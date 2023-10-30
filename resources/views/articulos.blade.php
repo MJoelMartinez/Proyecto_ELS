@@ -59,7 +59,7 @@
 
     <div class="contenedorCrearArticulo roboto textoClaro" id="contenedorCrear">
     <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
-        <form action='api/v2/articulos' method='POST' id="formularioCrearArticulo">
+        <form action='api/v2/articulos' method='POST' id="formularioCrearArticulos">
             @csrf
             <br>
             <label>Nombre: </label>
@@ -75,22 +75,27 @@
         </form>
     </div>
 
-    {{--<div id="contenedorModificar">
-        <h3>Modificar Articulo:</h3>
+    <div class="contenedor">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Artículo">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Artículo">
+    </div>
+
+    <div class="ArticuloAModificar roboto textoClaro" id="contenedorModificar">
+    <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarArticulos" action='api/v2/articulos' method='POST'>
             @method('PUT')
             @csrf
+            <br>
             <label>ID del artículo: </label>
-            <input id="inputIDArticuloModificar" type="number" name="idArticulo" required>
+            <input class="inputModificarArticulo textoClaro roboto" id="inputIDArticuloModificar" type="number" name="idArticulo" required>
             <br><br>
             <label>Nombre: </label>
-            <input type="text" name="nombre" required>
+            <input class="inputModificarArticulo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
-            <button id="botonFormularioModificarArticulos" type="submit">Modificar</button>
+            <button class="botonModificarArticulo roboto textoClaro cambioCursor" type="submit">Modificar</button>
         </form>
     </div>
-    <br><br>
-    <div id="contenedorEliminar">
+    {{--<div id="contenedorEliminar">
         <h3>Eliminar Articulo:</h3>
         <form id="formularioEliminarArticulos" action='api/v2/articulos' method='POST'>
             @method('DELETE')

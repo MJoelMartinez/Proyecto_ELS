@@ -9,12 +9,23 @@ $("#cerrarContenedorCrear").click(function() {
 });
 
 $("#botonBuscar").click(function(){
-    $("#formularioBuscarArticulo").attr("action", "/articulos/buscar");
+    $("#formularioBuscarArticulos").attr("action", "/articulos/buscar");
 })
 
 $("#botonCrearAlmacenes").click(function(){
-    $("#formularioCrearArticulo").attr("action", "/articulos/crear");
+    $("#formularioCrearArticulos").attr("action", "/articulos/crear");
 })
+
+$("#imagenBotonEditar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".ArticuloAModificar").show();
+    $("#formularioModificarArticulos").attr("action", "api/v2/articulos/" +  valorInput);
+});
+
+$("#cerrarContenedorModificar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".ArticuloAModificar").hide();
+});
 
 
 /*const formularioModificarArticulos = document.getElementById("formularioModificarArticulos");
