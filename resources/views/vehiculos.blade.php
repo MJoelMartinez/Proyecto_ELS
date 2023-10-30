@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Script TriByte">
+    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/clasesGlobales.css">
+    <link rel="stylesheet" href="/css/appBackOffice.css">
+    <link rel="stylesheet" href="/css/vehiculos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/iconoPestana.png">
     <title>E.L.S - Vehiculos</title>
 </head>
 <body>
-    <div class="NuevoVehiculo">
-        <h3>Crear Vehiculo:</h3>
-        <form action='api/v2/vehiculos' method='post'>
-            @csrf
-            <label>ID Modelo: </label>
-            <input type="number" name="modelo" required>
-            <br><br>
-            <label>Matricula: </label>
-            <input type="text" name="matricula" required>
-            <br><br>
-            <label>Capacidad: </label>
-            <input type="number" name="capacidad" required>
-            <br><br>
-            <label>Peso maximo (KG): </label>
-            <input type="number" name="pesoMaximo" required>
-            <br><br>
-            <button type="submit">Crear</button>
-        </form>
-    </div>
-    <br><br>
-    <div class="VehiculoAModificar">
+    <img id="ajusteBrillo" src="/img/BGNegro.png">
+    <header class="textoClaro">
+    <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
+    <nav>
+      <ul class="menu">
+        <li class="cambioCursor"><a href="/">HOME</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
+        <li>
+          <div id="contenedorAlmacen">
+            <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
+            <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
+            <ul class="submenu">
+              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+    {{--<div class="VehiculoAModificar">
         <h3>Modificar Vehiculo:</h3>
         <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
@@ -80,7 +91,7 @@
             <br><br>
             <button id="botonRelegarChofer" type="submit">Relegar Chofer</button>
         </form>
-    </div>
+    </div>--}}
     <script src="../js/vehiculos.js"></script>
 </body>
 </html>
