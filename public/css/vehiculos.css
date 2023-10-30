@@ -100,7 +100,8 @@ option{
 }
 
 .contenedorCrearVehiculos,
-.VehiculoAModificar{
+.VehiculoAModificar,
+.VehiculoAEliminar{
     display: none;
     position: absolute;
     top: calc(50% - 100px);
@@ -116,7 +117,8 @@ option{
 }
 
 #cerrarContenedorCrear,
-#cerrarContenedorModificar{
+#cerrarContenedorModificar,
+#cerrarContenedorEliminar{
     width: 30px;
     height: 30px;
     position: absolute;
@@ -125,13 +127,15 @@ option{
 }
 
 .inputCrearVehiculo,
-.inputModificarVehiculo{
+.inputModificarVehiculo,
+.inputEliminarVehiculo{
     font-size: 30px;
     width: 140px;
 }
 
 .botonCrearVehiculo,
-.botonModificarVehiculo{
+.botonModificarVehiculo,
+.botonEliminarVehiculo{
     background: none;
     border: solid 2px #fddfb5;
     border-radius: 5px;

@@ -27,6 +27,16 @@ $("#cerrarContenedorModificar").click(function() {
     $(".VehiculoAModificar").hide();
 });
 
+$("#imagenBotonEliminar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".VehiculoAEliminar").show();
+    $("#formularioEliminarVehiculos").attr("action", "api/v2/almacenes/" + valorInput);
+});
+
+$("#cerrarContenedorEliminar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".VehiculoAEliminar").hide();
+});
 
 /*const formularioModificarVehiculos = document.getElementById("formularioModificarVehiculos");
 const botonFormularioModificarVehiculos = document.getElementById("botonFormularioModificarVehiculos");

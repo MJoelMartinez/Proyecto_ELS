@@ -102,20 +102,20 @@
             <button class="botonModificarVehiculo roboto textoClaro cambioCursor" id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
         </form>
     </div>
-    <br><br>
-    {{--<div class="VehiculoEliminar">
-        <h3>Eliminar Vehiculo:</h3>
+    <div class="VehiculoAEliminar roboto textoClaro" id="contenedorEliminar">
+    <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('DELETE')
             @csrf
+            <br>
             <label>Matrícula: </label>
-            <input id="inputMatriculaEliminar" type="text" name="matricula" required>
+            <input class="inputEliminarVehiculo textoClaro roboto" id="inputMatriculaEliminar" type="text" name="matricula" required>
             <br><br>
-            <button id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
+            <button class="botonEliminarVehiculo roboto textoClaro cambioCursor" id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
         </form>
     </div>
     <br><br>
-    <div id="contenedorAsignarChofer">
+    {{--<div id="contenedorAsignarChofer">
         <h3>Asignar Chofer:</h3>
         <form id="formularioAsignarChofer" action="api/v2/asignarVehiculo" method="POST">
             @method('PUT')
