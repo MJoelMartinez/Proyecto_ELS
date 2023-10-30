@@ -36,24 +36,46 @@
       </ul>
     </nav>
   </header>
-    {{--<div id="contenedorCrear">
-        <h3>Crear Articulo:</h3>
-        <form action='api/v2/articulos' method='POST'>
+  <div class="contenedorArticulos">
+        <div class="opcionesArticulos">
+            <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearArticulo">
+            <label class="textoClaro"><b>|</b></label>
+            <form action="api/v1/articulos/buscar" id="formularioBuscarArticulo" method="post">
+                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Artículo">
+                <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
+                    <label><b>Filtro de Búsqueda:</b></label>
+                    <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
+                        <option value="idArticulo"><b>ID Artículo</b></option>
+                        <option value="idTipo"><b>ID Tipo</b></option>
+                    <select>
+                </div>
+                <button type="submit" id="botonBuscar">
+                    <img class="cambioCursor" id="imagenBotonBuscar" src="/img/iconoLupa.png">
+                </button>
+            </form>
+        </div>
+        <hr>
+    </div>
+
+    <div class="contenedorCrearArticulo roboto textoClaro" id="contenedorCrear">
+    <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
+        <form action='api/v2/articulos' method='POST' id="formularioCrearArticulo">
             @csrf
+            <br>
             <label>Nombre: </label>
-            <input type="text" name="nombre" required>
+            <input class="inputCrearArticulo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
             <label>Año de creación: </label>
-            <input type="number" name="anioCreacion" min="2000" max="9999" required>
+            <input class="inputCrearArticulo textoClaro roboto" type="number" name="anioCreacion" min="2000" max="9999" required>
             <br><br>
             <label>Tipo de Artículo: </label>
-            <input type="text" name="tipo" min="1" max="1" required>
+            <input class="inputCrearArticulo textoClaro roboto" type="text" name="tipo" min="1" max="1" required>
             <br><br>
-            <button type="submit">Crear</button>
+            <button class="botonCrearArticulo roboto textoClaro cambioCursor" type="submit">Crear</button>
         </form>
     </div>
-    <br><br>
-    <div id="contenedorModificar">
+
+    {{--<div id="contenedorModificar">
         <h3>Modificar Articulo:</h3>
         <form id="formularioModificarArticulos" action='api/v2/articulos' method='POST'>
             @method('PUT')

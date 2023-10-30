@@ -1,4 +1,23 @@
-const formularioModificarArticulos = document.getElementById("formularioModificarArticulos");
+$("#crearArticulo").click(function() {
+    $("#ajusteBrillo").show();
+    $("#contenedorCrear").show();
+});
+
+$("#cerrarContenedorCrear").click(function() {
+    $("#ajusteBrillo").hide();
+    $("#contenedorCrear").hide();
+});
+
+$("#botonBuscar").click(function(){
+    $("#formularioBuscarArticulo").attr("action", "/articulos/buscar");
+})
+
+$("#botonCrearAlmacenes").click(function(){
+    $("#formularioCrearArticulo").attr("action", "/articulos/crear");
+})
+
+
+/*const formularioModificarArticulos = document.getElementById("formularioModificarArticulos");
 const botonFormularioModificarArticulos = document.getElementById("botonFormularioModificarArticulos");
 
 const formularioEliminarArticulos = document.getElementById("formularioEliminarArticulos");
@@ -16,4 +35,4 @@ botonFormularioEliminarArticulos.addEventListener("click", function()
     let inputIDArticulo = document.getElementById("inputIDArticuloEliminar");
     let valorInput = inputIDArticulo.value;
     formularioEliminarArticulos.setAttribute("action", "api/v2/articulos/" +  valorInput);
-});
+});*/

@@ -50,7 +50,7 @@
         <a href="/vehiculos" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonListaVehiculos">
             <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Vehículos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoVehiculo.png">
+            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoCamion.png">
           </div>
         </a>
     </div>

@@ -19,6 +19,7 @@ $("#botonCrearAlmacenes").click(function(){
 $("#imagenBotonEditar").click(function() {
     $("#ajusteBrillo").show();
     $(".AlmacenAModificar").show();
+    $("#formularioModificarAlmacenes").attr("action", "api/v2/almacenes/" + valorInput);
 });
 
 $("#cerrarContenedorModificar").click(function() {
@@ -29,6 +30,7 @@ $("#cerrarContenedorModificar").click(function() {
 $("#imagenBotonEliminar").click(function() {
     $("#ajusteBrillo").show();
     $(".AlmacenAEliminar").show();
+    $("#formularioEliminarAlmacenes").attr("action", "api/v2/almacenes/" + valorInput);
 });
 
 $("#cerrarContenedorEliminar").click(function() {
