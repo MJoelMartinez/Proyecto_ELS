@@ -1,4 +1,7 @@
-const formularioModificarVehiculos = document.getElementById("formularioModificarVehiculos");
+
+
+
+/*const formularioModificarVehiculos = document.getElementById("formularioModificarVehiculos");
 const botonFormularioModificarVehiculos = document.getElementById("botonFormularioModificarVehiculos");
 
 const formularioEliminarVehiculos = document.getElementById("formularioEliminarVehiculos");
@@ -37,4 +40,4 @@ botonRelegarChofer.addEventListener("click", function()
     let inputCIRelegar = document.getElementById("inputCIRelegar");
     let valorInput = inputCIRelegar.value;
     formularioRelegarChofer.setAttribute("action", "api/v2/relegarVehiculo/" +  valorInput);
-});
+});*/

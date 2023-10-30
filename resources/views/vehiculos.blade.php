@@ -35,7 +35,50 @@
     </nav>
   </header>
 
-    {{--<div class="VehiculoAModificar">
+  <div class="contenedorVehiculos roboto textoClaro">
+        <div class="opcionesVehiculo">
+            <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearVehiculo">
+            <label class="textoClaro"><b>|</b></label>
+            <form action="api/v1/vehiculos/buscar" id="formularioBuscarVehiculos" method="post">
+                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Vehículo">
+                <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
+                    <label><b>Filtro de Búsqueda:</b></label>
+                    <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
+                        <option value="matricula"><b>Matrícula</b></option>
+                        <option value="capacidad"><b>Capacidad</b></option>
+                        <option value="pesoMaximo"><b>Peso Máximo</b></option>
+                        <option value="modelo"><b>Modelo</b></option>
+                    <select>
+                </div>
+                <button type="submit" id="botonBuscar">
+                    <img class="cambioCursor" id="imagenBotonBuscar" src="/img/iconoLupa.png">
+                </button>
+            </form>
+        </div>
+        <hr>
+    </div>
+    
+    {{--<div class="NuevoVehiculo">
+        <h3>Crear Vehiculo:</h3>
+        <form action='api/v2/vehiculos' method='post'>
+            @csrf
+            <label>ID Modelo: </label>
+            <input type="number" name="modelo" required>
+            <br><br>
+            <label>Matricula: </label>
+            <input type="text" name="matricula" required>
+            <br><br>
+            <label>Capacidad: </label>
+            <input type="number" name="capacidad" required>
+            <br><br>
+            <label>Peso maximo (KG): </label>
+            <input type="number" name="pesoMaximo" required>
+            <br><br>
+            <button type="submit">Crear</button>
+        </form>
+    </div>
+
+<div class="VehiculoAModificar">
         <h3>Modificar Vehiculo:</h3>
         <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
