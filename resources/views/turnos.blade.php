@@ -35,21 +35,27 @@
     </nav>
   </header>
 
-    {{--<div id="contenedorCrear">
-        <h3>Crear Turno:</h3>
-        <form action='api/v2/turnos' method='POST'>
+  <div class="contenedor">
+    <button class="botones roboto textoClaro" id="crearTurno"><img class="botonTurno" src="/img/iconoAgregar.png" title="Crear Turno"></button>
+    <button class="botones roboto textoClaro"><img class="botonTurno" src="/img/iconoEliminar.png" title="Eliminar Turno"></button>
+  </div>
+
+<div class="contenedorCrearTurnos roboto textoClaro" id="contenedorCrear">
+<img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
+        <form action='api/v2/turnos' method='POST' id="formularioCrearTurno">
             @csrf
+            <br>
             <label>Hora de inicio: </label>
-            <input type="time" name="horaInicio" required>
+            <input class="inputCrearTurno textoClaro roboto" type="time" name="horaInicio" required>
             <br><br>
             <label>Hora de finalización: </label>
-            <input type="time" name="horaFinal" required>
+            <input class="inputCrearTurno textoClaro roboto" type="time" name="horaFinal" required>
             <br><br>
-            <button type="submit">Crear</button>
+            <button class="botonCrearTurno roboto textoClaro cambioCursor" type="submit">Crear</button>
         </form>
     </div>
-    <br><br>
-    <div id="contenedorEliminar">
+
+    {{--<div id="contenedorEliminar">
         <h3>Eliminar Turno:</h3>
         <form id="formularioEliminarTurnos" action='api/v2/turnos' method='POST'>
             @method('DELETE')
