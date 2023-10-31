@@ -1,12 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Script TriByte">
+    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/clasesGlobales.css">
+    <link rel="stylesheet" href="/css/turnos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/iconoPestana.png">
     <title>E.L.S - Turnos</title>
 </head>
 <body>
-    <div id="contenedorCrear">
+    <header class="textoClaro">
+    <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
+    <nav>
+      <ul class="menu">
+        <li class="cambioCursor"><a href="/">HOME</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
+        <li>
+          <div id="contenedorUsuario">
+            <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
+            <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
+            <ul class="submenu">
+              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+    {{--<div id="contenedorCrear">
         <h3>Crear Turno:</h3>
         <form action='api/v2/turnos' method='POST'>
             @csrf
@@ -30,7 +59,7 @@
             <br><br>
             <button id="botonFormularioEliminarTurnos" type="submit">Eliminar</button>
         </form>
-    </div>
+    </div>--}}
     <script src="../js/turnos.js"></script>
 </body>
 </html>
