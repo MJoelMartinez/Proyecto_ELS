@@ -12,7 +12,6 @@ body{
     opacity: 70%;
     z-index: 1;
     width: 100%;
-    
 }
 
 .contenedor{
@@ -38,7 +37,8 @@ body{
     height: 50px;
 }
 
-.contenedorCrearTurnos{
+.contenedorCrearTurnos,
+.contenedorEliminarTurnos{
     display: none;
     position: absolute;
     top: calc(50% - 100px);
@@ -53,7 +53,8 @@ body{
     font-size: 30px;
 }
 
-#cerrarContenedorCrear{
+#cerrarContenedorCrear,
+#cerrarContenedorEliminar{
     width: 30px;
     height: 30px;
     position: absolute;
@@ -61,7 +62,8 @@ body{
     top: 20px;
 }
 
-.inputCrearTurno{
+.inputCrearTurno,
+.inputEliminarTurno{
     font-size: 30px;
     width: 140px;
     background: none;
@@ -72,7 +74,8 @@ body{
     cursor: pointer;
 }
 
-.botonCrearTurno{
+.botonCrearTurno,
+.botonEliminarTurno{
     background: none;
     border: solid 2px #fddfb5;
     border-radius: 5px;

@@ -12,7 +12,7 @@ $("#botonBuscar").click(function(){
     $("#formularioBuscarVehiculos").attr("action", "/vehiculos/buscar");
 });
 
-$("#botonCrearAlmacenes").click(function(){
+$("#botonCrearVehiculos").click(function(){
     $("#formularioCrearVehiculos").attr("action", "/vehiculos/crear");
 });
 

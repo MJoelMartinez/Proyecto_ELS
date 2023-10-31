@@ -12,6 +12,7 @@
     <title>E.L.S - Turnos</title>
 </head>
 <body>
+<img id="ajusteBrillo" src="/img/BGNegro.png">
     <header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
@@ -37,7 +38,7 @@
 
   <div class="contenedor">
     <button class="botones roboto textoClaro" id="crearTurno"><img class="botonTurno" src="/img/iconoAgregar.png" title="Crear Turno"></button>
-    <button class="botones roboto textoClaro"><img class="botonTurno" src="/img/iconoEliminar.png" title="Eliminar Turno"></button>
+    <button class="botones roboto textoClaro" id="eliminarTurno"><img class="botonTurno" src="/img/iconoEliminar.png" title="Eliminar Turno"></button>
   </div>
 
 <div class="contenedorCrearTurnos roboto textoClaro" id="contenedorCrear">
@@ -55,17 +56,18 @@
         </form>
     </div>
 
-    {{--<div id="contenedorEliminar">
-        <h3>Eliminar Turno:</h3>
+    <div class="contenedorEliminarTurnos roboto textoClaro" id="contenedorEliminar">
+    <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarTurnos" action='api/v2/turnos' method='POST'>
             @method('DELETE')
             @csrf
+            <br>
             <label>ID Turno: </label>
-            <input id="inputIDTurnoEliminar" type="number" name="idTurno" required>
+            <input class="inputEliminarTurno textoClaro roboto" id="inputIDTurnoEliminar" type="number" name="idTurno" required>
             <br><br>
-            <button id="botonFormularioEliminarTurnos" type="submit">Eliminar</button>
+            <button class="botonEliminarTurno roboto textoClaro cambioCursor" id="botonFormularioEliminarTurnos" type="submit">Eliminar</button>
         </form>
-    </div>--}}
+    </div>
     <script src="../js/turnos.js"></script>
 </body>
 </html>
