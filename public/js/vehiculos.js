@@ -18,24 +18,46 @@ $("#botonCrearAlmacenes").click(function(){
 
 $("#imagenBotonEditar").click(function() {
     $("#ajusteBrillo").show();
-    $(".VehiculoAModificar").show();
+    $(".vehiculoAModificar").show();
     $("#formularioModificarVehiculos").attr("action", "api/v2/vehiculos/" +  valorInput);
 });
 
 $("#cerrarContenedorModificar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".VehiculoAModificar").hide();
+    $(".vehiculoAModificar").hide();
 });
 
 $("#imagenBotonEliminar").click(function() {
     $("#ajusteBrillo").show();
-    $(".VehiculoAEliminar").show();
-    $("#formularioEliminarVehiculos").attr("action", "api/v2/almacenes/" + valorInput);
+    $(".vehiculoAEliminar").show();
+    $("#formularioEliminarVehiculos").attr("action", "api/v2/vehiculos/" +  valorInput);
 });
 
 $("#cerrarContenedorEliminar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".VehiculoAEliminar").hide();
+    $(".vehiculoAEliminar").hide();
+});
+
+$("#imagenBotonAsignar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".asignarChofer").show();
+    $("#formularioAsignarChofer").attr("action", "api/v2/asignarVehiculo/" +  valorInput);
+});
+
+$("#cerrarContenedorAsignar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".asignarChofer").hide();
+});
+
+$("#imagenBotonRelegar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".relegarChofer").show();
+    $("#formularioRelegarChofer").attr("action", "api/v2/relegarVehiculo/" +  valorInput);
+});
+
+$("#cerrarContenedorRelegar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".relegarChofer").hide();
 });
 
 /*const formularioModificarVehiculos = document.getElementById("formularioModificarVehiculos");

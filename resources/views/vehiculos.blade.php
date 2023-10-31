@@ -40,14 +40,15 @@
             <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearVehiculo">
             <label class="textoClaro"><b>|</b></label>
             <form action="api/v1/vehiculos/buscar" id="formularioBuscarVehiculos" method="post">
-                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Vehículo">
+                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Vehículo/Chofer">
                 <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
                     <label><b>Filtro de Búsqueda:</b></label>
                     <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
                         <option value="matricula"><b>Matrícula</b></option>
                         <option value="capacidad"><b>Capacidad</b></option>
-                        <option value="pesoMaximo"><b>Peso Máximo</b></option>
                         <option value="modelo"><b>Modelo</b></option>
+                        <option value="ciChofer"><b>CI Chofer</b></option>
+                        <option value="nombreApellido"><b>Nombre/Apellido</b></option>
                     <select>
                 </div>
                 <button type="submit" id="botonBuscar">
@@ -80,11 +81,13 @@
     </div>
 
     <div class="contenedor">
-    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Almacén">
-    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Almacén">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Vehículo">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Vehículo">
+    <img src="/img/iconoAsignar.png" class="cambioCursor" id="imagenBotonAsignar" title="Asignar Chofer">
+    <img src="/img/iconoNulo.png" class="cambioCursor" id="imagenBotonRelegar" title="Relegar Chofer">
     </div>
 
-  <div class="VehiculoAModificar roboto textoClaro" id="contenedorModificar">
+  <div class="vehiculoAModificar roboto textoClaro" id="contenedorModificar">
   <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
@@ -102,7 +105,7 @@
             <button class="botonModificarVehiculo roboto textoClaro cambioCursor" id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
         </form>
     </div>
-    <div class="VehiculoAEliminar roboto textoClaro" id="contenedorEliminar">
+    <div class="vehiculoAEliminar roboto textoClaro" id="contenedorEliminar">
     <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('DELETE')
@@ -114,32 +117,35 @@
             <button class="botonEliminarVehiculo roboto textoClaro cambioCursor" id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
         </form>
     </div>
-    <br><br>
-    {{--<div id="contenedorAsignarChofer">
-        <h3>Asignar Chofer:</h3>
+    
+    <div class="asignarChofer roboto textoClaro" id="contenedorAsignarChofer">
+    <img class="cambioCursor" id="cerrarContenedorAsignar" src="/img/iconoCerrar.png">
         <form id="formularioAsignarChofer" action="api/v2/asignarVehiculo" method="POST">
             @method('PUT')
             @csrf
+            <br>
             <label>CI del Chofer: </label>
-            <input id="inputCIAsignar" type="number" name="documentoDeIdentidad" required>
+            <input class="inputAsignarChofer textoClaro roboto" id="inputCIAsignar" type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <label>Matricula del Vehiculo: </label>
-            <input type="text" name="matricula" required>
+            <label>Matrícula del Vehículo: </label>
+            <input class="inputAsignarChofer textoClaro roboto" type="text" name="matricula" required>
             <br><br>
-            <button id="botonAsignarChofer" type="submit">Asignar Chofer</button>
+            <button class="botonAsignarChofer roboto textoClaro cambioCursor" id="botonAsignarChofer" type="submit">Asignar Chofer</button>
         </form>
     </div>
-    <div id="contenedorRelegarChofer">
-        <h3>Relegar Chofer:</h3>
+
+<div class="relegarChofer roboto textoClaro" id="contenedorRelegarChofer">
+<img class="cambioCursor" id="cerrarContenedorRelegar" src="/img/iconoCerrar.png">
         <form id="formularioRelegarChofer" action="api/v2/relegarVehiculo" method="POST">
             @method('DELETE')
             @csrf
+            <br>
             <label>CI del Chofer: </label>
-            <input id="inputCIRelegar" type="number" name="documentoDeIdentidad" required>
+            <input class="inputRelegarChofer textoClaro roboto" id="inputCIRelegar" type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <button id="botonRelegarChofer" type="submit">Relegar Chofer</button>
+            <button class="botonRelegarChofer roboto textoClaro cambioCursor" id="botonRelegarChofer" type="submit">Relegar Chofer</button>
         </form>
-    </div>--}}
+    </div>
     <script src="../js/vehiculos.js"></script>
 </body>
 </html>
