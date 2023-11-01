@@ -47,23 +47,23 @@
             <img class="iconoBotonListado" id="iconoListadoPaquetes" src="/img/iconoAlmacenes.png">
           </div>
         </a>
-        <a href="/vehiculos" class="botonListado">
+        <a href="/listadoVehiculo" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonListaVehiculos">
             <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Vehículos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoCamion.png">
+            <img class="iconoBotonListado" id="iconoListadoVehiculo" src="/img/iconoCamion.png">
           </div>
         </a>
         <a href="/articulos" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonListaArticulos">
             <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Articulos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoArticulo.png">
+            <img class="iconoBotonListado" id="iconoListadoArticulos" src="/img/iconoArticulo.png">
           </div>
         </a>
 
         <a href="/turnos" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonListaTurnos">
             <label class="cambioCursor" id="labelAOrdenar"><b>Turnos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoTurno.png">
+            <img class="iconoBotonListado" id="iconoListadoTurnos" src="/img/iconoTurno.png">
           </div>
         </a>
     </div>
