@@ -53,6 +53,19 @@
             <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoCamion.png">
           </div>
         </a>
+        <a href="/articulos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonListaArticulos">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Articulos</b></label>
+            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoArticulo.png">
+          </div>
+        </a>
+
+        <a href="/turnos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonListaTurnos">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Turnos</b></label>
+            <img class="iconoBotonListado" id="iconoListadoLotes" src="/img/iconoTurno.png">
+          </div>
+        </a>
     </div>
     <footer class="footerBackOffice textoClaro absoluto">
       <div id="contenedorUbicacionBackOffice">
