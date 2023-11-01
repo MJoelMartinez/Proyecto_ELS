@@ -6,7 +6,7 @@
     <meta name="author" content="Script TriByte">
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/clasesGlobales.css">
-    <link rel="stylesheet" href="/css/appBackOffice.css">
+    <link rel="stylesheet" href="/css/listadoArticulo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
     <title>E.L.S - Backoffice</title>
@@ -35,35 +35,16 @@
     </nav>
   </header>
   <div class="contenedorAccesoAListas">
-        <a href="/usuarios" class="botonListado">
-          <div class="cambioCursor textoClaro" id="botonListaUsuarios">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Usuarios</b></label>
-            <img class="iconoBotonListado" id="iconoListadoUsuarios" src="/img/iconoUsuarios.png">
+        <a href="/articulos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonArticulo">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Artículo</b></label>
+            <img class="iconoBotonListado" id="iconoArticulos" src="/img/iconoArticulos.png">
           </div>
         </a>
-        <a href="/almacenes" class="botonListado">
-          <div class="cambioCursor textoClaro" id="botonListaAlmacenes">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Almacenes</b></label>
-            <img class="iconoBotonListado" id="iconoListadoPaquetes" src="/img/iconoAlmacenes.png">
-          </div>
-        </a>
-        <a href="/listadoVehiculo" class="botonListado">
-          <div class="cambioCursor textoClaro" id="botonListaVehiculos">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Vehículos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoVehiculo" src="/img/iconoCamion.png">
-          </div>
-        </a>
-        <a href="/listadoArticulo" class="botonListado">
-          <div class="cambioCursor textoClaro" id="botonListaArticulos">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Lista de Artículo</b></label>
-            <img class="iconoBotonListado" id="iconoListadoArticulos" src="/img/iconoArticulo.png">
-          </div>
-        </a>
-
-        <a href="/turnos" class="botonListado">
-          <div class="cambioCursor textoClaro" id="botonListaTurnos">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Turnos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoTurnos" src="/img/iconoTurno.png">
+        <a href="/tipoArticulo" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonTipoArticulo">
+            <label class="cambioCursor" id="labelAOrdenar"><b>Tipo Artículo</b></label>
+            <img class="iconoBotonListado" id="iconoTipoArticulo" src="/img/iconoTipoArticulo.png">
           </div>
         </a>
     </div>
@@ -73,6 +54,6 @@
         BackOffice
       </div>
     </footer>
-    <script src="/js/aplicacionBackOffice.js"></script>
+    <script src="/js/listadoArticulo.js"></script>
 </body>
 </html>
