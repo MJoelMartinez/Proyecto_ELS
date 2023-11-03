@@ -2,42 +2,42 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\AlmacenController;
-use App\Http\Controllers\PaqueteController;
-use App\Http\Controllers\LoteController;
-
 Route::get('/', function () 
-{
-    return view('homepage');
-});
-
-Route::get('/Backoffice', function () 
 {
     return view('backoffice');
 });
 
-Route::get('/Backoffice/Usuarios', function () 
+Route::get('/usuarios', function () 
 {
     return view('usuarios');
 });
 
-Route::get('/Backoffice/Almacenes', function () 
+Route::get('/vehiculos', function () 
+{
+    return view('vehiculos');
+});
+
+Route::get('/modelos', function () 
+{
+    return view('modelos');
+});
+
+Route::get('/almacenes', function () 
 {
     return view('almacenes');
 });
 
-Route::get('/AppAlmacenes', function () 
+Route::get('/articulos', function () 
 {
-    return view('appalmacenes');
+    return view('articulos');
 });
 
-Route::get('/AppAlmacenes/Paquetes', function () 
+Route::get('/turnos', function () 
 {
-    return view('paquetes');
+    return view('turnos');
 });
 
-Route::get('/AppAlmacenes/Lotes', function () 
+Route::get('/tipoArticulo', function () 
 {
-    return view('lotes');
+    return view('tipoArticulo');
 });

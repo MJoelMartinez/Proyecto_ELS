@@ -6,27 +6,57 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
+use App\Models\User;
 use App\Models\Usuario;
+use App\Models\UserUsuario;
 use App\Models\Administrador;
 use App\Models\Gerente;
 use App\Models\Cargador;
 use App\Models\Chofer;
-
-use Lcobucci\JWT\Parser;
+use App\Models\Licencia;
 
 class UsuarioController extends Controller
 {
+    public function bloquearTablasASoloEscritura(){
+        DB::raw('LOCK TABLE usuarios WRITE');
+        DB::raw('LOCK TABLE users WRITE');
+        DB::raw('LOCK TABLE user_usuario WRITE');
+        DB::raw('LOCK TABLE administradores WRITE');
+        DB::raw('LOCK TABLE choferes WRITE');
+        DB::raw('LOCK TABLE gerentes WRITE');
+        DB::raw('LOCK TABLE cargadores WRITE');
+        DB::raw('LOCK TABLE licencias WRITE');
+    }
 
+    public function CrearRelacionUserUsuario($request, $idAutomatico)
+    {
+        UserUsuario::create([
+            "id" => $idAutomatico,
+            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+        ]);
+    }
+    
+    public function CrearUser($request)
+    {
+        $modeloTablaUser = User::create([
+            "email" => $request->input("email"),
+            "password" => Hash::make($request->input("contrasenia"))
+        ]);
+
+        $idAutomatico = $modeloTablaUser->id;
+
+        $this->CrearRelacionUserUsuario($request, $idAutomatico);
+    }
+    
     public function CrearUsuario($request)
     {
         Usuario::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "contrasenia" => Hash::make($request->input("contrasenia")),
             "nombre" => $request->input("nombre"),
             "apellido" => $request->input("apellido"),
             "telefono" => $request->input("telefono"),
-            "email" => $request->input("email"),
             "direccion" => $request->input("direccion")
         ]);
     }
@@ -57,7 +87,7 @@ class UsuarioController extends Controller
     {
         Administrador::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroAdmin" => $request->input("numeroDeRol")
+            "backoffice" => 1
         ]);
     }
 
@@ -65,7 +95,8 @@ class UsuarioController extends Controller
     {
         Gerente::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroGerente" => $request->input("numeroDeRol")
+            "idAlmacen" => $request->input("idAlmacen"),
+            "idTurno" => $request->input("idTurno")
         ]);
     }
 
@@ -73,61 +104,152 @@ class UsuarioController extends Controller
     {
         Cargador::create([
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroCargador" => $request->input("numeroDeRol"),
-            "carnetTransporte" => $request->input("carnetTransporte")
+            "carnetTransporte" => $request->input("carnetTransporte"),
+            "idAlmacen" => 0,
+            "idTurno" => $request->input("idTurno")
         ]);
     }
 
     public function CrearChofer($request)
     {
         Chofer::create([
+            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+        ]);
+        $this->CrearLicencia($request);
+    }
+
+    public function CrearLicencia($request)
+    {
+        $fechaDesde = $request->input("anioDesde") . "-" . $request->input("mesDesde") . "-" . $request->input("diaDesde");
+        $fechaHasta = $request->input("anioHasta") . "-" . $request->input("mesHasta") . "-" . $request->input("diaHasta");
+
+        Licencia::create([
+            "idLicencia" => $request->input("idLicencia"),
+            "validoDesde" => $fechaDesde,
+            "validoHasta" => $fechaHasta,
             "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "numeroChofer" => $request->input("numeroDeRol") 
+            "categoria" => 'H'
         ]);
     }
 
     public function Crear($request)
     {
+        $this -> bloquearTablasASoloEscritura();
+        DB::beginTransaction();
+
         $this->CrearUsuario($request);
+        $this->CrearUser($request);
+
         if ($this->IdentificarRol($request) != null)
             $this->CrearRol($this->IdentificarRol($request), $request);
 
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
+
         return [ "mensaje" => "Usuario creado correctamente."];
     }
-
-    public function Listar()
+    
+    public function ValidarRegistro(Request $request)
     {
-        if (count(Usuario::all()) == 0)
-            return [ "mensaje" => "No hay Usuarios en el sistema." ];
+        $mensajesDeError = [];
 
-        return Usuario::all();
+        $validation = Validator::make($request->all(),[
+            'documentoDeIdentidad' => 'required|numeric|digits:8',
+            'contrasenia' => 'required|min:8|max:16|confirmed',
+            'nombre' => 'required|min:1|max:255',
+            'apellido' => 'required|min:2|max:255',
+            'telefono' => 'required|numeric|digits_between:7,9',
+            'email' => 'required|email',
+            'direccion' => 'required|min:4|max:40'
+        ]);
+
+        if ($this->IdentificarRol($request) === "chofer")
+        {
+            $validationLicencia = Validator::make($request->all(),[
+                'idLicencia' => 'required|min:8|max:8',
+                'diaDesde' => 'required|numeric|min:1|max:31',
+                'mesDesde' => 'required|numeric|min:1|max:12',
+                'anioDesde' => 'required|numeric|min:1960|max:2007',
+                'diaHasta' => 'required|numeric|min:1|max:31',
+                'mesHasta' => 'required|numeric|min:1|max:12',
+                'anioHasta' => 'required|numeric|min:2024|max:9999',
+            ]);
+
+            $validationLicencia->after(function ($validationLicencia) use ($request) {
+                $diaDesde = $request->input('diaDesde');
+                $mesDesde = $request->input('mesDesde');
+                $anioDesde = $request->input('anioDesde');
+                $diaHasta = $request->input('diaHasta');
+                $mesHasta = $request->input('mesHasta');
+                $anioHasta = $request->input('anioHasta');
+            
+                if (!checkdate($mesDesde, $diaDesde, $anioDesde) || !checkdate($mesHasta, $diaHasta, $anioHasta)) {
+                    $validationLicencia->errors()->add('erroresDeFecha', 'La fecha proporcionada es innexistente.');
+                }
+            });
+
+            if($validationLicencia->fails()){
+                $mensajesDeError['erroresDeLicencia'] = $validationLicencia->errors();
+            }
+        }
+
+        if($validation->fails() || count($mensajesDeError) != 0){
+            $mensajesDeError['erroresDeUsuario'] = $validation->errors();
+
+            return response($mensajesDeError, 401);
+        }   
+
+        return $this->Crear($request);      
+    }
+
+    public function Modificar(Request $request, $documentoDeIdentidad)
+    {
+        $validation = Validator::make($request->all(),[
+            'nombre' => 'required|min:1|max:255',
+            'telefono' => 'required|numeric|digits_between:7,9',
+            'direccion' => 'required|min:4|max:40'
+        ]);
+
+        if($validation->fails())
+            return response($validation->errors(), 401);
+
+        $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
+
+        $usuario = Usuario::findOrFail($documentoDeIdentidad);
+    
+        $usuario->nombre = $request->input("nombre");
+        $usuario->telefono = $request->input("telefono");
+        $usuario->direccion = $request->input("direccion");
+        $usuario->save();
+
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
+        
+        return ["mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
     }
 
     public function IdentificarRolAEliminar($documentoDeIdentidad)
     {
-        $rol = Administrador::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
+        $rol = Administrador::find($documentoDeIdentidad);
 
-        if (count($valoresRol) != 0)
+        if ($rol != null)
             return "administrador";
-        
-        $rol = Gerente::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
-    
-        if (count($valoresRol) != 0)
+
+        $rol = Gerente::find($documentoDeIdentidad);
+
+        if ($rol != null)
             return "gerente";
 
-        $rol = Chofer::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
-        
-        if (count($valoresRol) != 0)
+        $rol = Chofer::find($documentoDeIdentidad);
+
+        if ($rol != null)
             return "chofer";
-        
-        $rol = Cargador::where('docDeIdentidad', $documentoDeIdentidad);
-        $valoresRol = $rol->get();
-        
-        if (count($valoresRol) != 0)
-             return "cargador";
+
+        $rol = Cargador::find($documentoDeIdentidad);
+
+        if ($rol != null)
+            return "cargador";
 
         return "UsuarioComun";
     }
@@ -145,55 +267,79 @@ class UsuarioController extends Controller
         
         if ($rol === "chofer")
             Chofer::findOrFail($documentoDeIdentidad)->delete();
+            Licencia::where("docDeIdentidad", $documentoDeIdentidad)->delete();
+    }
+
+    public function EliminarTablas($usuario, $relacionUserUsuario, $user)
+    {
+        $relacionUserUsuario->delete();
+        $usuario->delete();
+        $user->delete();
     }
 
     public function Eliminar(Request $request, $documentoDeIdentidad)
     {
+        $validation = Validator::make(['documentoDeIdentidad' => $documentoDeIdentidad],[
+            'documentoDeIdentidad' => 'required|digits:8|numeric'
+        ]);
+
+        if($validation->fails())
+            return response($validation->errors(), 401);
+
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
-        $usuario->delete();
+        $relacionUserUsuario = UserUsuario::where('docDeIdentidad', $documentoDeIdentidad)->first();
+        $user = User::where('id', $relacionUserUsuario->id)->first();
+
+        $this->bloquearTablasASoloEscritura();
+        DB::beginTransaction();
+
+        $this->EliminarTablas($usuario, $relacionUserUsuario, $user);
 
         $rolDelUsuario = $this->IdentificarRolAEliminar($documentoDeIdentidad);
         if ($rolDelUsuario != "UsuarioComun")
             $this->EliminarRol($rolDelUsuario, $documentoDeIdentidad);
 
+        DB::commit();
+        DB::raw('UNLOCK TABLES');
+
         return [ "mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido eliminado."];     
     }
 
-    public function Modificar(Request $request, $documentoDeIdentidad)
+    public function ListarSoloUsuariosExistentes()
     {
-        $usuario = Usuario::findOrFail($documentoDeIdentidad);
-    
-        $usuario->nombre = $request->input("nombre");
-        $usuario->telefono = $request->input("telefono");
-        $usuario->direccion = $request->input("direccion");
-        $usuario->save();
-        
-        return ["mensaje" => "El Usuario con la cedula $documentoDeIdentidad ha sido modificado."];
+        if (count(Usuario::all()) == 0)
+            return [ "mensaje" => "No hay Usuarios actualmente en el sistema." ];
+
+        return Usuario::all();
     }
 
-    public function ValidarRegistro(Request $request)
+    public function ListarSoloUsuariosEliminados()
     {
-        if(
-            $request->input("documentoDeIdentidad") == null
-            || $request->input("email") == null
-            || $request->input("contrasenia") == null
-        )
-            return abort(403);
+        if (count(Usuario::onlyTrashed()->get()) == 0)
+            return [ "mensaje" => "No se han eliminado Usuarios en este sistema." ];
 
-        $validation = Validator::make($request->all(),[
-            'documentoDeIdentidad' => 'required|min:8|max:8',
-            'contrasenia' => 'required|min:8|max:16|confirmed',
-            'nombre' => 'required|max:255',
-            'apellido' => 'required|max:255',
-            'telefono' => 'required|min:7|max:9',
-            'email' => 'required|email|unique:usuarios',
-            'direccion' => 'required|max:40'
-        ]);
+        return Usuario::onlyTrashed()->get();
+    }
 
-        if($validation->fails())
-            return $validation->errors();
+    public function ListarTodosLosUsuarios()
+    {
+        if (count(Usuario::withTrashed()->get()) == 0)
+            return [ "mensaje" => "No hay registro de Usuarios en el sistema." ];
 
-        return $this->Crear($request);
-        
+        return Usuario::withTrashed()->get();
+    }
+
+    public function Buscar(Request $request)
+    {
+        $filtroDeBusqueda = $request->input('filtroDeLista');
+
+        if ($filtroDeBusqueda === "usuariosExistentes")
+            return $this->ListarSoloUsuariosExistentes();
+
+        if ($filtroDeBusqueda === "usuariosEliminados")
+            return $this->ListarSoloUsuariosEliminados();
+
+        if ($filtroDeBusqueda === "todosLosUsuarios")
+            return $this->ListarTodosLosUsuarios();
     }
 }

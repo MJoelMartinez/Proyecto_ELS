@@ -9,13 +9,14 @@ use App\Models\Usuario;
 
 class Administrador extends Usuario
 {
-    use SoftDeletes;
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    protected $table = 'Administradores';
+    protected $table = 'administradores';
+
+    protected $primaryKey = 'docDeIdentidad';
 
     protected $fillable = [
         'docDeIdentidad',
-        'numeroAdmin'
+        'backoffice'
     ];
 }

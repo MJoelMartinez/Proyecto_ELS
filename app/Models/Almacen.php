@@ -8,16 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Almacen extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
+    use HasFactory, softDeletes;
 
     protected $primaryKey = 'idAlmacen';
 
-    protected $table = 'Almacenes';
-
+    protected $table = 'almacenes';
+    
     protected $fillable = [
-        'idAlmacen',
         'capacidad',
-        'direccion'
+        'direccion',
+        'idDepartamento'
     ];
 }

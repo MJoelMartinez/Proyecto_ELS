@@ -10,13 +10,18 @@ use App\Models\Usuario;
 
 class Chofer extends Usuario
 {
-    use SoftDeletes;
-    use HasFactory;
+    use HasFactory, softDeletes;
 
-    protected $table = 'Choferes';
+    public function vehiculo()
+    {
+        return $this->hasOne(Vehiculo::class);
+    }
+
+    protected $primaryKey = 'docDeIdentidad';
+
+    protected $table = 'choferes';
 
     protected $fillable = [
-        'docDeIdentidad',
-        'numeroChofer'
+        'docDeIdentidad'
     ];
 }
