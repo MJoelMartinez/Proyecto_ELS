@@ -13,28 +13,28 @@
 </head>
 <body>
 <img id="ajusteBrillo" src="/img/BGNegro.png">
-    <header class="textoClaro">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-      <ul class="menu">
+    <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+        <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-          </div>
+        </div>
         </li>
-      </ul>
+    </ul>
     </nav>
-  </header>
+</header>
 
   <div class="contenedor">
     <button class="botones roboto textoClaro" id="crearTurno"><img class="botonTurno" src="/img/iconoAgregar.png" title="Crear Turno"></button>
@@ -46,13 +46,13 @@
         <form action='api/v2/turnos' method='POST' id="formularioCrearTurno">
             @csrf
             <br>
-            <label>Hora de inicio: </label>
+            <label id="horaInicio">Hora de inicio: </label>
             <input class="inputCrearTurno textoClaro roboto" type="time" name="horaInicio" required>
             <br><br>
-            <label>Hora de finalización: </label>
+            <label id="horaFinal">Hora de finalización: </label>
             <input class="inputCrearTurno textoClaro roboto" type="time" name="horaFinal" required>
             <br><br>
-            <button class="botonCrearTurno roboto textoClaro cambioCursor" type="submit">Crear</button>
+            <button class="botonCrearTurno roboto textoClaro cambioCursor" type="submit" id="crear">Crear</button>
         </form>
     </div>
 
@@ -62,12 +62,13 @@
             @method('DELETE')
             @csrf
             <br>
-            <label>ID Turno: </label>
+            <label id="idTurno">ID Turno: </label>
             <input class="inputEliminarTurno textoClaro roboto" id="inputIDTurnoEliminar" type="number" name="idTurno" required>
             <br><br>
             <button class="botonEliminarTurno roboto textoClaro cambioCursor" id="botonFormularioEliminarTurnos" type="submit">Eliminar</button>
         </form>
     </div>
-    <script src="../js/turnos.js"></script>
+    <script type="module" src="../js/turnos.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>

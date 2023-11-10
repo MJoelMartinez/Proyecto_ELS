@@ -181,5 +181,15 @@
     "3": "registrar",
     "4": "tipo",
     "5": "crear"
+},
+{
+    "0": "acercaDe",
+    "1": "contacto",
+    "2": "cerrarSesion",
+    "3": "horaInicio",
+    "4": "horaFinal",
+    "5": "crear",
+    "6": "idTurno",
+    "7": "botonFormularioEliminarTurnos"
 }
 ]

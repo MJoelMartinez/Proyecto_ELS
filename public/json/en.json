@@ -189,4 +189,14 @@
   "3": "Register Article Type:",
   "4": "Type: ",
   "5": "Create"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Starting time: ",
+  "4": "Ending Time: ",
+  "5": "Create",
+  "6": "Shift ID: ",
+  "7": "Delete"
 }]
