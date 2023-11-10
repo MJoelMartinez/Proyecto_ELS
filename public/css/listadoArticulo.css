@@ -66,7 +66,12 @@
     gap: 5px;
 }
 
-#labelAOrdenar{
+#listaArticulo,
+#listaTipoArticulo{
     position: absolute;
     left: 20px;
+}
+
+label{
+    font-weight: bold;
 }

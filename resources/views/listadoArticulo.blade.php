@@ -12,13 +12,13 @@
     <title>E.L.S - Backoffice</title>
 </head>
 <body>
-    <header class="textoClaro">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
       <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
@@ -27,7 +27,7 @@
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
               <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
           </div>
         </li>
@@ -37,13 +37,13 @@
   <div class="contenedorAccesoAListas">
         <a href="/articulos" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonArticulo">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Artículo</b></label>
+            <label class="cambioCursor" id="listaArticulo"><b>Artículo</b></label>
             <img class="iconoBotonListado" id="iconoArticulos" src="/img/iconoArticulos.png">
           </div>
         </a>
         <a href="/tipoArticulo" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonTipoArticulo">
-            <label class="cambioCursor" id="labelAOrdenar"><b>Tipo Artículo</b></label>
+            <label class="cambioCursor" id="listaTipoArticulo"><b>Tipo Artículo</b></label>
             <img class="iconoBotonListado" id="iconoTipoArticulo" src="/img/iconoTipoArticulo.png">
           </div>
         </a>
@@ -54,6 +54,7 @@
         BackOffice
       </div>
     </footer>
-    <script src="/js/listadoArticulo.js"></script>
+    <script type="module" src="/js/listadoArticulo.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>

@@ -140,5 +140,12 @@
     "13": "modificar",
     "14": "artID",
     "15": "botonFormularioEliminarArticulos"
+},
+{
+    "0": "acercaDe",
+    "1": "contacto",
+    "2": "cerrarSesion",
+    "3": "listaArticulo",
+    "4": "listaTipoArticulo"
 }
 ]
