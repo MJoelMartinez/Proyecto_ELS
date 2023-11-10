@@ -13,13 +13,13 @@
 </head>
 <body>
 <img id="ajusteBrillo" src="/img/BGNegro.png">
-    <header class="textoClaro">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
       <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
@@ -28,7 +28,7 @@
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
               <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
           </div>
         </li>
@@ -43,11 +43,11 @@
             <form action="api/v1/almacenes/buscar" id="formularioBuscarAlmacenes" method="post">
                 <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Almacén">
                 <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
-                    <label><b>Filtro de Búsqueda:</b></label>
+                    <label id="filtroBusqueda"><b>Filtro de Búsqueda:</b></label>
                     <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
-                        <option value="idAlmacen"><b>ID Almacén</b></option>
-                        <option value="departamento"><b>Departamento</b></option>
-                        <option value="direccion"><b>Dirección</b></option>
+                        <option id="idAlmacen" value="idAlmacen"><b>ID Almacén</b></option>
+                        <option id="departamento" value="departamento"><b>Departamento</b></option>
+                        <option id="direccion" value="direccion"><b>Dirección</b></option>
                     <select>
                 </div>
                 <button type="submit" id="botonBuscar">

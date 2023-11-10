@@ -1,0 +1,113 @@
+[{
+  "0": "List of Articles",
+  "1": "List of Packages",
+  "2": "List of Lots",
+  "3": "ABOUT",
+  "4": "CONTACT",
+  "5": "LOG OUT"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Search Lot",
+  "4": "Search Filter: ",
+  "5": "Identifier Code",
+  "6": "Package Code",
+  "7": "Article Type",
+  "8": "Lot ID: ",
+  "9": "Number of Packages: ",
+  "10": "Destination: ",
+  "11": "Store: ",
+  "12": "Embalm Lot",
+  "13": "Delete Assembly"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Search Package",
+  "4": "Search Filter: ",
+  "5": "Identifier Code",
+  "6": "Package Code",
+  "7": "Article Type",
+  "8": "Article ID: ",
+  "9": "Quantity of Items: ",
+  "10": "Embal Package",
+  "11": "Cancel Arming"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Search Truck",
+  "4": "Search Filter: ",
+  "5": "Warehouse ID",
+  "6": "Truck ID",
+  "7": "CONFIRM"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "TO ACCESS",
+  "4": "Warehouse App",
+  "5": "Truck App",
+  "6": "Tracking App",
+  "7": "Administration BackOffice",
+  "8": "WAREHOUSE MANAGEMENT APP",
+  "9": "TRUCK MANAGEMENT APP",
+  "10": "TRACKING APP",
+  "11": "ADMINISTRATION BACKOFFICE",
+  "12": "Manage the items in your warehouse, as well as the packages and lots to work with.",
+  "13": "Observe the contents of your vehicle, as well as your pending deliveries and destinations to be loaded.",
+  "14": "Observe the list of packages with set destinations, with their respective assigned information.",
+  "15": "Manage the System Users, as well as all the Warehouses and Vehicles in disposal."
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "NAME",
+  "4": "*",
+  "5": "PHONE:",
+  "6": "EMAIL ",
+  "7": "*",
+  "8": "MESSAGE ",
+  "9": "*",
+  "10": "SEND"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "Email:",
+  "3": "Password:",
+  "4": "Enter your details to",
+  "5": "confirm your identity.",
+  "6": "Log In"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "The company QUICK CARRY is dedicated to the transport of parcels in national distribution with a presence in the vicinity of the main cities and population centers in most of the departments of Uruguay.",
+  "4": "An important client for QUICK CARRY is CRECOM, a distribution company for Flash Selling in e-Commerce. CRECOM has the central platform in an industrial area near Montevideo.",
+  "5": "“Script TriByte” is a company mainly focused on the development of software in Uruguay for all audiences. With the aim of creating programs that facilitate the means of work of our clients.",
+  "6": "As far as our name is concerned, the word “Script” suggests a relationship with software and programming, while “TriByte” is referring to the storage of data in byte format.",
+  "7": "It is also related to the idea of three people, these being the founders of the company, working as a team to achieve the company's objectives, this in order to transmit the values of teamwork and commitment to collective success."
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "User List",
+  "4": "Warehouse List",
+  "5": "Vehicle List",
+  "6": "Article List",
+  "7": "Turnos"
+}]

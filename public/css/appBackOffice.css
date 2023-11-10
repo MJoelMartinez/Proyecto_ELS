@@ -65,7 +65,11 @@
     gap: 5px;
   }
 
-  #labelAOrdenar{
+  #listaUsuarios, 
+  #listaAlmacenes,
+  #listaVehiculos,
+  #listaArticulos,
+  #turnos{
     position: absolute;
     left: 20px;
   }
