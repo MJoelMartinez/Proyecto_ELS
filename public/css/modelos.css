@@ -160,6 +160,10 @@ option{
     align-items: flex-end;
 }
 
+label{
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1400px) and (max-height: 768px) {
     .contenedorModelos{
         position:absolute;

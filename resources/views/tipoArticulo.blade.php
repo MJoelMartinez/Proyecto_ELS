@@ -12,38 +12,40 @@
     <title>E.L.S - Tipo de Articulo</title>
 </head>
 <body>
-    <header class="textoClaro">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-      <ul class="menu">
+    <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+        <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-          </div>
+        </div>
         </li>
-      </ul>
+    </ul>
     </nav>
-  </header>
+</header>
 
     <div class="contenedorTipoArticulo" id="contenedorCrear">
-        <h3>Registrar Tipo de Articulo:</h3>
+        <h3 id="registrar">Registrar Tipo de Articulo:</h3>
         <form action='api/v2/tipoArticulo' method='POST'>
             @csrf
-            <label>Tipo: </label>
+            <label id="tipo">Tipo: </label>
             <input type="text" name="tipo" min="1" max="1" required>
             <br><br>
-            <button type="submit">Crear</button>
+            <button type="submit" id="crear">Crear</button>
         </form>
     </div>
+    <script type="module" src="../js/tipoArticulo.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>
