@@ -130,4 +130,22 @@
   "15": "Modify",
   "16": "Warehouse ID: ",
   "17": "Eliminate"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Search Article",
+  "4": "Search Filter:",
+  "5": "Article ID",
+  "6": "ID Type",
+  "7": "Name: ",
+  "8": "Year of creation: ",
+  "9": "Article Type: ",
+  "10": "Create",
+  "11": "Article ID:",
+  "12": "Name: ",
+  "13": "Modify",
+  "14": "Article ID:",
+  "15": "Eliminate"
 }]

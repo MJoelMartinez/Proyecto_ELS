@@ -16,25 +16,25 @@
 <header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-      <ul class="menu">
+    <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
         <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
         <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+        <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
                 <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-          </div>
+        </div>
         </li>
-      </ul>
+    </ul>
     </nav>
-  </header>
+</header>
 
 <div class="contenedorAlmacenes roboto textoClaro">
         <div class="opcionesAlmacen">

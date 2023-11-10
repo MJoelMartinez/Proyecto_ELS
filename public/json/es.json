@@ -130,4 +130,22 @@
     "15": "Modificar",
     "16": "ID del Almacén: ",
     "17": "Eliminar"
+},
+{
+    "0": "ACERCA DE",
+    "1": "CONTACTO",
+    "2": "CERRAR SESIÓN",
+    "3": "Buscar Artículo",
+    "4": "Filtro de Búsqueda:",
+    "5": "ID Artículo",
+    "6": "ID Tipo",
+    "7": "Nombre: ",
+    "8": "Año de creación: ",
+    "9": "Tipo de Artículo: ",
+    "10": "Crear",
+    "11": "ID del artículo: ",
+    "12": "Nombre: ",
+    "13": "Modificar",
+    "14": "ID del artículo: ",
+    "15": "Eliminar"
 }]

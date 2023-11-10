@@ -122,5 +122,23 @@
     "15": "botonFormularioModificarAlmacenes",
     "16": "almaID",
     "17": "botonFormularioEliminarAlmacenes"
+},
+{
+    "0": "acercaDe",
+    "1": "contacto",
+    "2": "cerrarSesion",
+    "3": "barraDeBusqueda",
+    "4": "filtroBusqueda",
+    "5": "idAlmacen",
+    "6": "idTipo",
+    "7": "nombre",
+    "8": "anioCreacion",
+    "9": "tipoArticulo",
+    "10": "crearArticulo",
+    "11": "articuloID",
+    "12": "nom",
+    "13": "modificar",
+    "14": "artID",
+    "15": "botonFormularioEliminarArticulos"
 }
 ]

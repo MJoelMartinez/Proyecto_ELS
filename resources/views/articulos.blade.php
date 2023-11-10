@@ -12,28 +12,30 @@
     <title>E.L.S - Artículos</title>
 </head>
 <body>
-    <header class="textoClaro">
+<img id="ajusteBrillo" src="/img/BGNegro.png">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-      <ul class="menu">
+    <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+        <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-          </div>
+        </div>
         </li>
-      </ul>
+    </ul>
     </nav>
-  </header>
+</header>
+
 <div class="contenedorArticulos">
         <div class="opcionesArticulos">
             <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearArticulo">
@@ -41,10 +43,10 @@
             <form action="api/v1/articulos/buscar" id="formularioBuscarArticulo" method="post">
                 <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Artículo">
                 <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
-                    <label><b>Filtro de Búsqueda:</b></label>
+                    <label id="filtroBusqueda"><b>Filtro de Búsqueda:</b></label>
                     <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
-                        <option value="idArticulo"><b>ID Artículo</b></option>
-                        <option value="idTipo"><b>ID Tipo</b></option>
+                        <option id="idArticulo" value="idArticulo"><b>ID Artículo</b></option>
+                        <option value="idTipo" id="idTipo"><b>ID Tipo</b></option>
                     <select>
                 </div>
                 <button type="submit" id="botonBuscar">
@@ -60,16 +62,16 @@
         <form action='api/v2/articulos' method='POST' id="formularioCrearArticulos">
             @csrf
             <br>
-            <label>Nombre: </label>
+            <label id="nombre">Nombre: </label>
             <input class="inputCrearArticulo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
-            <label>Año de creación: </label>
+            <label id="anioCreacion">Año de creación: </label>
             <input class="inputCrearArticulo textoClaro roboto" type="number" name="anioCreacion" min="2000" max="9999" required>
             <br><br>
-            <label>Tipo de Artículo: </label>
+            <label id="tipoArticulo">Tipo de Artículo: </label>
             <input class="inputCrearArticulo textoClaro roboto" type="text" name="tipo" min="1" max="1" required>
             <br><br>
-            <button class="botonCrearArticulo roboto textoClaro cambioCursor" type="submit">Crear</button>
+            <button class="botonCrearArticulo roboto textoClaro cambioCursor" type="submit" id="crearArticulo">Crear</button>
         </form>
     </div>
 
@@ -84,13 +86,13 @@
             @method('PUT')
             @csrf
             <br>
-            <label>ID del artículo: </label>
+            <label id="articuloID">ID del artículo: </label>
             <input class="inputModificarArticulo textoClaro roboto" id="inputIDArticuloModificar" type="number" name="idArticulo" required>
             <br><br>
-            <label>Nombre: </label>
+            <label id="nom">Nombre: </label>
             <input class="inputModificarArticulo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
-            <button class="botonModificarArticulo roboto textoClaro cambioCursor" type="submit">Modificar</button>
+            <button class="botonModificarArticulo roboto textoClaro cambioCursor" type="submit" id="modificar">Modificar</button>
         </form>
     </div>
     
@@ -100,12 +102,13 @@
             @method('DELETE')
             @csrf
             <br>
-            <label>ID del artículo: </label>
+            <label id="artID">ID del artículo: </label>
             <input class="inputEliminarArticulo textoClaro roboto" id="inputIDArticuloEliminar" type="number" name="idArticulo" required>
             <br><br>
             <button class="botonEliminarArticulo roboto textoClaro cambioCursor" id="botonFormularioEliminarArticulos" type="submit">Eliminar</button>
         </form>
     </div>
-    <script src="../js/articulos.js"></script>
+    <script type="module" src="/js/articulos.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>
