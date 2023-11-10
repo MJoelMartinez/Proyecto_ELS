@@ -109,7 +109,7 @@
   "4": "Warehouse List",
   "5": "Vehicle List",
   "6": "Article List",
-  "7": "Turnos"
+  "7": "Work Shifts"
 },
 {
   "0": "ABOUT",
@@ -129,7 +129,7 @@
   "14": "Capacity (m³): ",
   "15": "Modify",
   "16": "Warehouse ID: ",
-  "17": "Eliminate"
+  "17": "Delete"
 },
 {
   "0": "ABOUT",
@@ -147,5 +147,5 @@
   "12": "Name: ",
   "13": "Modify",
   "14": "Article ID:",
-  "15": "Eliminate"
+  "15": "Delete"
 }]

@@ -71,7 +71,7 @@
             <label id="tipoArticulo">Tipo de Artículo: </label>
             <input class="inputCrearArticulo textoClaro roboto" type="text" name="tipo" min="1" max="1" required>
             <br><br>
-            <button class="botonCrearArticulo roboto textoClaro cambioCursor" type="submit" id="crearArticulo">Crear</button>
+            <button class="botonCrearArticulo roboto textoClaro cambioCursor" type="submit" id="botonCrearArticulo">Crear</button>
         </form>
     </div>
 
