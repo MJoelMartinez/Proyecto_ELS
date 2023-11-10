@@ -102,5 +102,25 @@
     "5": "listaVehiculos",
     "6": "listaArticulos",
     "7": "turnos"
+},
+{
+    "0": "acercaDe",
+    "1": "contacto",
+    "2": "cerrarSesion",
+    "3": "barraDeBusqueda",
+    "4": "filtroBusqueda",
+    "5": "idAlmacen",
+    "6": "departamento",
+    "7": "direccion",
+    "8": "dire",
+    "9": "capacidad",
+    "10": "depar",
+    "11": "botonCrearAlmacen",
+    "12": "almacenID",
+    "13": "di",
+    "14": "capa",
+    "15": "botonFormularioModificarAlmacenes",
+    "16": "almaID",
+    "17": "botonFormularioEliminarAlmacenes"
 }
 ]

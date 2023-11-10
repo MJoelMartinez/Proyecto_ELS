@@ -63,13 +63,13 @@
         <form action='api/v2/almacenes' method='POST' id="formularioCrearAlmacenes">
             @csrf
             <br>
-            <label>Direccion: </label>
+            <label id="dire">Direccion: </label>
             <input class="inputCrearAlmacen textoClaro roboto" type="text" name="direccion" min="2" max="40" required>
             <br><br>
-            <label>Capacidad (m³): </label>
+            <label id="capacidad">Capacidad (m³): </label>
             <input class="inputCrearAlmacen textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Departamento: </label>
+            <label id="depar">Departamento: </label>
             <input class="inputCrearAlmacen textoClaro roboto" type="number" name="idDepartamento" required>
             <br><br>
             <button class="botonCrearAlmacen roboto textoClaro cambioCursor" id="botonCrearAlmacen" type="submit">Crear</button>
@@ -87,13 +87,13 @@
             @method('PUT')
             @csrf
             <br>
-            <label>ID del Almacén: </label>
+            <label id="almacenID">ID del Almacén: </label>
             <input class="inputModificarAlmacen textoClaro roboto" id="inputIDAlmacenModificar" type="number" name="idAlmacen" required>
             <br><br>
-            <label>Direccion: </label>
+            <label id="di">Direccion: </label>
             <input class="inputModificarAlmacen textoClaro roboto" type="text" name="direccion" min="2" max="40" required>
             <br><br>
-            <label>Capacidad (m³): </label>
+            <label id="capa">Capacidad (m³): </label>
             <input class="inputModificarAlmacen textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
             <button class="botonModificarAlmacen roboto textoClaro cambioCursor" id="botonFormularioModificarAlmacenes" type="submit">Modificar</button>
@@ -106,12 +106,13 @@
             @method('DELETE')
             @csrf
             <br>
-            <label>ID del Almacén: </label>
+            <label id="almaID">ID del Almacén: </label>
             <input class="inputEliminarAlmacen textoClaro roboto" id="inputIDAlmacenEliminar" type="number" name="idAlmacen" required>
             <br><br>
             <button class="botonEliminarAlmacen roboto textoClaro cambioCursor" id="botonFormularioEliminarAlmacenes" type="submit">Eliminar</button>
         </form>
     </div>
-    <script src="../js/almacenes.js"></script>
+    <script type="module" src="../js/almacenes.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>

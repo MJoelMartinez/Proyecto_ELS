@@ -110,4 +110,24 @@
   "5": "Vehicle List",
   "6": "Article List",
   "7": "Turnos"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Search Warehouse",
+  "4": "Search Filter: ",
+  "5": "Warehouse ID",
+  "6": "Department",
+  "7": "Address",
+  "8": "Address: ",
+  "9": "Capacity (m³): ",
+  "10": "Department: ",
+  "11": "Create",
+  "12": "Warehouse ID: ",
+  "13": "Address: ",
+  "14": "Capacity (m³): ",
+  "15": "Modify",
+  "16": "Warehouse ID: ",
+  "17": "Eliminate"
 }]

@@ -110,4 +110,24 @@
     "5": "Lista de Vehículos",
     "6": "Lista de Artículo",
     "7": "Turnos"
+},
+{
+    "0": "ACERCA DE",
+    "1": "CONTACTO",
+    "2": "CERRAR SESIÓN",
+    "3": "Buscar Almacén",
+    "4": "Filtro de Búsqueda:",
+    "5": "ID Almacén",
+    "6": "Departamento",
+    "7": "Dirección",
+    "8": "Direccion: ",
+    "9": "Capacidad (m³): ",
+    "10": "Departamento: ",
+    "11": "Crear",
+    "12": "ID del Almacén: ",
+    "13": "Direccion: ",
+    "14": "Capacidad (m³): ",
+    "15": "Modificar",
+    "16": "ID del Almacén: ",
+    "17": "Eliminar"
 }]
