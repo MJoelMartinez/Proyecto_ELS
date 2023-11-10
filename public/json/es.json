@@ -162,4 +162,23 @@
   "2": "CERRAR SESIÓN",
   "3": "Vehículos",
   "4": "Modelos"
+},
+{
+  "0": "ACERCA DE",
+  "1": "CONTACTO",
+  "2": "CERRAR SESIÓN",
+  "3": "Buscar Modelo",
+  "4": "Filtro de Búsqueda: ",
+  "5": "Nombre",
+  "6": "ID Modelo",
+  "7": "Año",
+  "8": "Nombre: ",
+  "9": "Año de creación: ",
+  "10": "Añadir modelo",
+  "11": "ID Modelo: ",
+  "12": "Nombre: ",
+  "13": "Año de creación: ",
+  "14": "Modificar modelo",
+  "15": "ID Modelo: ",
+  "16": "Eliminar modelo"
 }]

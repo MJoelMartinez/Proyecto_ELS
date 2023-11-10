@@ -154,5 +154,24 @@
     "2": "cerrarSesion",
     "3": "vehiculos",
     "4": "modelos"
+},
+{
+    "0": "acercaDe",
+    "1": "contacto",
+    "2": "cerrarSesion",
+    "3": "barraDeBusqueda",
+    "4": "filtroBusqueda",
+    "5": "nombre",
+    "6": "idModelo",
+    "7": "anio",
+    "8": "name",
+    "9": "anioCreacion",
+    "10": "anadirModelo",
+    "11": "modeloID",
+    "12": "labelNombre",
+    "13": "creacionAnio",
+    "14": "botonFormularioModificarModelos",
+    "15": "modID",
+    "16": "botonFormularioEliminarModelos"
 }
 ]

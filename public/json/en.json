@@ -162,4 +162,23 @@
   "2": "LOG OUT",
   "3": "Vehicles",
   "4": "Models"
+},
+{
+  "0": "ABOUT",
+  "1": "CONTACT",
+  "2": "LOG OUT",
+  "3": "Find Model",
+  "4": "Search Filter: ",
+  "5": "Name",
+  "6": "Model ID",
+  "7": "Year",
+  "8": "Name: ",
+  "9": "Year of establishment: ",
+  "10": "Add model",
+  "11": "Model ID: ",
+  "12": "Name: ",
+  "13": "Year of establishment: ",
+  "14": "Modify model",
+  "15": "Model ID: ",
+  "16": "Delete Model"
 }]

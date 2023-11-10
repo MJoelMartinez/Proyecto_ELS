@@ -13,28 +13,28 @@
 </head>
 <body>
 <img id="ajusteBrillo" src="/img/BGNegro.png">
-    <header class="textoClaro">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-      <ul class="menu">
+    <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+        <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-          </div>
+        </div>
         </li>
-      </ul>
+    </ul>
     </nav>
-  </header>
+</header>
 
 <div class="contenedorModelos">
         <div class="opcionesModelos">
@@ -43,11 +43,11 @@
             <form action="api/v1/modelos/buscar" id="formularioBuscarModelo" method="post">
                 <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Modelo">
                 <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
-                    <label><b>Filtro de Búsqueda:</b></label>
+                    <label id="filtroBusqueda"><b>Filtro de Búsqueda:</b></label>
                     <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
-                        <option value="nombre"><b>Nombre</b></option>
-                        <option value="idModelo"><b>ID Modelo</b></option>
-                        <option value="anio"><b>Año</b></option>
+                        <option id="nombre" value="nombre"><b>Nombre</b></option>
+                        <option id="idModelo" value="idModelo"><b>ID Modelo</b></option>
+                        <option id="anio" value="anio"><b>Año</b></option>
                     <select>
                 </div>
                 <button type="submit" id="botonBuscar">
@@ -63,13 +63,13 @@
         <form action="api/v2/modelos" method="POST" id="formularioCrearModelos">
             @csrf
             <br>
-            <label>Nombre: </label>
+            <label id="name">Nombre: </label>
             <input class="inputCrearModelo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
-            <label>Año de creación: </label>
+            <label id="anioCreacion">Año de creación: </label>
             <input class="inputCrearModelo textoClaro roboto" type="number" name="anio" min="2000" max="9999" required>
             <br><br>
-            <button class="botonCrearModelo roboto textoClaro cambioCursor" type="submit">Añadir modelo</button>
+            <button class="botonCrearModelo roboto textoClaro cambioCursor" type="submit" id="anadirModelo">Añadir modelo</button>
         </form>
     </div>
 
@@ -84,13 +84,13 @@
             @method('PUT')
             @csrf
             <br>
-            <label>ID Modelo:<label>
+            <label id="modeloID">ID Modelo:</label>
             <input class="inputModificarModelo textoClaro roboto" type="number" id="inputIDModeloModificar" name="idModelo" required>
             <br><br>
-            <label>Nombre:</label>
+            <label id="labelNombre">Nombre:</label>
             <input class="inputModificarModelo textoClaro roboto" type="text" name="nombre" required>
             <br><br>
-            <label>Año de creación: </label>
+            <label id="creacionAnio">Año de creación: </label>
             <input class="inputModificarModelo textoClaro roboto" type="number" name="anio" min="2000" max="9999" required>
             <br><br>
             <button class="botonModificarModelo roboto textoClaro cambioCursor" id="botonFormularioModificarModelos" type="submit">Modificar modelo</button>
@@ -103,12 +103,13 @@
             @method('DELETE')
             @csrf
             <br>
-            <label>ID Modelo:<label>
+            <label id="modID">ID Modelo:</label>
             <input class="inputEliminarModelo textoClaro roboto" type="number" id="inputIDModeloEliminar" name="idModelo" required>
             <br><br>
             <button class="botonEliminarModelo roboto textoClaro cambioCursor" id="botonFormularioEliminarModelos" type="submit">Eliminar modelo</button>
         </form>
     </div>
-    <script src="../js/modelos.js"></script>
+    <script type="module" src="../js/modelos.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>
