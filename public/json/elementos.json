@@ -237,5 +237,32 @@
     "41": "botonFormularioModificarUsuarios",
     "42": "identidadID",
     "43": "botonFormularioEliminarUsuarios"
-}
-]
+},
+{
+    "0": "acercaDe",
+    "1": "contacto",
+    "2": "cerrarSesion",
+    "3": "barraDeBusqueda",
+    "4": "filtroBusqueda",
+    "5": "matricula",
+    "6": "capacidad",
+    "7": "modelo",
+    "8": "chofer",
+    "9": "nombreapellido",
+    "10": "idModelo",
+    "11": "matri",
+    "12": "capa",
+    "13": "peso",
+    "14": "crear",
+    "15": "matricu",
+    "16": "capaci",
+    "17": "pesoMaximo",
+    "18": "botonFormularioModificarVehiculos",
+    "19": "mtl",
+    "20": "botonFormularioEliminarVehiculos",
+    "21": "ciChofer",
+    "22": "matriculaVehiculo",
+    "23": "botonAsignarChofer",
+    "24": "choferCI",
+    "25": "botonRelegarChofer"
+}]

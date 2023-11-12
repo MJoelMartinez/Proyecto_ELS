@@ -13,43 +13,43 @@
 </head>
 <body>
 <img id="ajusteBrillo" src="/img/BGNegro.png">
-    <header class="textoClaro">
+<header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-      <ul class="menu">
+    <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
-        <li><a href="/html/opcionesHeader/acercaDe.html">ACERCA DE</a></li>
-        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html">CONTACTO</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-          <div id="contenedorUsuario">
+        <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
-                <a href="/html/login.html">CERRAR SESIÓN</a></li>
+            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-          </div>
+        </div>
         </li>
-      </ul>
+    </ul>
     </nav>
-  </header>
+</header>
 
-  <div class="contenedorVehiculos roboto textoClaro">
+<div class="contenedorVehiculos roboto textoClaro">
         <div class="opcionesVehiculo">
             <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearVehiculo">
             <label class="textoClaro"><b>|</b></label>
             <form action="api/v1/vehiculos/buscar" id="formularioBuscarVehiculos" method="post">
                 <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Vehículo/Chofer">
                 <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
-                    <label><b>Filtro de Búsqueda:</b></label>
+                    <label id="filtroBusqueda"><b>Filtro de Búsqueda:</b></label>
                     <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
-                        <option value="matricula"><b>Matrícula</b></option>
-                        <option value="capacidad"><b>Capacidad</b></option>
-                        <option value="modelo"><b>Modelo</b></option>
-                        <option value="ciChofer"><b>CI Chofer</b></option>
-                        <option value="nombreApellido"><b>Nombre/Apellido</b></option>
+                        <option value="matricula" id="matricula"><b>Matrícula</b></option>
+                        <option value="capacidad" id="capacidad"><b>Capacidad</b></option>
+                        <option value="modelo" id="modelo"><b>Modelo</b></option>
+                        <option value="ciChofer" id="chofer"><b>CI Chofer</b></option>
+                        <option value="nombreApellido" id="nombreapellido"><b>Nombre/Apellido</b></option>
                     <select>
                 </div>
                 <button type="submit" id="botonBuscar">
@@ -65,19 +65,19 @@
         <form action='api/v2/vehiculos' method='post' id="formularioCrearVehiculos">
             @csrf
             <br>
-            <label>ID Modelo: </label>
+            <label id="idModelo">ID Modelo: </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="number" name="modelo" required>
             <br><br>
-            <label>Matrícula: </label>
+            <label id="matri">Matrícula: </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="text" name="matricula" required>
             <br><br>
-            <label>Capacidad: </label>
+            <label id="capa">Capacidad: </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Peso Máximo (KG): </label>
+            <label id="peso">Peso Máximo (KG): </label>
             <input class="inputCrearVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
-            <button class="botonCrearVehiculo roboto textoClaro cambioCursor" type="submit">Crear</button>
+            <button class="botonCrearVehiculo roboto textoClaro cambioCursor" type="submit" id="crear">Crear</button>
         </form>
     </div>
 
@@ -94,13 +94,13 @@
             @method('PUT')
             @csrf
             <br>
-            <label>Matrícula: </label>
+            <label id="matricu">Matrícula: </label>
             <input class="inputModificarVehiculo textoClaro roboto" id="inputMatriculaModificar" type="text" name="matricula" required>
             <br><br>
-            <label>Capacidad: </label>
+            <label id="capaci">Capacidad: </label>
             <input class="inputModificarVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Peso Máximo</label>
+            <label id="pesoMaximo">Peso Máximo</label>
             <input class="inputModificarVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
             <button class="botonModificarVehiculo roboto textoClaro cambioCursor" id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
@@ -112,7 +112,7 @@
             @method('DELETE')
             @csrf
             <br>
-            <label>Matrícula: </label>
+            <label id="mtl">Matrícula: </label>
             <input class="inputEliminarVehiculo textoClaro roboto" id="inputMatriculaEliminar" type="text" name="matricula" required>
             <br><br>
             <button class="botonEliminarVehiculo roboto textoClaro cambioCursor" id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
@@ -125,10 +125,10 @@
             @method('PUT')
             @csrf
             <br>
-            <label>CI del Chofer: </label>
+            <label id="ciChofer">CI del Chofer: </label>
             <input class="inputAsignarChofer textoClaro roboto" id="inputCIAsignar" type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <label>Matrícula del Vehículo: </label>
+            <label id="matriculaVehiculo">Matrícula del Vehículo: </label>
             <input class="inputAsignarChofer textoClaro roboto" type="text" name="matricula" required>
             <br><br>
             <button class="botonAsignarChofer roboto textoClaro cambioCursor" id="botonAsignarChofer" type="submit">Asignar Chofer</button>
@@ -141,12 +141,13 @@
             @method('DELETE')
             @csrf
             <br>
-            <label>CI del Chofer: </label>
+            <label id="choferCI">CI del Chofer: </label>
             <input class="inputRelegarChofer textoClaro roboto" id="inputCIRelegar" type="number" name="documentoDeIdentidad" required>
             <br><br>
             <button class="botonRelegarChofer roboto textoClaro cambioCursor" id="botonRelegarChofer" type="submit">Relegar Chofer</button>
         </form>
     </div>
-    <script src="../js/vehiculos.js"></script>
+    <script type="module" src="../js/vehiculos.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>
