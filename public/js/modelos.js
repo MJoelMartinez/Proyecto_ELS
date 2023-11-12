@@ -71,8 +71,6 @@ $(document).ready(function () {
         const arrayDeIdioma = idioma[14]
         const arrayDeTextos = data[1];
         const arrayDeTextos2 = arrayDeTextos[14]
-        console.log(arrayDeTextos2)
-        console.log(arrayDeIdioma)
 
         for (let posicion = 0; posicion < Object.keys(arrayDeTextos2).length; posicion++){
             let texto = document.getElementById(arrayDeTextos2[posicion])
