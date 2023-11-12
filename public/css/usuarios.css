@@ -165,6 +165,10 @@ option{
     padding: 10px;
 }
 
+label{
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1400px) and (max-height: 768px) {
     .contenedorUsuarios{
         position:absolute;
