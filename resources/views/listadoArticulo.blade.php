@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/listadoArticulo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
-    <title>E.L.S - Backoffice</title>
+    <title>E.L.S - Listado Artículo</title>
 </head>
 <body>
 <header class="textoClaro">

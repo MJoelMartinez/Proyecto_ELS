@@ -180,3 +180,49 @@ label{
         left: 400px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .contenedorAccesoAListas {
+        width: 75%;
+        top: 16%;
+    }
+
+    .botonListado{
+      font-size: 5vw;
+      width: 85%;
+      max-width: none;
+      top: -5%;
+    }
+
+    .footerBackOffice {
+      font-size: 3vw;
+      padding: 0.5% 0.5% 0.5% 0.5%;
+}
+.iconoBotonListado{
+  width: 40px;
+  height: 40px;
+}
+
+#imagenUbicacionBackOffice{
+  width: 25px;
+  height: 25px;
+}
+}
+
+@media screen and (min-width: 1115px) {
+    .contenedorUsuarios{
+        left: 25%;
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contenedorUsuarios{
+        width: 45%;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+        scale: 200%;
+        position: absolute;
+        left: 25%;
+    }
+}

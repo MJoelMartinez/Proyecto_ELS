@@ -16,25 +16,34 @@
     <header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-    <ul class="menu">
+    <div class="menu-icon" onclick="menu()">
+            <img src="/img/iconoMenu.png" alt="Menú">
+        </div>
+      <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
         <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
         <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-        <div id="contenedorUsuario">
+          <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
                 <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-        </div>
+          </div>
         </li>
-    </ul>
+      </ul>
     </nav>
-</header>
+    <script>
+      function menu() {
+      var menu = document.querySelector('nav ul');
+      menu.classList.toggle('active');
+}
+    </script>
+  </header>
   <div class="contenedorUsuarios">
         <div class="opcionesUsuarios">
             <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearUsuario">
@@ -134,7 +143,7 @@
                 <label id="anioHasta">Año: </label>
                 <input class="inputCrearUsuario textoClaro roboto" type="number" name="anioHasta" min="2024" max="9999">
             </div>
-
+            <br>
             <button type="submit" class="botonCrearUsuario roboto textoClaro cambioCursor" id="botonCrearUsuario"><b>Añadir</b></button>
         </form>
     </div>
