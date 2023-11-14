@@ -35,12 +35,12 @@ $("#botonVehiculo").mouseout(function() {
 function aplicarIngles() {
     document.cookie = "lang=en;path=/"
     location.reload()
-  }
-  
-  function aplicarEspanol(){
+}
+
+function aplicarEspanol(){
     document.cookie = "lang=es;path=/"
     location.reload()
-  }
+}
 
 $('#idiomaDelSistema').click(function(){
     if(document.cookie.indexOf("lang=en") !== -1){

@@ -153,7 +153,7 @@
     <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Usuario">
     </div>
 
-    <div class="UsuarioAModificar roboto textoClaro">
+    <div class="usuarioAModificar roboto textoClaro">
     <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarUsuarios" action='api/v2/usuarios' method='post'>
             @method('PUT')
@@ -174,7 +174,7 @@
             <button id="botonFormularioModificarUsuarios" class="botonModificarUsuario roboto textoClaro cambioCursor" type="submit">Modificar</button>
         </form>
     </div>
-    <div class="UsuarioAEliminar roboto textoClaro">
+    <div class="usuarioAEliminar roboto textoClaro">
     <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarUsuarios" action='api/v2/usuarios' method='post'>
             @method('DELETE')

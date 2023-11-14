@@ -16,25 +16,34 @@
 <header class="textoClaro">
     <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
     <nav>
-    <ul class="menu">
+    <div class="menu-icon" onclick="menu()">
+            <img src="/img/iconoMenu.png" alt="Menú">
+        </div>
+      <ul class="menu">
         <li class="cambioCursor"><a href="/">HOME</a></li>
         <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
         <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
         <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
         <li>
-        <div id="contenedorUsuario">
+          <div id="contenedorUsuario">
             <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
             <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
             <ul class="submenu">
-            <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
                 <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
             </ul>
-        </div>
+          </div>
         </li>
-    </ul>
+      </ul>
     </nav>
-</header>
+    <script>
+      function menu() {
+      var menu = document.querySelector('nav ul');
+      menu.classList.toggle('active');
+}
+    </script>
+  </header>
 
 <div class="contenedorArticulos">
         <div class="opcionesArticulos">
@@ -80,7 +89,7 @@
     <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Artículo">
     </div>
 
-    <div class="ArticuloAModificar roboto textoClaro" id="contenedorModificar">
+    <div class="articuloAModificar roboto textoClaro" id="contenedorModificar">
     <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarArticulos" action='api/v2/articulos' method='POST'>
             @method('PUT')
@@ -96,7 +105,7 @@
         </form>
     </div>
     
-    <div class="ArticuloAEliminar roboto textoClaro" id="contenedorEliminar">
+    <div class="articuloAEliminar roboto textoClaro" id="contenedorEliminar">
     <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarArticulos" action='api/v2/articulos' method='POST'>
             @method('DELETE')

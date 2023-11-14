@@ -20,24 +20,24 @@ $("#botonCrearAlmacenes").click(function(){
 
 $("#imagenBotonEditar").click(function() {
     $("#ajusteBrillo").show();
-    $(".AlmacenAModificar").show();
+    $(".almacenAModificar").show();
     $("#formularioModificarAlmacenes").attr("action", "api/v2/almacenes/" + valorInput);
 });
 
 $("#cerrarContenedorModificar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".AlmacenAModificar").hide();
+    $(".almacenAModificar").hide();
 });
 
 $("#imagenBotonEliminar").click(function() {
     $("#ajusteBrillo").show();
-    $(".AlmacenAEliminar").show();
+    $(".almacenAEliminar").show();
     $("#formularioEliminarAlmacenes").attr("action", "api/v2/almacenes/" + valorInput);
 });
 
 $("#cerrarContenedorEliminar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".AlmacenAEliminar").hide();
+    $(".almacenAEliminar").hide();
 });
 
 function aplicarIngles() {

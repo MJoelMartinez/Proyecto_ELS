@@ -56,7 +56,7 @@
     width: 50px;
     height: 50px;
 }
-  
+
 
 #contenedorUbicacionBackOffice{
     position: absolute;
@@ -74,4 +74,34 @@
 
 label{
     font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .contenedorAccesoAListas {
+        width: 75%;
+        top: 16%;
+        max-width: none;
+    }
+
+    .botonListado{
+    font-size: 5vw;
+    width: 85%;
+    max-width: none;
+    top: -5%;
+    }
+
+    .footerBackOffice {
+    font-size: 3vw;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.iconoBotonListado{
+width: 40px;
+height: 40px;
+}
+
+#imagenUbicacionBackOffice{
+width: 25px;
+height: 25px;
+}
 }

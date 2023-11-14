@@ -82,22 +82,22 @@ $("#botonCrearUsuario").click(function(){
 
 $("#imagenBotonEditar").click(function() {
     $("#ajusteBrillo").show();
-    $(".UsuarioAModificar").show();
+    $(".usuarioAModificar").show();
 });
 
 $("#cerrarContenedorModificar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".UsuarioAModificar").hide();
+    $(".usuarioAModificar").hide();
 });
 
 $("#imagenBotonEliminar").click(function() {
     $("#ajusteBrillo").show();
-    $(".UsuarioAEliminar").show();
+    $(".usuarioAEliminar").show();
 });
 
 $("#cerrarContenedorEliminar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".UsuarioAEliminar").hide();
+    $(".usuarioAEliminar").hide();
 });
 
 function aplicarIngles() {

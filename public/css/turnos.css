@@ -12,6 +12,7 @@ body{
     opacity: 70%;
     z-index: 1;
     width: 100%;
+    height: 100%;
 }
 
 .contenedor{
@@ -86,4 +87,23 @@ body{
 
 label{
     font-weight: bold;
+}
+
+@media screen and (max-width: 320px){
+
+    .contenedorCrearTurnos, 
+    .contenedorEliminarTurnos{
+        position: absolute;
+        top: 10%;
+        left: 6%;
+        width: 75%;
+    }
+
+    .inputCrearTurno, 
+    .inputEliminarTurno{
+        flex-direction: column;
+        position: relative;
+        width: 45%;
+        height: 2%;
+    }
 }

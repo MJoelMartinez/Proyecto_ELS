@@ -8,7 +8,7 @@
     opacity: 70%;
     z-index: 1;
     width: 100%;
-    
+    height: 100%;
 }
 
 body{
@@ -110,7 +110,7 @@ option{
 .relegarChofer{
     display: none;
     position: absolute;
-    top: calc(50% - 100px);
+    top: 15%;
     left: calc(50% - 250px);
     z-index: 2;
     background-color: #4a0913;
@@ -185,5 +185,126 @@ label{
     .contenedor{
         position:absolute;
         left: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contenedorVehiculos{
+        position:absolute;
+        left: 25%;
+    }
+
+    #botonBuscar{
+        position: static;
+        left: 10%;
+        width: 1%;
+    }
+
+    #contenedorFiltroDeBusqueda{
+        font-size: 8px;
+    }
+
+    select{
+        position: relative;
+        font-size: 10px;
+    }
+
+    input{
+        position: static;
+        width: 35%;
+        font-size: 10px;
+    }
+
+    .contenedor{
+        width: 46%;
+        left: 26%;
+    }
+
+    .contenedorCrearVehiculos{
+        position: absolute;
+        top: 15%;
+        right: 45%;
+        width: 65%;
+    }
+
+    label{
+        font-size: 20px;
+    }
+
+    #filtroBusqueda{
+        font-size: 8px;
+    }
+    
+    .inputCrearUsuario{
+        width: 20%;
+    }
+
+    .vehiculoAModificar{
+        position: absolute;
+        top:15%;
+    }
+
+}
+
+@media screen and (max-width: 320px){
+
+    .contenedorVehiculos{
+        position: absolute;
+        top: 21%;
+        width: 45%;
+    }
+
+    #botonBuscar{
+        top:40%;
+    }
+
+    #filtroDeLista{
+        margin-top: 45%;
+        height: 5%;
+        width: 100%;
+        font-size: 8px;
+    }
+
+    #filtroBusqueda{
+        position: absolute;
+        top: 40%;
+        font-size: 7px;
+    }
+
+    input{
+        position:absolute;
+        top: 10%;
+        width: 50%;
+    }
+
+    #botonBuscar{
+        position: absolute;
+        left: 78%;
+        top: 33%;
+    }
+
+    .contenedor{
+        top: 60%;
+    }
+
+    .contenedorCrearVehiculos, 
+    .vehiculoAModificar, 
+    .vehiculoAEliminar, 
+    .asignarChofer, 
+    .relegarChofer{
+        position: absolute;
+        top: 10%;
+        left: 6%;
+        width: 75%;
+    }
+
+    .inputCrearVehiculo, 
+    .inputModificarVehiculo, 
+    .inputEliminarVehiculo, 
+    .inputAsignarChofer, 
+    .inputRelegarChofer{
+        flex-direction: column;
+        position: relative;
+        width: 60%;
     }
 }

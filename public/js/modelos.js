@@ -20,35 +20,35 @@ $("#botonCrearAlmacenes").click(function(){
 
 $("#imagenBotonEditar").click(function() {
     $("#ajusteBrillo").show();
-    $(".ModeloAModificar").show();
+    $(".modeloAModificar").show();
     $("#formularioModificarModelos").attr("action", "api/v2/modelos/" +  valorInput);
 });
 
 $("#cerrarContenedorModificar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".ModeloAModificar").hide();
+    $(".modeloAModificar").hide();
 });
 
 $("#imagenBotonEliminar").click(function() {
     $("#ajusteBrillo").show();
-    $(".ModeloAEliminar").show();
+    $(".modeloAEliminar").show();
     $("#formularioEliminarModelos").attr("action", "api/v2/modelos/" +  valorInput);
 });
 
 $("#cerrarContenedorEliminar").click(function() {
     $("#ajusteBrillo").hide();
-    $(".ModeloAEliminar").hide();
+    $(".modeloAEliminar").hide();
 });
 
 function aplicarIngles() {
     document.cookie = "lang=en;path=/"
     location.reload()
-  }
-  
-  function aplicarEspanol(){
+}
+
+function aplicarEspanol(){
     document.cookie = "lang=es;path=/"
     location.reload()
-  }
+}
 
 $('#idiomaDelSistema').click(function(){
     if(document.cookie.indexOf("lang=en") !== -1){
