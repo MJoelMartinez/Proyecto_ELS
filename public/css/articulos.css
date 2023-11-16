@@ -12,10 +12,10 @@
 }
 
 body{
-    background-image: url(/img/BGUsuarios.png);
+    background-image: url(/img/BGArticuloListado.png);
 }
 
-.contenedorUsuarios{
+.contenedorArticulos{
     width: fit-content;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 10px;
@@ -26,29 +26,13 @@ body{
     top: 20%;
 }
 
-.contenedor{
-    height: fit-content;
-    width: 532px;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
-    scale: 200%;
-    position: absolute;
-    left: 29.5%;
-    top: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-.opcionesUsuarios{
+.opcionesArticulos{
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-#crearUsuario{
+#crearArticulo{
     display: inline;
     background-image: url(/img/iconoAgregar.png);
     background-size: cover;
@@ -57,7 +41,7 @@ body{
     border: none;
 }
 
-#formularioBuscarUsuarios{
+#formularioBuscarArticulo{
     display: flex;
     align-items: center;
     gap: 5px;
@@ -115,12 +99,12 @@ option{
     font-size: 15px;
 }
 
-.contenedorCrearUsuarios, 
-.usuarioAModificar, 
-.usuarioAEliminar{
+.contenedorCrearArticulo,
+.articuloAModificar,
+.articuloAEliminar{
     display: none;
     position: absolute;
-    top: 20%;
+    top: calc(50% - 100px);
     left: calc(50% - 250px);
     z-index: 2;
     background-color: #4a0913;
@@ -132,7 +116,7 @@ option{
     font-size: 30px;
 }
 
-#cerrarContenedorCrear, 
+#cerrarContenedorCrear,
 #cerrarContenedorModificar,
 #cerrarContenedorEliminar{
     width: 30px;
@@ -142,16 +126,16 @@ option{
     top: 20px;
 }
 
-.inputCrearUsuario, 
-.inputModificarUsuario,
-.inputEliminarUsuario{
+.inputCrearArticulo,
+.inputModificarArticulo,
+.inputEliminarArticulo{
     font-size: 30px;
     width: 140px;
 }
 
-.botonCrearUsuario, 
-.botonModificarUsuario,
-.botonEliminarUsuario{
+.botonCrearArticulo,
+.botonModificarArticulo,
+.botonEliminarArticulo{
     background: none;
     border: solid 2px #fddfb5;
     border-radius: 5px;
@@ -160,9 +144,20 @@ option{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
 }
 
-#rolDeLaEmpresa {
-    font-size: 15px;
+.contenedor{
+    height: fit-content;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    scale: 200%;
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 label{
@@ -170,16 +165,27 @@ label{
 }
 
 @media screen and (max-width: 1400px) and (max-height: 768px) {
-    .contenedorUsuarios{
-        left: 29.5%;
+    .contenedorArticulos{
+        position:absolute;
+        left: 400px;
+    }
+
+    .contenedor{
+        position:absolute;
+        left: 400px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .contenedorUsuarios{
+    .contenedorArticulos{
         position:absolute;
-        left: 26%;
-        width: 46%;
+        left: 26.5%;
+    }
+
+    #botonBuscar{
+        position: static;
+        left: 10%;
+        width: 1%;
     }
 
     #contenedorFiltroDeBusqueda{
@@ -189,26 +195,17 @@ label{
     select{
         position: relative;
         font-size: 10px;
-        top:5%;
     }
 
     input{
         position: static;
         width: 35%;
         font-size: 10px;
-        margin-top:3%;
     }
 
     .contenedor{
         width: 46%;
         left: 26%;
-    }
-
-    .contenedorCrearUsuarios{
-        position: absolute;
-        top: 15%;
-        right: 45%;
-        width: 65%;
     }
 
     label{
@@ -218,19 +215,17 @@ label{
     #filtroBusqueda{
         font-size: 8px;
     }
-    
-    .inputCrearUsuario{
-        width: 20%;
-    }
 
-    .usuarioAModificar{
-        position: absolute;
-        top:15%;
-    }
 
 }
 
 @media screen and (max-width: 320px){
+
+    .contenedorArticulos{
+        position: absolute;
+        top: 21%;
+        width: 46.5%;
+    }
 
     #botonBuscar{
         top:40%;
@@ -245,7 +240,8 @@ label{
 
     #filtroBusqueda{
         position: absolute;
-        top: 40%;
+        top: 35%;
+        font-size: 7px;
     }
 
     input{
@@ -264,14 +260,18 @@ label{
         top: 55%;
     }
 
-    .contenedorCrearUsuarios, .usuarioAModificar, .usuarioAEliminar{
+    .contenedorCrearArticulo, 
+    .articuloAModificar, 
+    .articuloAEliminar{
         position: absolute;
         top: 10%;
         left: 6%;
         width: 75%;
     }
 
-    .inputCrearUsuario, .inputModificarUsuario, .inputEliminarUsuario{
+    .inputCrearArticulo, 
+    .inputModificarArticulo, 
+    .inputEliminarArticulo{
         flex-direction: column;
         position: relative;
         width: 60%;

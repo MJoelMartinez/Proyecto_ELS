@@ -6,10 +6,10 @@
     <meta name="author" content="Script TriByte">
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/clasesGlobales.css">
-    <link rel="stylesheet" href="/css/tipoArticulo.css">
+    <link rel="stylesheet" href="/css/listadoArticulo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
-    <title>E.L.S - Tipo de Articulo</title>
+    <title>E.L.S - Listado Artículo</title>
 </head>
 <body>
 <header class="textoClaro">
@@ -43,18 +43,27 @@
 }
     </script>
   </header>
-
-    <div class="contenedorTipoArticulo" id="contenedorCrear">
-        <h3 id="registrar">Registrar Tipo de Articulo:</h3>
-        <form action='api/v2/tipoArticulo' method='POST'>
-            @csrf
-            <label id="tipo">Tipo: </label>
-            <input type="text" name="tipo" min="1" max="1" required>
-            <br><br>
-            <button type="submit" id="crear">Crear</button>
-        </form>
+  <div class="contenedorAccesoAListas">
+        <a href="/articulos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonArticulo">
+            <label class="cambioCursor" id="listaArticulo"><b>Artículo</b></label>
+            <img class="iconoBotonListado" id="iconoArticulos" src="/img/iconoArticulos.png">
+          </div>
+        </a>
+        <a href="/tipoArticulo" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonTipoArticulo">
+            <label class="cambioCursor" id="listaTipoArticulo"><b>Tipo Artículo</b></label>
+            <img class="iconoBotonListado" id="iconoTipoArticulo" src="/img/iconoTipoArticulo.png">
+          </div>
+        </a>
     </div>
-    <script type="module" src="../js/tipoArticulo.js"></script>
+    <footer class="footerBackOffice textoClaro absoluto">
+      <div id="contenedorUbicacionBackOffice">
+        <img id="imagenUbicacionBackOffice" src="/img/iconoSeguimiento.png">
+        BackOffice
+      </div>
+    </footer>
+    <script type="module" src="/js/listadoArticulo.js"></script>
     <script type="module" src="/js/variables.js"></script>
 </body>
 </html>

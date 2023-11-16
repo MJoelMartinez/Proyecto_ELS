@@ -1,36 +1,46 @@
 import { ruta } from "./variables.js";
 
-$("#crearTurno").click(function() {
-    $("#ajusteBrillo").show();
-    $(".contenedorCrearTurnos").show();
-    $("#formularioCrearTurnos").attr("action", "api/v2/turnos/" +  valorInput);
+function revelarPreviewArticulo(){
+    $(".contenedorAccesoAListas").css("background-image", "url(/img/BGArticuloListado.png)");
+    $("#botonTipoArticulo").css("opacity", "50%");
+}
+
+function revelarPreviewTipoArticulo(){
+    $(".contenedorAccesoAListas").css("background-image", "url(/img/BGTipoArticulo.png)");
+    $("#botonArticulo").css("opacity", "50%");
+}
+
+function restaurarBody(){
+    $(".contenedorAccesoAListas").css("background-image", "url(/img/BGArticulo.png)");
+    $("#botonTipoArticulo").css("opacity", "100%");
+    $("#botonArticulo").css("opacity", "100%");
+}
+
+$("#botonArticulo").mouseover(function() {
+    revelarPreviewArticulo();
 });
 
-$("#cerrarContenedorCrear").click(function() {
-    $("#ajusteBrillo").hide();
-    $("#contenedorCrear").hide();
+$("#botonArticulo").mouseout(function() {
+    restaurarBody();
 });
 
-$("#eliminarTurno").click(function() {
-    $("#ajusteBrillo").show();
-    $(".contenedorEliminarTurnos").show();
-    $("#formularioEliminarTurnos").attr("action", "api/v2/turnos/" +  valorInput);
+$("#botonTipoArticulo").mouseover("mouseover", function() {
+    revelarPreviewTipoArticulo();
 });
 
-$("#cerrarContenedorEliminar").click(function() {
-    $("#ajusteBrillo").hide();
-    $("#contenedorEliminar").hide();
+$("#botonTipoArticulo").mouseout(function() {
+    restaurarBody();
 });
 
 function aplicarIngles() {
     document.cookie = "lang=en;path=/"
     location.reload()
-}
-
-function aplicarEspanol(){
+  }
+  
+  function aplicarEspanol(){
     document.cookie = "lang=es;path=/"
     location.reload()
-}
+  }
 
 $('#idiomaDelSistema').click(function(){
     if(document.cookie.indexOf("lang=en") !== -1){
@@ -50,9 +60,9 @@ $(document).ready(function () {
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then((data) => {
         const idioma = data[0];
-        const arrayDeIdioma = idioma[16]
+        const arrayDeIdioma = idioma[12]
         const arrayDeTextos = data[1];
-        const arrayDeTextos2 = arrayDeTextos[16]
+        const arrayDeTextos2 = arrayDeTextos[12]
 
         for (let posicion = 0; posicion < Object.keys(arrayDeTextos2).length; posicion++){
             let texto = document.getElementById(arrayDeTextos2[posicion])
@@ -66,13 +76,3 @@ $(document).ready(function () {
     })
 
 });
-
-/*const formularioEliminarTurnos = document.getElementById("formularioEliminarTurnos");
-const botonFormularioEliminarTurnos = document.getElementById("botonFormularioEliminarTurnos");
-
-botonFormularioEliminarTurnos.addEventListener("click", function()
-{
-    let inputIDTurno = document.getElementById("inputIDTurnoEliminar");
-    let valorInput = inputIDTurno.value;
-    formularioEliminarTurnos.setAttribute("action", "api/v2/turnos/" +  valorInput);
-});*/

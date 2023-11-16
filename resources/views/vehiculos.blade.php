@@ -1,86 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Script TriByte">
+    <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="stylesheet" href="/css/clasesGlobales.css">
+    <link rel="stylesheet" href="/css/vehiculos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/iconoPestana.png">
     <title>E.L.S - Vehiculos</title>
 </head>
 <body>
-    <div class="NuevoVehiculo">
-        <h3>Crear Vehiculo:</h3>
-        <form action='api/v2/vehiculos' method='post'>
+<img id="ajusteBrillo" src="/img/BGNegro.png">
+<header class="textoClaro">
+    <a href="/"><img class="logo" src="/img/Logo del Sistema.png"></a>
+    <nav>
+    <div class="menu-icon" onclick="menu()">
+            <img src="/img/iconoMenu.png" alt="Menú">
+        </div>
+      <ul class="menu">
+        <li class="cambioCursor"><a href="/">HOME</a></li>
+        <li><a href="/html/opcionesHeader/acercaDe.html" id="acercaDe">ACERCA DE</a></li>
+        <li class="cambioCursor"><a href="/html/opcionesHeader/contacto.html" id="contacto">CONTACTO</a></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="idiomaDelSistema"></div></li>
+        <li><div class="boton textoClaro cambioCursor divEnHeader" id="aparienciaDelSistema"></div></li>
+        <li>
+          <div id="contenedorUsuario">
+            <img class="usuario" id="iconoUsuario" src="/img/iconoUsuario.png">
+            <button class="boton textoClaro">NOMBRE DEL USUARIO</button>
+            <ul class="submenu">
+              <li><img class="salir" id="iconoSalida" src="/img/iconoSalir.png">
+                <a href="/html/login.html" id="cerrarSesion">CERRAR SESIÓN</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <script>
+      function menu() {
+      var menu = document.querySelector('nav ul');
+      menu.classList.toggle('active');
+}
+    </script>
+  </header>
+
+<div class="contenedorVehiculos roboto textoClaro">
+        <div class="opcionesVehiculo">
+            <img src="/img/iconoAgregar.png" class="cambioCursor" id="crearVehiculo">
+            <label class="textoClaro"><b>|</b></label>
+            <form action="api/v1/vehiculos/buscar" id="formularioBuscarVehiculos" method="post">
+                <input class="roboto textoClaro" id="barraDeBusqueda" name="barraDeBusqueda" placeholder="Buscar Vehículo/Chofer">
+                <div class="roboto textoClaro" id="contenedorFiltroDeBusqueda">
+                    <label id="filtroBusqueda"><b>Filtro de Búsqueda:</b></label>
+                    <select class="roboto textoClaro" id="filtroDeLista" name="filtroDeLista">
+                        <option value="matricula" id="matricula"><b>Matrícula</b></option>
+                        <option value="capacidad" id="capacidad"><b>Capacidad</b></option>
+                        <option value="modelo" id="modelo"><b>Modelo</b></option>
+                        <option value="ciChofer" id="chofer"><b>CI Chofer</b></option>
+                        <option value="nombreApellido" id="nombreapellido"><b>Nombre/Apellido</b></option>
+                    <select>
+                </div>
+                <button type="submit" id="botonBuscar">
+                    <img class="cambioCursor" id="imagenBotonBuscar" src="/img/iconoLupa.png">
+                </button>
+            </form>
+        </div>
+        <hr>
+    </div>
+    
+    <div class="contenedorCrearVehiculos roboto textoClaro" id="contenedorCrear">
+    <img class="cambioCursor" id="cerrarContenedorCrear" src="/img/iconoCerrar.png">
+        <form action='api/v2/vehiculos' method='post' id="formularioCrearVehiculos">
             @csrf
-            <label>ID Modelo: </label>
-            <input type="number" name="modelo" required>
+            <br>
+            <label id="idModelo">ID Modelo: </label>
+            <input class="inputCrearVehiculo textoClaro roboto" type="number" name="modelo" required>
             <br><br>
-            <label>Matricula: </label>
-            <input type="text" name="matricula" required>
+            <label id="matri">Matrícula: </label>
+            <input class="inputCrearVehiculo textoClaro roboto" type="text" name="matricula" required>
             <br><br>
-            <label>Capacidad: </label>
-            <input type="number" name="capacidad" required>
+            <label id="capa">Capacidad: </label>
+            <input class="inputCrearVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Peso maximo (KG): </label>
-            <input type="number" name="pesoMaximo" required>
+            <label id="peso">Peso Máximo (KG): </label>
+            <input class="inputCrearVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
-            <button type="submit">Crear</button>
+            <button class="botonCrearVehiculo roboto textoClaro cambioCursor" type="submit" id="crear">Crear</button>
         </form>
     </div>
-    <br><br>
-    <div class="VehiculoAModificar">
-        <h3>Modificar Vehiculo:</h3>
+
+    <div class="contenedor">
+    <img src="/img/iconoEditar.png" class="cambioCursor" id="imagenBotonEditar" title="Editar Vehículo">
+    <img src="/img/iconoEliminar.png" class="cambioCursor" id="imagenBotonEliminar" title="Eliminar Vehículo">
+    <img src="/img/iconoAsignar.png" class="cambioCursor" id="imagenBotonAsignar" title="Asignar Chofer">
+    <img src="/img/iconoNulo.png" class="cambioCursor" id="imagenBotonRelegar" title="Relegar Chofer">
+    </div>
+
+  <div class="vehiculoAModificar roboto textoClaro" id="contenedorModificar">
+  <img class="cambioCursor" id="cerrarContenedorModificar" src="/img/iconoCerrar.png">
         <form id="formularioModificarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('PUT')
             @csrf
-            <label>Matrícula: </label>
-            <input id="inputMatriculaModificar" type="text" name="matricula" required>
+            <br>
+            <label id="matricu">Matrícula: </label>
+            <input class="inputModificarVehiculo textoClaro roboto" id="inputMatriculaModificar" type="text" name="matricula" required>
             <br><br>
-            <label>Capacidad: </label>
-            <input type="number" name="capacidad" required>
+            <label id="capaci">Capacidad: </label>
+            <input class="inputModificarVehiculo textoClaro roboto" type="number" name="capacidad" required>
             <br><br>
-            <label>Peso Maximo</label>
-            <input type="number" name="pesoMaximo" required>
+            <label id="pesoMaximo">Peso Máximo</label>
+            <input class="inputModificarVehiculo textoClaro roboto" type="number" name="pesoMaximo" required>
             <br><br>
-            <button id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
+            <button class="botonModificarVehiculo roboto textoClaro cambioCursor" id="botonFormularioModificarVehiculos" type="submit">Modificar</button>
         </form>
     </div>
-    <br><br>
-    <div class="VehiculoEliminar">
-        <h3>Eliminar Vehiculo:</h3>
+    <div class="vehiculoAEliminar roboto textoClaro" id="contenedorEliminar">
+    <img class="cambioCursor" id="cerrarContenedorEliminar" src="/img/iconoCerrar.png">
         <form id="formularioEliminarVehiculos" action='api/v2/vehiculos' method='post'>
             @method('DELETE')
             @csrf
-            <label>Matrícula: </label>
-            <input id="inputMatriculaEliminar" type="text" name="matricula" required>
+            <br>
+            <label id="mtl">Matrícula: </label>
+            <input class="inputEliminarVehiculo textoClaro roboto" id="inputMatriculaEliminar" type="text" name="matricula" required>
             <br><br>
-            <button id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
+            <button class="botonEliminarVehiculo roboto textoClaro cambioCursor" id="botonFormularioEliminarVehiculos" type="submit">Eliminar</button>
         </form>
     </div>
-    <br><br>
-    <div id="contenedorAsignarChofer">
-        <h3>Asignar Chofer:</h3>
+    
+    <div class="asignarChofer roboto textoClaro" id="contenedorAsignarChofer">
+    <img class="cambioCursor" id="cerrarContenedorAsignar" src="/img/iconoCerrar.png">
         <form id="formularioAsignarChofer" action="api/v2/asignarVehiculo" method="POST">
             @method('PUT')
             @csrf
-            <label>CI del Chofer: </label>
-            <input id="inputCIAsignar" type="number" name="documentoDeIdentidad" required>
+            <br>
+            <label id="ciChofer">CI del Chofer: </label>
+            <input class="inputAsignarChofer textoClaro roboto" id="inputCIAsignar" type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <label>Matricula del Vehiculo: </label>
-            <input type="text" name="matricula" required>
+            <label id="matriculaVehiculo">Matrícula del Vehículo: </label>
+            <input class="inputAsignarChofer textoClaro roboto" type="text" name="matricula" required>
             <br><br>
-            <button id="botonAsignarChofer" type="submit">Asignar Chofer</button>
+            <button class="botonAsignarChofer roboto textoClaro cambioCursor" id="botonAsignarChofer" type="submit">Asignar Chofer</button>
         </form>
     </div>
-    <div id="contenedorRelegarChofer">
-        <h3>Relegar Chofer:</h3>
+
+<div class="relegarChofer roboto textoClaro" id="contenedorRelegarChofer">
+<img class="cambioCursor" id="cerrarContenedorRelegar" src="/img/iconoCerrar.png">
         <form id="formularioRelegarChofer" action="api/v2/relegarVehiculo" method="POST">
             @method('DELETE')
             @csrf
-            <label>CI del Chofer: </label>
-            <input id="inputCIRelegar" type="number" name="documentoDeIdentidad" required>
+            <br>
+            <label id="choferCI">CI del Chofer: </label>
+            <input class="inputRelegarChofer textoClaro roboto" id="inputCIRelegar" type="number" name="documentoDeIdentidad" required>
             <br><br>
-            <button id="botonRelegarChofer" type="submit">Relegar Chofer</button>
+            <button class="botonRelegarChofer roboto textoClaro cambioCursor" id="botonRelegarChofer" type="submit">Relegar Chofer</button>
         </form>
     </div>
-    <script src="../js/vehiculos.js"></script>
+    <script type="module" src="../js/vehiculos.js"></script>
+    <script type="module" src="/js/variables.js"></script>
 </body>
 </html>

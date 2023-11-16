@@ -1,25 +1,35 @@
 import { ruta } from "./variables.js";
 
-$("#crearTurno").click(function() {
-    $("#ajusteBrillo").show();
-    $(".contenedorCrearTurnos").show();
-    $("#formularioCrearTurnos").attr("action", "api/v2/turnos/" +  valorInput);
+function revelarPreviewVehiculos(){
+    $(".contenedorAccesoAListas").css("background-image", "url(/img/BGVehiculos.png)");
+    $("#botonModelos").css("opacity", "50%");
+}
+
+function revelarPreviewModelos(){
+    $(".contenedorAccesoAListas").css("background-image", "url(/img/BGModelos.png)");
+    $("#botonVehiculo").css("opacity", "50%");
+}
+
+function restaurarBody(){
+    $(".contenedorAccesoAListas").css("background-image", "url(/img/BGContenido.png)");
+    $("#botonModelos").css("opacity", "100%");
+    $("#botonVehiculo").css("opacity", "100%");
+}
+
+$("#botonModelos").mouseover(function() {
+    revelarPreviewModelos();
 });
 
-$("#cerrarContenedorCrear").click(function() {
-    $("#ajusteBrillo").hide();
-    $("#contenedorCrear").hide();
+$("#botonModelos").mouseout(function() {
+    restaurarBody();
 });
 
-$("#eliminarTurno").click(function() {
-    $("#ajusteBrillo").show();
-    $(".contenedorEliminarTurnos").show();
-    $("#formularioEliminarTurnos").attr("action", "api/v2/turnos/" +  valorInput);
+$("#botonVehiculo").mouseover("mouseover", function() {
+    revelarPreviewVehiculos();
 });
 
-$("#cerrarContenedorEliminar").click(function() {
-    $("#ajusteBrillo").hide();
-    $("#contenedorEliminar").hide();
+$("#botonVehiculo").mouseout(function() {
+    restaurarBody();
 });
 
 function aplicarIngles() {
@@ -50,9 +60,9 @@ $(document).ready(function () {
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then((data) => {
         const idioma = data[0];
-        const arrayDeIdioma = idioma[16]
+        const arrayDeIdioma = idioma[13]
         const arrayDeTextos = data[1];
-        const arrayDeTextos2 = arrayDeTextos[16]
+        const arrayDeTextos2 = arrayDeTextos[13]
 
         for (let posicion = 0; posicion < Object.keys(arrayDeTextos2).length; posicion++){
             let texto = document.getElementById(arrayDeTextos2[posicion])
@@ -66,13 +76,3 @@ $(document).ready(function () {
     })
 
 });
-
-/*const formularioEliminarTurnos = document.getElementById("formularioEliminarTurnos");
-const botonFormularioEliminarTurnos = document.getElementById("botonFormularioEliminarTurnos");
-
-botonFormularioEliminarTurnos.addEventListener("click", function()
-{
-    let inputIDTurno = document.getElementById("inputIDTurnoEliminar");
-    let valorInput = inputIDTurno.value;
-    formularioEliminarTurnos.setAttribute("action", "api/v2/turnos/" +  valorInput);
-});*/

@@ -6,10 +6,10 @@
     <meta name="author" content="Script TriByte">
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/clasesGlobales.css">
-    <link rel="stylesheet" href="/css/tipoArticulo.css">
+    <link rel="stylesheet" href="/css/listadoVehiculo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="/img/iconoPestana.png">
-    <title>E.L.S - Tipo de Articulo</title>
+    <title>E.L.S - Listado Vehículo</title>
 </head>
 <body>
 <header class="textoClaro">
@@ -43,18 +43,27 @@
 }
     </script>
   </header>
-
-    <div class="contenedorTipoArticulo" id="contenedorCrear">
-        <h3 id="registrar">Registrar Tipo de Articulo:</h3>
-        <form action='api/v2/tipoArticulo' method='POST'>
-            @csrf
-            <label id="tipo">Tipo: </label>
-            <input type="text" name="tipo" min="1" max="1" required>
-            <br><br>
-            <button type="submit" id="crear">Crear</button>
-        </form>
+  <div class="contenedorAccesoAListas">
+        <a href="/vehiculos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonVehiculo">
+            <label class="cambioCursor" id="vehiculos"><b>Vehículos</b></label>
+            <img class="iconoBotonListado" id="iconoListadoVehiculos" src="/img/iconoCamion.png">
+          </div>
+        </a>
+        <a href="/modelos" class="botonListado">
+          <div class="cambioCursor textoClaro" id="botonModelos">
+            <label class="cambioCursor" id="modelos"><b>Modelos</b></label>
+            <img class="iconoBotonListado" id="iconoListadoModelos" src="/img/iconoModelos.png">
+          </div>
+        </a>
     </div>
-    <script type="module" src="../js/tipoArticulo.js"></script>
+    <footer class="footerBackOffice textoClaro absoluto">
+      <div id="contenedorUbicacionBackOffice">
+        <img id="imagenUbicacionBackOffice" src="/img/iconoSeguimiento.png">
+        BackOffice
+      </div>
+    </footer>
+    <script type="module" src="/js/listadoVehiculo.js"></script>
     <script type="module" src="/js/variables.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+import { ruta } from "./variables.js";
+
 $(document).ready(function () {
     const selectRol = $("#rolDeLaEmpresa");
     const divCarnetCargador = $("#divCarnetCargador");
@@ -62,73 +64,83 @@ $(document).ready(function () {
 $("#crearUsuario").click(function(){
     $("#ajusteBrillo").show();
     $(".contenedorCrearUsuarios").show();
-})
+});
 
 $("#cerrarContenedorCrear").click(function(){
     $("#ajusteBrillo").hide();
     $(".contenedorCrearUsuarios").hide();
-})
-
-$("#botonBuscar").click(function(){
-    $("#formularioBuscarUsuarios").attr("action", urlAPIAlmacenes + "/api/v1/buscarUsuarios");
-})
-
-$("#botonCrearUsuario").click(function(){
-    $("#formularioCrearUsuarios").attr("action", urlAPIAlmacenes + "/api/v1/usuarios");
-})
-
-/*let selectRol = document.getElementById("rolDeLaEmpresa");
-
-const labelCarnetCargador = document.getElementById("labelCarnetCargador");
-const inputCarnetCargador = document.getElementById("inputCarnetCargador");*/
-
-/*let formularioModificarUsuarios = document.getElementById("formularioModificarUsuarios");
-let botonFormularioModificarUsuarios = document.getElementById("botonFormularioModificarUsuarios");
-
-let formularioEliminarUsuarios = document.getElementById("formularioEliminarUsuarios");
-let botonFormularioEliminarUsuarios = document.getElementById("botonFormularioEliminarUsuarios");*/
-
-/*selectRol.onchange = function()
-{
-    CambiarValores();
-}
-
-function OcultarCarnet()
-{
-    labelCarnetCargador.style.display = "none";
-    inputCarnetCargador.style.display = "none";
-}
-
-function VisibilizarCarnet()
-{
-    labelCarnetCargador.style.display = "inline";
-    inputCarnetCargador.style.display = "inline";
-}
-
-function CambiarValores()
-{
-    let valor = selectRol.options[selectRol.selectedIndex].value;
-
-    if (valor != "cargador")
-    {
-        OcultarCarnet();
-    }
-    if (valor == "cargador")
-    {
-        VisibilizarCarnet();
-    }
-}*/
-
-/*botonFormularioModificarUsuarios.addEventListener("click", function()
-{
-    let inputFormulario = document.getElementById("inputFormularioModificar");
-    let valorInputFormulario = inputFormulario.value;
-    formularioModificarUsuarios.setAttribute("action", "api/v2/usuarios/" +  valorInputFormulario);
 });
 
-botonFormularioEliminarUsuarios.addEventListener("click", function()
-{
-    let inputFormulario = document.getElementById("inputFormularioEliminar");
-    let valorInputFormulario = inputFormulario.value;
-    formularioEliminarUsuarios.setAttribute("action", "api/v2/usuarios/" +  valorInputFormulario);
-});*/
+$("#botonBuscar").click(function(){
+    $("#formularioBuscarUsuarios").attr("action", "/usuarios/buscar");
+});
+
+$("#botonCrearUsuario").click(function(){
+    $("#formularioCrearUsuarios").attr("action", "/usuarios/crear");
+});
+    
+
+$("#imagenBotonEditar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".usuarioAModificar").show();
+});
+
+$("#cerrarContenedorModificar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".usuarioAModificar").hide();
+});
+
+$("#imagenBotonEliminar").click(function() {
+    $("#ajusteBrillo").show();
+    $(".usuarioAEliminar").show();
+});
+
+$("#cerrarContenedorEliminar").click(function() {
+    $("#ajusteBrillo").hide();
+    $(".usuarioAEliminar").hide();
+});
+
+function aplicarIngles() {
+    document.cookie = "lang=en;path=/"
+    location.reload()
+}
+
+function aplicarEspanol(){
+    document.cookie = "lang=es;path=/"
+    location.reload()
+}
+
+$('#idiomaDelSistema').click(function(){
+    if(document.cookie.indexOf("lang=en") !== -1){
+        aplicarEspanol()
+    } else {
+        aplicarIngles()
+    }
+});
+
+$(document).ready(function () {
+    if(document.cookie.indexOf("lang=en") !== -1){
+        $('#idiomaDelSistema').css('background-image', 'url(/img/banderaUK.png)')
+    } else {
+        $('#idiomaDelSistema').css('background-image', 'url(/img/banderaUruguay.png)')
+    }
+    Promise.all([fetch('/' + ruta), fetch('/json/elementos.json')])
+    .then((responses) => Promise.all(responses.map((response) => response.json())))
+    .then((data) => {
+        const idioma = data[0];
+        const arrayDeIdioma = idioma[17]
+        const arrayDeTextos = data[1];
+        const arrayDeTextos2 = arrayDeTextos[17]
+
+        for (let posicion = 0; posicion < Object.keys(arrayDeTextos2).length; posicion++){
+            let texto = document.getElementById(arrayDeTextos2[posicion])
+            console.log(texto)
+            if (texto.nodeName == "INPUT"){
+                texto.placeholder = arrayDeIdioma[posicion]
+            } else {
+                texto.textContent = arrayDeIdioma[posicion]
+            }
+        }
+    })
+
+});

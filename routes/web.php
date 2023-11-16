@@ -41,3 +41,13 @@ Route::get('/tipoArticulo', function ()
 {
     return view('tipoArticulo');
 });
+
+Route::get('/listadoVehiculo', function () 
+{
+    return view('listadoVehiculo');
+});
+
+Route::get('/listadoArticulo', function () 
+{
+    return view('listadoArticulo');
+});
