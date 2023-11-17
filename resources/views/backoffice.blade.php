@@ -63,13 +63,6 @@
             <img class="iconoBotonListado" id="iconoListadoVehiculo" src="/img/iconoCamion.png">
           </div>
         </a>
-        <a href="/listadoArticulo" class="botonListado">
-          <div class="cambioCursor textoClaro" id="botonListaArticulos">
-            <label class="cambioCursor" id="listaArticulos"><b>Lista de Artículos</b></label>
-            <img class="iconoBotonListado" id="iconoListadoArticulos" src="/img/iconoArticulo.png">
-          </div>
-        </a>
-
         <a href="/turnos" class="botonListado">
           <div class="cambioCursor textoClaro" id="botonListaTurnos">
             <label class="cambioCursor" id="turnos"><b>Turnos</b></label>

@@ -10,12 +10,12 @@ class Turno extends Model
 {
     use HasFactory, softDeletes;
 
-    protected $primaryKey = 'idTurno';
+    protected $primaryKey = 'idturno';
 
     protected $table = 'turnos';
 
     protected $fillable = [
-        'horaInicio',
-        'horaFinal'
+        'horainicio',
+        'horafinal'
     ];
 }

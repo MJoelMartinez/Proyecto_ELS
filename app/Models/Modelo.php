@@ -10,12 +10,12 @@ class Modelo extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'idModelo';
+    protected $primaryKey = 'idmodelo';
 
     protected $table = 'modelos';
 
     protected $fillable = [
-        'idModelo',
+        'idmodelo',
         'nombre',
         'anio'
     ];

@@ -34,13 +34,14 @@ class UsuarioController extends Controller
     {
         UserUsuario::create([
             "id" => $idAutomatico,
-            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+            "docdeidentidad" => $request->input("documentoDeIdentidad")
         ]);
     }
     
     public function CrearUser($request)
     {
         $modeloTablaUser = User::create([
+            "name" => $request->input("nombre"),
             "email" => $request->input("email"),
             "password" => Hash::make($request->input("contrasenia"))
         ]);
@@ -53,7 +54,7 @@ class UsuarioController extends Controller
     public function CrearUsuario($request)
     {
         Usuario::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "docdeidentidad" => $request->input("documentoDeIdentidad"),
             "nombre" => $request->input("nombre"),
             "apellido" => $request->input("apellido"),
             "telefono" => $request->input("telefono"),
@@ -86,34 +87,33 @@ class UsuarioController extends Controller
     public function CrearAdministrador($request)
     {
         Administrador::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "backoffice" => 1
+            "docdeidentidad" => $request->input("documentoDeIdentidad")
         ]);
     }
 
     public function CrearGerente($request)
     {
         Gerente::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "idAlmacen" => $request->input("idAlmacen"),
-            "idTurno" => $request->input("idTurno")
+            "docdeidentidad" => $request->input("documentoDeIdentidad"),
+            "idalmacen" => $request->input("idAlmacen"),
+            "idturno" => $request->input("idTurno")
         ]);
     }
 
     public function CrearCargador($request)
     {
         Cargador::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
-            "carnetTransporte" => $request->input("carnetTransporte"),
-            "idAlmacen" => 0,
-            "idTurno" => $request->input("idTurno")
+            "docdeidentidad" => $request->input("documentoDeIdentidad"),
+            "carnettransporte" => $request->input("carnetTransporte"),
+            "idalmacen" => 0,
+            "idturno" => $request->input("idTurno")
         ]);
     }
 
     public function CrearChofer($request)
     {
         Chofer::create([
-            "docDeIdentidad" => $request->input("documentoDeIdentidad")
+            "docdeidentidad" => $request->input("documentoDeIdentidad")
         ]);
         $this->CrearLicencia($request);
     }
@@ -124,10 +124,10 @@ class UsuarioController extends Controller
         $fechaHasta = $request->input("anioHasta") . "-" . $request->input("mesHasta") . "-" . $request->input("diaHasta");
 
         Licencia::create([
-            "idLicencia" => $request->input("idLicencia"),
-            "validoDesde" => $fechaDesde,
-            "validoHasta" => $fechaHasta,
-            "docDeIdentidad" => $request->input("documentoDeIdentidad"),
+            "idlicencia" => $request->input("idLicencia"),
+            "validodesde" => $fechaDesde,
+            "validohasta" => $fechaHasta,
+            "docdeidentidad" => $request->input("documentoDeIdentidad"),
             "categoria" => 'H'
         ]);
     }
@@ -267,7 +267,7 @@ class UsuarioController extends Controller
         
         if ($rol === "chofer")
             Chofer::findOrFail($documentoDeIdentidad)->delete();
-            Licencia::where("docDeIdentidad", $documentoDeIdentidad)->delete();
+            Licencia::where("docdeidentidad", $documentoDeIdentidad)->delete();
     }
 
     public function EliminarTablas($usuario, $relacionUserUsuario, $user)
@@ -287,7 +287,7 @@ class UsuarioController extends Controller
             return response($validation->errors(), 401);
 
         $usuario = Usuario::findOrFail($documentoDeIdentidad);
-        $relacionUserUsuario = UserUsuario::where('docDeIdentidad', $documentoDeIdentidad)->first();
+        $relacionUserUsuario = UserUsuario::where('docdeidentidad', $documentoDeIdentidad)->first();
         $user = User::where('id', $relacionUserUsuario->id)->first();
 
         $this->bloquearTablasASoloEscritura();

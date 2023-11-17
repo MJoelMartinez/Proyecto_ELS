@@ -10,12 +10,12 @@ class UserUsuario extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'idRelacion';
+    protected $primaryKey = 'id';
 
     protected $table = 'user_usuario';
 
     protected $fillable = [
         'id',
-        'docDeIdentidad'
+        'docdeidentidad'
     ];
 }

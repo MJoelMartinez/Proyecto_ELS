@@ -17,13 +17,11 @@ class ModeloTest extends TestCase
             "anio" => "2005"
         ];
 
-        $response = $this->post('/api/v2/modelos', $datosAInsertar);
+        $response = $this->post('/modelos', $datosAInsertar);
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "El modelo fue creado con exito."
         ]);
-
-        $this->delete('/api/v2/modelos/2');
     }
 
     public function test_CrearUnModeloConDatosErroneos()
@@ -33,13 +31,13 @@ class ModeloTest extends TestCase
             "anio" => "EstoNoEsUnAnio"
         ];
 
-        $response = $this->post('/api/v2/modelos', $datosAInsertar);
+        $response = $this->post('/modelos', $datosAInsertar);
         $response->assertStatus(401);
     }
 
     public function test_CrearUnModeloSinDatos()
     {
-        $response = $this->post('/api/v2/modelos');
+        $response = $this->post('/modelos');
         $response->assertStatus(401);
     }
 
@@ -50,7 +48,7 @@ class ModeloTest extends TestCase
             "anio" => "2006"
         ];
 
-        $response = $this->post('/api/v2/modelos/1', $datosAInsertar);
+        $response = $this->post('/modelos/1', $datosAInsertar);
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "El modelo con el ID 1 fue modificado con exito."
@@ -64,13 +62,13 @@ class ModeloTest extends TestCase
             "anio" => "2006"
         ];
 
-        $response = $this->post('/api/v2/modelos/9999', $datosAInsertar);
+        $response = $this->post('/modelos/9999', $datosAInsertar);
         $response->assertStatus(405);
     }
 
     public function test_EliminarUnModeloQueExiste()
     {
-        $response = $this->delete('/api/v2/modelos/1');
+        $response = $this->delete('/modelos/1');
         $response->assertJsonFragment([
             "mensaje" => "El modelo con el ID 1 fue eliminado con exito."
         ]);
@@ -78,14 +76,13 @@ class ModeloTest extends TestCase
             "idModelo" => 1,
             "deleted_at" => null
         ]);
-        Modelo::withTrashed()->where("idModelo", 1)->restore();
 
         $response->assertStatus(200); 
     }
 
     public function test_EliminarUnModeloQueNoExiste()
     {
-        $response = $this->delete('/api/v2/modelos/9999');
+        $response = $this->delete('/modelos/9999');
         $response->assertStatus(404);
     }
 }

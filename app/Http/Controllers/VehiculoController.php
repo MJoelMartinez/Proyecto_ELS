@@ -25,7 +25,7 @@ class VehiculoController extends Controller
         Vehiculo::create([
             "matricula" => $request->input("matricula"),
             "capacidad" => $request->input("capacidad"),
-            "pesoMaximo" => $request->input("pesoMaximo"),
+            "pesomaximo" => $request->input("pesoMaximo"),
             "modelo" => $request->input("modelo")
         ]);
 
@@ -70,7 +70,7 @@ class VehiculoController extends Controller
         DB::beginTransaction();
 
         $vehiculo->capacidad = $request->input("capacidad");
-        $vehiculo->pesoMaximo = $request->input("pesoMaximo");
+        $vehiculo->pesomaximo = $request->input("pesoMaximo");
         $vehiculo->save();
 
         DB::commit();
@@ -93,7 +93,7 @@ class VehiculoController extends Controller
         if($vehiculo === null)
             return response(["mensaje" => "La matricula no pertenece a ningun vehiculo del sistema."], 404);
 
-        $relacionConChofer = Maneja::where('idVehiculo', $vehiculo->idVehiculo)->first();
+        $relacionConChofer = Maneja::where('idvehiculo', $vehiculo->idVehiculo)->first();
 
         if($relacionConChofer != null)
             return ["mensaje" => "El vehiculo a eliminar cuenta con un chofer asignado. Primero debe despojar al chofer."];

@@ -14,26 +14,6 @@ use App\Models\Usuario;
 
 class UsuarioTest extends TestCase
 {
-    public function test_EliminarUnoQueNoExiste()
-    {
-        $response = $this->delete('/api/v2/usuarios/99999999');
-        $response->assertStatus(404); 
-    }
-    
-    public function test_EliminarUnoQueExiste()
-    {
-        $response = $this->delete('/api/v2/usuarios/12345670');
-        $response->assertStatus(200);
-        $response->assertJsonFragment([
-            "mensaje" => "El Usuario con la cedula 12345670 ha sido eliminado."
-        ]);
-        $this->assertDatabaseMissing("usuarios",[
-            "docDeIdentidad" => 12345670,
-            "deleted_at" => null
-        ]);
-
-        Usuario::withTrashed()->where("docDeIdentidad", 12345670)->restore();
-    }
 
     public function test_ModificarUnoQueNoExiste()
     {
@@ -43,7 +23,7 @@ class UsuarioTest extends TestCase
             "direccion" => "Av. 404"
         ];
 
-        $response = $this->put('/api/v2/usuarios/99999999', $datosAInsertar);
+        $response = $this->put('/usuarios/99999999', $datosAInsertar);
         $response->assertStatus(404); 
     }
 
@@ -56,17 +36,17 @@ class UsuarioTest extends TestCase
             "direccion" => "Av. Pepito"
         ];
 
-        $response = $this->put('/api/v2/usuarios/12345678', $datosAInsertar);
+        $response = $this->put('/usuarios/77777777', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
-            "mensaje" => "El Usuario con la cedula 12345678 ha sido modificado."
+            "mensaje" => "El Usuario con la cedula 77777777 ha sido modificado."
         ]);
     }
 
     public function test_InsertarUsuarioSinInformacion()
     {
-        $response = $this->post('/api/v2/usuarios/');
+        $response = $this->post('/usuarios');
         $response->assertStatus(401); 
     }
 
@@ -83,14 +63,14 @@ class UsuarioTest extends TestCase
             "email" => "CRonaldo7@gmail.com"
         ];
 
-        $response = $this->put('/api/v2/usuarios', $datosAInsertar);
-        $response->assertStatus(405); 
+        $response = $this->put('/usuarios', $datosAInsertar);
+        $response->assertStatus(401); 
     }
 
     public function test_InsertarUsuarioComun()
     {
         $datosAInsertar = [
-            "documentoDeIdentidad" => "77777775",
+            "documentoDeIdentidad" => "77772016",
             "nombre" => "Cristiano",
             "apellido" => "Ronaldo",
             "contrasenia" => "eurocopa2016",
@@ -100,14 +80,12 @@ class UsuarioTest extends TestCase
             "email" => "CRonaldo7@gmail.com"
         ];
 
-        $response = $this->post('/api/v2/usuarios', $datosAInsertar);
+        $response = $this->post('/usuarios', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "Usuario creado correctamente."
         ]);
-
-        $this->delete('/api/v2/usuarios/77777775');
     }
 
     public function test_InsertarAdministrador()
@@ -124,14 +102,12 @@ class UsuarioTest extends TestCase
             "rolDeLaEmpresa" => "administrador"
         ];
 
-        $response = $this->post('/api/v2/usuarios', $datosAInsertar);
+        $response = $this->post('/usuarios', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "Usuario creado correctamente."
         ]);
-
-        $this->delete('/api/v2/usuarios/46520333');
     }
 
     public function test_InsertarGerente()
@@ -150,14 +126,12 @@ class UsuarioTest extends TestCase
             "idTurno" => "1"
         ];
 
-        $response = $this->post('/api/v2/usuarios', $datosAInsertar);
+        $response = $this->post('/usuarios', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "Usuario creado correctamente."
         ]);
-
-        $this->delete('/api/v2/usuarios/49098644');
     }
 
     public function test_InsertarCargador()
@@ -177,14 +151,12 @@ class UsuarioTest extends TestCase
             "idTurno" => "1"
         ];
 
-        $response = $this->post('/api/v2/usuarios', $datosAInsertar);
+        $response = $this->post('/usuarios', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "Usuario creado correctamente."
         ]);
-
-        $this->delete('/api/v2/usuarios/40659854');
     }
 
     public function test_InsertarChofer()
@@ -208,13 +180,30 @@ class UsuarioTest extends TestCase
             "anioHasta" => "2025"
         ];
 
-        $response = $this->post('/api/v2/usuarios/', $datosAInsertar);
+        $response = $this->post('/usuarios', $datosAInsertar);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "Usuario creado correctamente."
         ]);
+    }
 
-        $this->delete('/api/v2/usuarios/40659855');
+    public function test_EliminarUnoQueNoExiste()
+    {
+        $response = $this->delete('/usuarios/99999999');
+        $response->assertStatus(404); 
+    }
+    
+    public function test_EliminarUnoQueExiste()
+    {
+        $response = $this->delete('/usuarios/77777777');
+        $response->assertStatus(200);
+        $response->assertJsonFragment([
+            "mensaje" => "El Usuario con la cedula 77777777 ha sido eliminado."
+        ]);
+        $this->assertDatabaseMissing("usuarios",[
+            "docDeIdentidad" => 77777777,
+            "deleted_at" => null
+        ]);
     }
 }

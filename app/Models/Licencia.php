@@ -10,15 +10,15 @@ class Licencia extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'idLicencia';
+    protected $primaryKey = 'idlicencia';
 
     protected $table = 'licencias';
     
     protected $fillable = [
-        'idLicencia',
-        'validoDesde',
-        'validoHasta',
-        'docDeIdentidad',
+        'idlicencia',
+        'validodesde',
+        'validohasta',
+        'docdeidentidad',
         'categoria'
     ];
 }

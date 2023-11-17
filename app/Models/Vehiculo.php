@@ -15,15 +15,15 @@ class Vehiculo extends Model
         return $this->belongsTo(Chofer::class);
     }
 
-    protected $primaryKey = 'idVehiculo';
+    protected $primaryKey = 'idvehiculo';
 
     protected $table = 'vehiculos';
 
     protected $fillable = [
-        'idVehiculo',
+        'idvehiculo',
         'matricula',
         'capacidad',
-        'pesoMaximo',
+        'pesomaximo',
         'modelo'
     ];
 }

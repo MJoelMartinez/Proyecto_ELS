@@ -18,18 +18,16 @@ class AlmacenTest extends TestCase
             "idDepartamento" => "1"
         ];
 
-        $response = $this->post('/api/v2/almacenes', $datosAInsertar);
+        $response = $this->post('almacenes', $datosAInsertar);
         $response->assertStatus(200);
         $response->assertJsonFragment([
             "mensaje" => "El almacen fue registrado con exito."
         ]);
-
-        $this->delete('/api/v2/almacenes/2');
     }
 
     public function test_InsertarUnAlmacenSinMandarDatos()
     {
-        $response = $this->post('/api/v2/almacenes/');
+        $response = $this->post('/almacenes');
         $response->assertStatus(401); 
     }
 
@@ -41,7 +39,7 @@ class AlmacenTest extends TestCase
             "idDepartamento" => "IDInvalido"
         ];
 
-        $response = $this->post('/api/v2/almacenes', $datosAInsertar);
+        $response = $this->post('/almacenes', $datosAInsertar);
         $response->assertStatus(401);
     }
 
@@ -52,7 +50,7 @@ class AlmacenTest extends TestCase
             "capacidad" => "700",
             "direccion" => "Direccion Prueba"
         ];
-        $response = $this->put('/api/v2/almacenes/1', $datosAInsertar);
+        $response = $this->put('/almacenes/1', $datosAInsertar);
         $response->assertJsonFragment([
             "mensaje" => "El almacen fue modificado con exito."
         ]);
@@ -66,13 +64,13 @@ class AlmacenTest extends TestCase
             "capacidad" => "700",
             "direccion" => "Direccion Prueba"
         ];
-        $response = $this->put('/api/v2/almacenes/9999', $datosAInsertar);
+        $response = $this->put('/almacenes/9999', $datosAInsertar);
         $response->assertStatus(404);
     }
 
     public function test_EliminarUnAlmacenQueExiste()
     {
-        $response = $this->delete('/api/v2/almacenes/1');
+        $response = $this->delete('/almacenes/1');
         $response->assertJsonFragment([
             "mensaje" => "El almacen fue eliminado con exito."
         ]);
@@ -80,19 +78,18 @@ class AlmacenTest extends TestCase
             "idAlmacen" => 1,
             "deleted_at" => null
         ]);
-        Almacen::withTrashed()->where("idAlmacen", 1)->restore();
         $response->assertStatus(200); 
     }
 
     public function test_EliminarUnAlmacenQueNoExiste()
     {
-        $response = $this->delete('/api/v2/almacenes/9999');
+        $response = $this->delete('/almacenes/9999');
         $response->assertStatus(404); 
     }
 
     public function test_AsignarUnEmpleadoExistente()
     {
-        $response = $this->put('/api/v2/almacenes/asignar/1/88888888');
+        $response = $this->put('/almacenes/asignar/1/77777777');
         $response->assertJsonFragment([
             "mensaje" => "Funcionario asignado con exito."
         ]);
@@ -101,7 +98,7 @@ class AlmacenTest extends TestCase
 
     public function test_AsignarUnEmpleadoQueNoExiste()
     {
-        $response = $this->put('/api/v2/almacenes/asignar/1/99999999');
+        $response = $this->put('/almacenes/asignar/1/99999999');
         $response->assertJsonFragment([
             "mensaje" => "No se han encontrado funcionarios con esa CI."
         ]);
@@ -110,7 +107,7 @@ class AlmacenTest extends TestCase
 
     public function test_RelegarUnEmpleadoExistente()
     {
-        $response = $this->delete('/api/v2/almacenes/relegar/88888888');
+        $response = $this->delete('/almacenes/relegar/7777777');
         $response->assertJsonFragment([
             "mensaje" => "Funcionario relegado con exito."
         ]);
@@ -119,7 +116,7 @@ class AlmacenTest extends TestCase
 
     public function test_RelegarUnEmpleadoQueNoExiste()
     {
-        $response = $this->delete('/api/v2/almacenes/relegar/99999999');
+        $response = $this->delete('/almacenes/relegar/99999999');
         $response->assertJsonFragment([
             "mensaje" => "No se han encontrado funcionarios con esa CI."
         ]);

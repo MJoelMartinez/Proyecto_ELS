@@ -15,12 +15,12 @@ class Usuario extends Model
         return $this->hasOne(User::class);
     }
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $primaryKey = 'docdeidentidad';
 
     protected $table = 'usuarios';
 
     protected $fillable = [
-        'docDeIdentidad',
+        'docdeidentidad',
         'nombre',
         'apellido',
         'telefono',

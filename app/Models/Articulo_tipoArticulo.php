@@ -10,12 +10,12 @@ class Articulo_tipoArticulo extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'idRelacion';
+    protected $primaryKey = 'idrelacion';
 
-    protected $table = 'articulo_tipoArticulo';
+    protected $table = 'articulo_tipoarticulo';
 
     protected $fillable = [
-        'idArticulo',
-        'idTipo'
+        'idarticulo',
+        'idtipo'
     ];
 }

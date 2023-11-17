@@ -15,9 +15,9 @@ class TipoArticulo extends Model
         return $this->belongsToMany(Articulo::class);
     }
 
-    protected $primaryKey = 'idTipoArticulo';
+    protected $primaryKey = 'idtipoarticulo';
 
-    protected $table = 'tipoArticulo';
+    protected $table = 'tipoarticulo';
 
     protected $fillable = [
         'tipo'

@@ -40,7 +40,7 @@ class AlmacenController extends Controller
         Almacen::create([
             "capacidad" => $request->input("capacidad"),
             "direccion" => $request->input("direccion"),
-            "idDepartamento" => $request->input("idDepartamento")
+            "iddepartamento" => $request->input("idDepartamento")
         ]);
 
         DB::commit();
@@ -118,13 +118,13 @@ class AlmacenController extends Controller
 
         if($gerente != null)
         {
-            $gerente->idAlmacen = $idAlmacen;
+            $gerente->idalmacen = $idAlmacen;
             $gerente->save();
         }
 
         if($cargador != null)
         {
-            $cargador->idAlmacen = $idAlmacen;
+            $cargador->idalmacen = $idAlmacen;
             $cargador->save();
         }
 
@@ -154,13 +154,13 @@ class AlmacenController extends Controller
 
         if($gerente != null)
         {
-            $gerente->idAlmacen = 0;
+            $gerente->idalmacen = 0;
             $gerente->save();
         }
 
         if($cargador != null)
         {
-            $cargador->idAlmacen = 0;
+            $cargador->idalmacen = 0;
             $cargador->save();
         }
 

@@ -17,11 +17,11 @@ class Chofer extends Usuario
         return $this->hasOne(Vehiculo::class);
     }
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $primaryKey = 'docdeidentidad';
 
     protected $table = 'choferes';
 
     protected $fillable = [
-        'docDeIdentidad'
+        'docdeidentidad'
     ];
 }

@@ -11,13 +11,13 @@ class Gerente extends Usuario
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $primaryKey = 'docdeidentidad';
 
     protected $table = 'gerentes';
 
     protected $fillable = [
-        'docDeIdentidad',
-        'idAlmacen',
-        'idTurno'
+        'docdeidentidad',
+        'idalmacen',
+        'idturno'
     ];
 }

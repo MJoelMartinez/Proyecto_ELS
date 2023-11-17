@@ -1,9 +1,9 @@
 use scripttribyte;
 
 create table turnos(
-	idTurno int not null auto_increment primary key,
-    horaInicio time not null,
-    horaFinal time not null,
+	idturno int not null auto_increment primary key,
+    horainicio time not null,
+    horafinal time not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime
@@ -14,36 +14,36 @@ create table categorias(
 );
 
 create table departamentos(
-	idDepartamento int not null primary key auto_increment,
+	iddepartamento int not null primary key auto_increment,
     nombre varchar(20) not null
 );
 
 create table almacenes(
-	idAlmacen int not null auto_increment primary key,
+	idalmacen int not null auto_increment primary key,
     capacidad int not null,
-    direccion VARCHAR(40) not null,
-    idDepartamento int not null,
+    direccion varchar(40) not null,
+    iddepartamento int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idDepartamento) references departamentos(idDepartamento)
+    foreign key (iddepartamento) references departamentos(iddepartamento)
 );
 
 create table estanterias(
 	identificador int not null auto_increment primary key,
     peso double not null,
-    apiladoMaximo int not null,
-    idAlmacen int not null,
+    apiladomaximo int not null,
+    idalmacen int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idAlmacen) references almacenes(idAlmacen)
+    foreign key (idalmacen) references almacenes(idalmacen)
 );
 
 create table usuarios(
-	docDeIdentidad int(8) not null primary key,
+	docdeidentidad int(8) not null primary key,
     nombre varchar(255) not null,
     apellido varchar(20) not null,
     telefono int(10) not null,
@@ -55,75 +55,75 @@ create table usuarios(
 
 create table user_usuario(
 	id bigint(20) unsigned not null primary key,
-    docDeIdentidad int(8) not null unique,
+    docdeidentidad int(8) not null unique,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     foreign key (id) references users(id),
-    foreign key (docDeIdentidad) references usuarios(docDeIdentidad)
+    foreign key (docdeidentidad) references usuarios(docdeidentidad)
 );
 
 create table choferes(
-	docDeIdentidad int(8) not null primary key,
+	docdeidentidad int(8) not null primary key,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (docDeIdentidad) references usuarios(docDeIdentidad)
+    foreign key (docdeidentidad) references usuarios(docdeidentidad)
 );
 
 create table gerentes(
-	docDeIdentidad int(8) not null primary key,
-    idAlmacen int not null,
-    idTurno int not null,
+	docdeidentidad int(8) not null primary key,
+    idalmacen int not null,
+    idturno int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (docDeIdentidad) references usuarios(docDeIdentidad),
-    foreign key (idAlmacen) references almacenes(idAlmacen),
-    foreign key (idTurno) references turnos(idTurno)
+    foreign key (docdeidentidad) references usuarios(docdeidentidad),
+    foreign key (idalmacen) references almacenes(idalmacen),
+    foreign key (idturno) references turnos(idturno)
 );
 
 create table administradores(
-	docDeIdentidad int(8) not null primary key,
+	docdeidentidad int(8) not null primary key,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (docDeIdentidad) references usuarios(docDeIdentidad)
+    foreign key (docdeidentidad) references usuarios(docdeidentidad)
 );
 
 create table cargadores(
-	docDeIdentidad int(8) not null primary key,
-    carnetTransporte int not null,
-    idAlmacen int not null,
-    idTurno int not null,
+	docdeidentidad int(8) not null primary key,
+    carnettransporte int not null,
+    idalmacen int not null,
+    idturno int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (docDeIdentidad) references usuarios(docDeIdentidad),
-    foreign key (idAlmacen) references almacenes(idAlmacen),
-    foreign key (idTurno) references turnos(idTurno)
+    foreign key (docdeidentidad) references usuarios(docdeidentidad),
+    foreign key (idalmacen) references almacenes(idalmacen),
+    foreign key (idturno) references turnos(idturno)
 );
 
 create table licencias(
-	idLicencia char(8) not null primary key,
-    validoDesde date not null,
-    validoHasta date not null,
-    docDeIdentidad int(8) not null,
+	idlicencia char(8) not null primary key,
+    validodesde date not null,
+    validohasta date not null,
+    docdeidentidad int(8) not null,
     categoria char not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (docDeIdentidad) references choferes(docDeIdentidad),
+    foreign key (docdeidentidad) references choferes(docdeidentidad),
     foreign key (categoria) references categorias(tipo)
 );
 
 create table modelos(
-	idModelo int not null primary key auto_increment,
+	idmodelo int not null primary key auto_increment,
     nombre varchar(255) not null,
     anio year not null,
     created_at timestamp,
@@ -132,31 +132,31 @@ create table modelos(
 );
 
 create table vehiculos(
-	idVehiculo int not null primary key auto_increment,
+	idvehiculo int not null primary key auto_increment,
     matricula char(8) not null unique,
     capacidad int not null,
-    pesoMaximo int not null,
+    pesomaximo int not null,
     modelo int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (modelo) references modelos(idModelo)
+    foreign key (modelo) references modelos(idmodelo)
 );
 
 create table maneja(
-	docDeIdentidad int(8) not null primary key,
-    idVehiculo int not null unique,
+	docdeidentidad int(8) not null primary key,
+    idvehiculo int not null unique,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (docDeIdentidad) references choferes(docDeIdentidad),
-    foreign key (idVehiculo) references vehiculos(idVehiculo)
+    foreign key (docdeidentidad) references choferes(docdeidentidad),
+    foreign key (idvehiculo) references vehiculos(idvehiculo)
 );
 
-create table tipoArticulo(
-	idTipoArticulo int not null auto_increment primary key,
+create table tipoarticulo(
+	idtipoarticulo int not null auto_increment primary key,
     tipo char not null unique,
 	nombre varchar(50) not null,
     created_at timestamp,
@@ -165,26 +165,26 @@ create table tipoArticulo(
 );
 
 create table articulos(
-	idArticulo int not null auto_increment primary key,
+	idarticulo int not null auto_increment primary key,
     nombre varchar(50) not null,
-    anioCreacion int not null,
+    aniocreacion int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime
 );
 
-create table codigoDeBulto(
+create table codigodebulto(
 	codigo int not null primary key auto_increment,
     tipo char not null unique,
-    maximoApilado int not null,
+    maximoapilado int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime
 );
 
 create table paquetes(
-	idPaquete int not null auto_increment primary key,
-    cantidadArticulos int not null,
+	idpaquete int not null auto_increment primary key,
+    cantidadarticulos int not null,
     peso int not null,
     created_at timestamp,
     updated_at datetime,
@@ -192,112 +192,114 @@ create table paquetes(
 );
 
 create table articulo_paquete(
-	idArticulo int not null primary key,
-    idPaquete int not null,
+	idarticulo int not null primary key,
+    idpaquete int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idArticulo) references articulos(idArticulo),
-    foreign key (idPaquete) references paquetes(idPaquete)
+    foreign key (idarticulo) references articulos(idarticulo),
+    foreign key (idpaquete) references paquetes(idpaquete)
 );
 
 create table destinos(
-	idDestino int not null primary key auto_increment,
+	iddestino int not null primary key auto_increment,
     direccion varchar(50) not null,
-    idDepartamento int not null,
+    iddepartamento int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idDepartamento) references departamentos(idDepartamento)
+    foreign key (iddepartamento) references departamentos(iddepartamento)
 );
 
 create table lotes(
-	idLote int not null auto_increment primary key,
-    cantidadPaquetes int not null,
-    idDestino int not null,
-    idAlmacen int not null,
+	idlote int not null auto_increment primary key,
+    cantidadpaquetes int not null,
+    iddestino int not null,
+    idalmacen int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idDestino) references destinos(idDestino),
-    foreign key (idAlmacen) references almacenes(idAlmacen)
+    foreign key (iddestino) references destinos(iddestino),
+    foreign key (idalmacen) references almacenes(idalmacen)
 );
 
 create table vehiculo_lote_destino(
-    idLote int not null primary key,
-    fechaEstimada date not null,
-    horaEstimada time not null,
-    docDeIdentidad int(8) not null,
+    idlote int not null primary key,
+    fechaestimada date not null,
+    horaestimada time not null,
+    docdeidentidad int(8) not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idLote) references lotes(idLote),
-    foreign key (docDeIdentidad) references maneja(docDeIdentidad)
+    foreign key (idlote) references lotes(idlote),
+    foreign key (docdeidentidad) references maneja(docdeidentidad)
 );
 
-create table estadoEntrega(
-	idLote int not null primary key,
-	fechaEntrega date not null,
-    horaEntrega time not null,
+create table estadoentrega(
+	idlote int
+
+ not null primary key,
+	fechaentrega date not null,
+    horaentrega time not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idLote) references vehiculo_lote_destino(idLote)
+    foreign key (idlote) references vehiculo_lote_destino(idlote)
 );
 
 create table paquete_lote(
-	idPaquete int not null primary key,
-    idLote int not null,
+	idpaquete int not null primary key,
+    idlote int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    foreign key (idPaquete) references paquetes(idPaquete),
-    foreign key (idLote) references lotes(idLote)
+    foreign key (idpaquete) references paquetes(idpaquete),
+    foreign key (idlote) references lotes(idlote)
 );
 
-create table articulo_tipoArticulo(
-	idRelacion int not null primary key auto_increment, /*Por Laravel*/
-    idArticulo int not null,
-    idTipo int not null,
+create table articulo_tipoarticulo(
+	idrelacion int not null primary key auto_increment, /*por laravel*/
+    idarticulo int not null,
+    idtipo int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-	unique (idArticulo, idTipo),
-    foreign key (idArticulo) references articulos(idArticulo),
-    foreign key (idTipo) references tipoArticulo(idTipoArticulo)
+	unique (idarticulo, idtipo),
+    foreign key (idarticulo) references articulos(idarticulo),
+    foreign key (idtipo) references tipoarticulo(idtipoarticulo)
 );
 
 create table paquete_estanteria(
-	idRelacion int not null primary key auto_increment, /*Por Laravel*/
-    idPaquete int not null,
-    idEstanteria int not null,
+	idrelacion int not null primary key auto_increment, /*por laravel*/
+    idpaquete int not null,
+    idestanteria int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    unique (idPaquete, idEstanteria),
-	foreign key (idPaquete) references paquetes(idPaquete),
-    foreign key (idEstanteria) references estanterias(identificador)
+    unique (idpaquete, idestanteria),
+	foreign key (idpaquete) references paquetes(idpaquete),
+    foreign key (idestanteria) references estanterias(identificador)
 );
 
-create table paquete_codigoDeBulto(
-	idRelacion int not null primary key auto_increment, /*Por Laravel*/
-    idPaquete int not null,
+create table paquete_codigodebulto(
+	idrelacion int not null primary key auto_increment, /*por laravel*/
+    idpaquete int not null,
     codigo int not null,
     created_at timestamp,
     updated_at datetime,
     deleted_at datetime,
     
-    unique (idPaquete, codigo),
-    foreign key (idPaquete) references paquetes(idPaquete),
-    foreign key (codigo) references codigoDeBulto(codigo)
+    unique (idpaquete, codigo),
+    foreign key (idpaquete) references paquetes(idpaquete),
+    foreign key (codigo) references codigodebulto(codigo)
 );
 
 INSERT INTO categorias (tipo) VALUES ("A");

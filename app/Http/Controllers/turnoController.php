@@ -32,8 +32,8 @@ class turnoController extends Controller
         DB::beginTransaction();
 
         Turno::create([
-            "horaInicio" => $horaInicio,
-            "horaFinal" => $horaFinal
+            "horainicio" => $horaInicio,
+            "horafinal" => $horaFinal
         ]);
 
         DB::commit();

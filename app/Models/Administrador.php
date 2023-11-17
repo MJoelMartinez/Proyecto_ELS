@@ -13,10 +13,9 @@ class Administrador extends Usuario
 
     protected $table = 'administradores';
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $primaryKey = 'docdeidentidad';
 
     protected $fillable = [
-        'docDeIdentidad',
-        'backoffice'
+        'docdeidentidad'
     ];
 }

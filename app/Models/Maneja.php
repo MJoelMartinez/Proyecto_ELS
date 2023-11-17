@@ -10,12 +10,12 @@ class Maneja extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'docDeIdentidad';
+    protected $primaryKey = 'docdeidentidad';
 
     protected $table = 'maneja';
 
     protected $fillable = [
-        'docDeIdentidad',
-        'idVehiculo'
+        'docdeidentidad',
+        'idvehiculo'
     ];
 }
